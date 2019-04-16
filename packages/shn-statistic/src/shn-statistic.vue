@@ -27,7 +27,7 @@
 </template>
 <script>
 export default {
-  name: 'shnInput',
+  name: 'shnStatistic',
   props: {
     value: {
       type: Number,
