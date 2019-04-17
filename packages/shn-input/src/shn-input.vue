@@ -38,7 +38,7 @@
 </template>
 <script>
 export default {
-  name: 'shnInput',
+  name: 'shn-input',
   props: {
     type: {
       type: String,

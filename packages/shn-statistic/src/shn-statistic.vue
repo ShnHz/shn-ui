@@ -27,10 +27,10 @@
 </template>
 <script>
 export default {
-  name: 'shnStatistic',
+  name: 'shn-statistic',
   props: {
     value: {
-      type: Number,
+      type: [Number, String],
       default: 0
     },
     intFontSize: {
@@ -77,10 +77,15 @@ export default {
   computed: {
     integer() {
       let num
+      let value = this.value
+      if (typeof value === 'string') {
+        value = parseFloat(value)
+      }
+
       if (this.percent) {
-        num = parseInt(this.value * 100).toString()
+        num = parseInt(value * 100).toString()
       } else {
-        num = parseInt(this.value).toString()
+        num = parseInt(value).toString()
       }
       if (this.groupSeparator) {
         let reg = /(?=(\B\d{3})+$)/g
@@ -91,10 +96,14 @@ export default {
     },
     decimal() {
       let num
+      let value = this.value
+      if (typeof value === 'string') {
+        value = parseFloat(value)
+      }
       if (this.percent) {
-        num = (this.value * 100).toFixed(this.decimalNum).toString()
+        num = (value * 100).toFixed(this.decimalNum).toString()
       } else {
-        num = this.value.toFixed(this.decimalNum).toString()
+        num = value.toFixed(this.decimalNum).toString()
       }
       if (num.indexOf('.') > -1) {
         let data = num.split('.')

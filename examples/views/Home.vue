@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <shnInput :height="30" :margin="10" v-model="a" />
-    <!-- <Statistic  :value="a"/> -->
+    <shn-input :height="30" :margin="10" v-model="a" />
+    <shn-statistic  :value="a"/>
   </div>
 </template>
 
@@ -14,7 +14,7 @@ export default {
   name: 'home',
   data() {
     return {
-      a: 'asd'
+      a: '123.12a'
     }
   }
 }

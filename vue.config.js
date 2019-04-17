@@ -6,6 +6,7 @@ module.exports = {
       filename: 'index.html'
     }
   },
+
   // 扩展 webpack 配置，使 packages 加入编译
   chainWebpack: config => {
     config.module
@@ -19,5 +20,8 @@ module.exports = {
         // 修改它的选项...
         return options
       })
+  },
+  css: {
+    extract: false
   }
 }

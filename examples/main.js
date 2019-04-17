@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import '../public/css/shn-vue-ui-base.css'
 
 // 导入组件库
 import shnUI from './../packages/index'
