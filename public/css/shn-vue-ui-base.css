@@ -1,6 +1,15 @@
+.iconfont {
+    font-size: 14px;
+}
+
 .inline-block {
     display: inline-block;
 }
-.padding-top25{
+
+.padding-top25 {
     padding-top: 25px;
+}
+
+.border-top{
+    border-top:1px solid #f0f2f5;
 }

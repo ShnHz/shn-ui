@@ -1,9 +1,15 @@
+import '../public/css/result.css'
+import '../public/iconfont/iconfont.css'
+import '../public/css/shn-vue-ui-base.css'
+
 import Input from './shn-input'
 import Statistic from './shn-statistic'
+import ImgCard from './shn-img-card'
 
 const components = [
     Input,
-    Statistic
+    Statistic,
+    ImgCard
 ]
 
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册
@@ -23,5 +29,6 @@ export default {
     install,
     // 以下是具体的组件列表
     Input,
-    Statistic
+    Statistic,
+    ImgCard
 }

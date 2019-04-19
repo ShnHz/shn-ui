@@ -1,8 +1,4 @@
 # shn-vue-ui
-### Please
-```
-import 'shn-vue-ui/public/css/shn-vue-ui-base.css'
-```
 
 ### Compiles and hot-reloads for development
 ```
@@ -51,3 +47,16 @@ intFontClass  	    | 整数位自定义类名	      |string
 decimalFontClass    | 小数位自定义类名        |string
 unitFontClass       | 单位自定义类名          |string
 percent             | 百分比                 |boolean
+
+***
+```
+ImgCard 图片卡片
+```
+
+参数 | 说明 |类型
+---- | --- | ---
+imgBoxHeight	    | 图片盒子高度	          | number
+title               | 标题                    |string
+slot#img            | 图片slot                | -----
+slot#one            | one slot                | -----
+slot#two            | two slot                | -----
