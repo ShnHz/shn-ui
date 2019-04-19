@@ -23,7 +23,7 @@ Input 输入框
 ```
 
 参数 | 说明 |类型|默认值
----- | --- | ---
+---- | --- | --- | ---
 type                | 输入框类型	        |text/number/... |text
 pattern             | 输入框样式	        |frame/line |line
 value / v-model	    | 绑定值	            |string |----
@@ -39,8 +39,8 @@ margin              | 边距                   |number|0
 Statistic 统计数值
 ```
 
-参数 | 说明 |类型
----- | --- | ---
+参数 | 说明 |类型 | 默认值
+---- | --- | --- | ---
 value / v-model	    | 绑定值	             |number|0
 intFontSize  	    | 整数位字体大小	      |number|24
 decimalFontSize     | 小数位字体大小          |number|16
@@ -58,8 +58,8 @@ percent             | 百分比                 |boolean|false
 ImgCard 图片卡片
 ```
 
-参数 | 说明 |类型
----- | --- | ---
+参数 | 说明 |类型 | 默认值
+---- | --- | --- | ---
 imgBoxHeight	    | 图片盒子高度	          | number|200
 title               | 标题                    |string|----
 slot#img            | 图片slot                | ----|----
