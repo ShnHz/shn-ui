@@ -22,17 +22,17 @@ npm run lib
 Input 输入框
 ```
 
-参数 | 说明 |类型
+参数 | 说明 |类型|默认值
 ---- | --- | ---
-type                | 输入框类型	        |text/number/...
-pattern             | 输入框样式	        |frame/line
-value / v-model	    | 绑定值	            |string
-placeholder  	    | 输入框占位文本	     |string
-height              | 输入框高度             |number
-disabled            | 禁用                   |boolean
-animation           | 动画                   |boolean
-mode                | 布局方式               |string(horizontal/vertical)
-margin              | 边距                   |number
+type                | 输入框类型	        |text/number/... |text
+pattern             | 输入框样式	        |frame/line |line
+value / v-model	    | 绑定值	            |string |----
+placeholder  	    | 输入框占位文本	     |string |请输入内容
+height              | 输入框高度             |number  |40
+disabled            | 禁用                   |boolean|false
+animation           | 动画                   |boolean|true
+mode                | 布局方式               |horizontal/vertical |horizontal
+margin              | 边距                   |number|0
 
 ***
 ```
@@ -41,17 +41,17 @@ Statistic 统计数值
 
 参数 | 说明 |类型
 ---- | --- | ---
-value / v-model	    | 绑定值	             |number
-intFontSize  	    | 整数位字体大小	      |number
-decimalFontSize     | 小数位字体大小          |number
-unitFontSize        | 单位字体大小           | number
-unit                | 单位标识符             |string
-groupSeparator      | 是否开启千分位          |boolean
-decimalNum          | 保留几位小数            |number
-intFontClass  	    | 整数位自定义类名	      |string
-decimalFontClass    | 小数位自定义类名        |string
-unitFontClass       | 单位自定义类名          |string
-percent             | 百分比                 |boolean
+value / v-model	    | 绑定值	             |number|0
+intFontSize  	    | 整数位字体大小	      |number|24
+decimalFontSize     | 小数位字体大小          |number|16
+unitFontSize        | 单位字体大小           | number|16
+unit                | 单位标识符             |string|----
+groupSeparator      | 是否开启千分位          |boolean|true
+decimalNum          | 保留几位小数            |number|2
+intFontClass  	    | 整数位自定义类名	      |string|----
+decimalFontClass    | 小数位自定义类名        |string|----
+unitFontClass       | 单位自定义类名          |string|----
+percent             | 百分比                 |boolean|false
 
 ***
 ```
@@ -60,8 +60,8 @@ ImgCard 图片卡片
 
 参数 | 说明 |类型
 ---- | --- | ---
-imgBoxHeight	    | 图片盒子高度	          | number
-title               | 标题                    |string
-slot#img            | 图片slot                | -----
-slot#one            | one slot                | -----
-slot#two            | two slot                | -----
+imgBoxHeight	    | 图片盒子高度	          | number|200
+title               | 标题                    |string|----
+slot#img            | 图片slot                | ----|----
+slot#one            | one slot                | ----|----
+slot#two            | two slot                | ----|----
