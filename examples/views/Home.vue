@@ -7,6 +7,7 @@
       :key="index"
       :title="item.description"
       v-for="(item,index) in data"
+      :margin="20"
     >
       <template v-slot:img>
         <img
