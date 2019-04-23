@@ -2,6 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 
+//组件
+import component from './routers/component'
+
 Vue.use(Router)
 
 export default new Router({
@@ -9,7 +12,12 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
-    }
+      component: Home,
+      redirect: '/component/input',
+      children: [
+        //组件
+        ...component,
+      ]
+    },
   ]
 })

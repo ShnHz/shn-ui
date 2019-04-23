@@ -55,7 +55,7 @@ a {
 
 body,
 html {
-    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, \\3A2\FFFD\FFFD\FFFD\17A\FFFD, Arial, sans-serif;
+    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -64,10 +64,10 @@ html {
 
 /*==for FF/chrome/opera/IE8==*/
 .clearfloat:after {
-  clear: both;
-  content: '.';
-  display: block;
-  width: 0;
-  height: 0;
-  visibility: hidden;
+    clear: both;
+    content: '.';
+    display: block;
+    width: 0;
+    height: 0;
+    visibility: hidden;
 }

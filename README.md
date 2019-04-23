@@ -65,7 +65,7 @@ ImgCard
 
 参数 | 说明 |类型 | 默认值
 ---- | --- | --- | ---
-margin	            | 间距	                 | number|0
+margin	            | 间距	                 | string|0
 imgBoxHeight	    | 图片盒子高度	          | number|200
 title               | 标题                    |string|----
 slot#img            | 图片slot                | ----|----

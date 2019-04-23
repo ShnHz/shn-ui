@@ -1,5 +1,5 @@
 <template>
-  <div class="shn-img-card inline-block" :style="{margin:margin + 'px'}">
+  <div class="shn-img-card inline-block" :style="{margin:margin}">
     <div :style="{height:imgBoxHeight + 'px'}" class="shn-img-card__imgbox">
       <slot name="img"/>
     </div>
@@ -27,8 +27,8 @@ export default {
       default: 200
     },
     margin:{
-      type:Number,
-      default:0
+      type:String,
+      default:'0'
     },
     title: {
       type: String,

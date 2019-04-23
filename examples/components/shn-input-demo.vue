@@ -47,12 +47,8 @@
 </template>
 
 <script>
-// @ is an alias to /src
-// import Input from '@/components/shn-input.vue'
-// import Statistic from '@/components/shn-statistic.vue'
-
 export default {
-  name: 'home',
+  name: 'shn-input-demo',
   data() {
     return {
       data: [
