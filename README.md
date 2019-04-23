@@ -19,9 +19,10 @@ npm run lib
 ***
 # 组件
 ```
-Input 输入框
-```
+Input
 
+<shn-input /> 输入框
+```
 参数 | 说明 |类型|默认值
 ---- | --- | --- | ---
 type                | 输入框类型	        |text/number/... |text
@@ -36,7 +37,9 @@ margin              | 边距                   |number|0
 
 ***
 ```
-Statistic 统计数值
+Statistic 
+
+<Statistic /> 统计数值
 ```
 
 参数 | 说明 |类型 | 默认值
@@ -55,7 +58,9 @@ percent             | 百分比                 |boolean|false
 
 ***
 ```
-ImgCard 图片卡片
+ImgCard 
+
+<shn-img-card /> 图片卡片
 ```
 
 参数 | 说明 |类型 | 默认值
@@ -66,3 +71,10 @@ title               | 标题                    |string|----
 slot#img            | 图片slot                | ----|----
 slot#one            | one slot                | ----|----
 slot#two            | two slot                | ----|----
+
+***
+```
+Collapse 
+
+<shn-collapse /> 折叠动画盒子
+```
