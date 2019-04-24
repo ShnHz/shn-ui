@@ -3,8 +3,9 @@
     <h3 v-if="title != ''">{{title}}</h3>
     <div class="demo-block">
       <div class="source">
-        <slot name="demo"/>
+        <slot name="demo" />
       </div>
+      <div class="demo-block-control"></div>
     </div>
   </div>
 </template>
@@ -43,6 +44,19 @@ export default {
     }
     .source {
       padding: 24px;
+    }
+    .demo-block-control {
+      border-top: 1px solid #eaeefb;
+      height: 44px;
+      box-sizing: border-box;
+      background-color: #fff;
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      text-align: center;
+      margin-top: -1px;
+      color: #d3dce6;
+      cursor: pointer;
+      position: relative;
     }
   }
 }

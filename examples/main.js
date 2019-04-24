@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 
 import '../public/css/cover.scss';
+import '../public/iconfont/iconfont.css';
 
 
 // 导入组件库
