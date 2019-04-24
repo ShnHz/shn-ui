@@ -12,7 +12,7 @@
             <a>{{item_1.title}}</a>
             <ul class="pure-menu-list" v-if="item_1.li_data.length != 0">
               <li :key="item_2.path" class="nav-item" v-for="item_2 in item_1.li_data">
-                <a :href="item_2.path">{{item_2.name}}</a>
+                <a :class="{'active':active == item_2.id}" :href="item_2.path" @click="active = item_2.id">{{item_2.name}}</a>
               </li>
             </ul>
           </li>
@@ -30,23 +30,28 @@ export default {
   name: 'home',
   data() {
     return {
+      active: 0,
       ul_data: [
         {
           title: '组件',
           li_data: [
             {
+              id: 0,
               name: 'Input 输入框',
               path: '#/component/input'
             },
             {
+              id: 1,
               name: 'Statistic 统计数值',
               path: '#/component/statistic'
             },
             {
+              id: 2,
               name: 'ImgCard 图片卡片',
               path: '#/component/img-card'
             },
             {
+              id: 3,
               name: 'Collapse 折叠动画盒子',
               path: '#/component/collapse'
             }
@@ -126,6 +131,12 @@ export default {
             white-space: nowrap;
             text-overflow: ellipsis;
             font-weight: 400;
+            &:hover {
+              color: #409eff;
+            }
+          }
+          .active {
+            color: #409eff;
           }
         }
       }

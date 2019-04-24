@@ -6,12 +6,14 @@ import Input from './shn-input'
 import Statistic from './shn-statistic'
 import ImgCard from './shn-img-card'
 import Collapse from './shn-collapse'
+import ElDemoBlock from './shn-el-demo-block'
 
 const components = [
     Input,
     Statistic,
     ImgCard,
-    Collapse
+    Collapse,
+    ElDemoBlock
 ]
 
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册
@@ -33,5 +35,6 @@ export default {
     Input,
     Statistic,
     ImgCard,
-    Collapse
+    Collapse,
+    ElDemoBlock
 }
