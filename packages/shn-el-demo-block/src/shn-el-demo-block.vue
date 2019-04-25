@@ -1,11 +1,22 @@
 <template>
   <div class="shn-el-demo-block">
-    <h3 v-if="title != ''">{{title}}</h3>
-    <div class="demo-block">
+    <h3 v-if="title != ''">{{ title }}</h3>
+    <div
+      class="demo-block"
+      @mouseover="hover_animation = true"
+      @mouseout="hover_animation = false"
+    >
       <div class="source">
         <slot name="demo" />
       </div>
-      <div class="demo-block-control"></div>
+      <div class="code" :style="{height:code_height + 'px'}"></div>
+      <div class="demo-block-control" @click="showCode()">
+        <i
+          class="iconfont "
+          :class="{ 'hovering_i': hover_animation,'icon-caret-down': code_height === 0,'icon-caret-up': code_height !== 0}"
+        ></i>
+        <span :class="{ hovering_span: hover_animation }">{{code_height === 0 ? '显示代码':'隐藏代码'}}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -16,11 +27,26 @@ export default {
     title: {
       type: String,
       default: ''
+    },
+    height: {
+      type: Number,
+      default: 100
     }
   },
   data() {
     return {
-      data: ''
+      data: '',
+      hover_animation: false,
+      code_height: 0
+    }
+  },
+  methods:{
+    showCode(){
+      if(this.code_height === 0){
+        this.code_height = this.height
+      }else{
+        this.code_height = 0
+      }
     }
   }
 }
@@ -45,18 +71,52 @@ export default {
     .source {
       padding: 24px;
     }
-    .demo-block-control {
+    .code {
+      background-color: #fafafa;
       border-top: 1px solid #eaeefb;
+      overflow: hidden;
+      height: 0;
+      transition: height 0.2s;
+    }
+    .demo-block-control {
+      cursor: pointer;
+      position: relative;
+      margin-top: -1px;
       height: 44px;
       box-sizing: border-box;
       background-color: #fff;
+      border-top: 1px solid #eaeefb;
       border-bottom-left-radius: 4px;
       border-bottom-right-radius: 4px;
       text-align: center;
-      margin-top: -1px;
       color: #d3dce6;
-      cursor: pointer;
-      position: relative;
+      &:hover {
+        color: #409eff;
+        background-color: #f9fafc;
+      }
+      i {
+        display: inline-block;
+        position: relative;
+        font-size: 16px;
+        line-height: 44px;
+        transition: 0.3s;
+      }
+      span {
+        display: inline-block;
+        position: absolute;
+        transform: translateX(10px);
+        font-size: 14px;
+        line-height: 44px;
+        transition: 0.3s;
+        opacity: 0;
+      }
+      .hovering_i {
+        transform: translateX(-40px);
+      }
+      .hovering_span {
+        transform: translateX(-30px);
+        opacity: 1;
+      }
     }
   }
 }
