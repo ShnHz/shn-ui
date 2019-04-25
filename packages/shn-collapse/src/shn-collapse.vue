@@ -1,7 +1,7 @@
 
 <script>
 const shnCollapseElTransition =
-  '0.4s height ease-in-out, 0.4s padding-top ease-in-out, 0.4s padding-bottom ease-in-out'
+  '0.2s height ease-in-out, 0.2s padding-top ease-in-out, 0.2s padding-bottom ease-in-out'
 const shnCollapseTransition = {
   'before-enter'(el) {
     el.style.transition = shnCollapseElTransition

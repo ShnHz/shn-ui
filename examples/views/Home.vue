@@ -8,18 +8,25 @@
     <div class="main">
       <div class="sidebar">
         <ul>
-          <li :key="item_1.title" class="nav-item" v-for="item_1 in ul_data">
+          <li :key="item_1.title"
+              class="nav-item"
+              v-for="item_1 in ul_data">
             <a>{{item_1.title}}</a>
-            <ul class="pure-menu-list" v-if="item_1.li_data.length != 0">
-              <li :key="item_2.path" class="nav-item" v-for="item_2 in item_1.li_data">
-                <a :class="{'active':active == item_2.id}" :href="item_2.path" @click="active = item_2.id">{{item_2.name}}</a>
+            <ul class="pure-menu-list"
+                v-if="item_1.li_data.length != 0">
+              <li :key="item_2.path"
+                  class="nav-item"
+                  v-for="item_2 in item_1.li_data">
+                <a :class="{'active':active == item_2.id}"
+                   :href="item_2.path"
+                   @click="active = item_2.id">{{item_2.name}}</a>
               </li>
             </ul>
           </li>
         </ul>
       </div>
       <div class="content">
-        <router-view/>
+        <router-view />
       </div>
     </div>
   </div>
@@ -99,12 +106,23 @@ export default {
     height: -moz-calc(100% - 80px);
     height: calc(100% - 80px);
     margin: 0 auto;
+    padding: 10px 0;
     top: 80px;
     display: flex;
+    transform: translate(0, 0);
+    // overflow: auto;
+    // visibility: hidden;
+    // &:focus,
+    // &:hover {
+    //   visibility: visible;
+    // }
     .sidebar {
-      position: relative;
+      position: fixed;
       width: 240px;
-      padding-top: 50px;
+      height: 100%;
+      top: 50px;
+      // visibility: visible;
+      overflow: auto;
       .nav-item {
         list-style: none;
         a {
@@ -145,8 +163,10 @@ export default {
       flex: 1;
       width: 100%;
       height: 100%;
-      overflow-y: auto;
-      padding:0 10px;
+      padding: 0 50px 0 10px;
+      margin-left: 240px;
+      // visibility: visible;
+      overflow: auto;
     }
   }
 }

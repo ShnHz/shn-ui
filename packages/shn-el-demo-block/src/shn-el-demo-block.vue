@@ -1,21 +1,32 @@
 <template>
   <div class="shn-el-demo-block">
-    <h3 v-if="title != ''">{{ title }}</h3>
-    <div
-      class="demo-block"
-      @mouseover="hover_animation = true"
-      @mouseout="hover_animation = false"
-    >
+    <h3 class="demo-block-title"
+        v-if="title != ''">{{ title }}</h3>
+    <p class="demo-block-introduction"
+       v-if="introduction != ''">{{introduction}}</p>
+    <div class="demo-block"
+         @mouseover="hover_animation = true"
+         @mouseout="hover_animation = false">
       <div class="source">
         <slot name="demo" />
       </div>
-      <div class="code" :style="{height:code_height + 'px'}"></div>
-      <div class="demo-block-control" @click="showCode()">
-        <i
-          class="iconfont "
-          :class="{ 'hovering_i': hover_animation,'icon-caret-down': code_height === 0,'icon-caret-up': code_height !== 0}"
-        ></i>
-        <span :class="{ hovering_span: hover_animation }">{{code_height === 0 ? '显示代码':'隐藏代码'}}</span>
+      <div class="code"
+           :style="{ height: code_height + 'px' }">
+        <pre v-highlightjs>
+          <slot name="code" />
+        </pre>
+      </div>
+      <div class="demo-block-control"
+           @click="showCode()">
+        <i class="iconfont "
+           :class="{
+            hovering_i: hover_animation,
+            'icon-caret-down': code_height === 0,
+            'icon-caret-up': code_height !== 0
+          }"></i>
+        <span :class="{ hovering_span: hover_animation }">{{
+          code_height === 0 ? '显示代码' : '隐藏代码'
+          }}</span>
       </div>
     </div>
   </div>
@@ -25,6 +36,10 @@ export default {
   name: 'shn-el-demo-block',
   props: {
     title: {
+      type: String,
+      default: ''
+    },
+    introduction: {
       type: String,
       default: ''
     },
@@ -40,11 +55,11 @@ export default {
       code_height: 0
     }
   },
-  methods:{
-    showCode(){
-      if(this.code_height === 0){
+  methods: {
+    showCode() {
+      if (this.code_height === 0) {
         this.code_height = this.height
-      }else{
+      } else {
         this.code_height = 0
       }
     }
@@ -53,10 +68,15 @@ export default {
 </script>
 <style lang="scss" scoped>
 .shn-el-demo-block {
-  h3 {
+  .demo-block-title {
     margin: 55px 0 20px;
     font-weight: 400;
     color: #1f2f3d;
+  }
+  .demo-block-introduction {
+    font-size: 14px;
+    color: #5e6d82;
+    margin: 10px 0;
   }
   .demo-block {
     width: 100%;
@@ -72,11 +92,11 @@ export default {
       padding: 24px;
     }
     .code {
-      background-color: #fafafa;
-      border-top: 1px solid #eaeefb;
-      overflow: hidden;
       height: 0;
+      background: #282c34;
+      border-top: 1px solid #eaeefb;
       transition: height 0.2s;
+      overflow: hidden;
     }
     .demo-block-control {
       cursor: pointer;

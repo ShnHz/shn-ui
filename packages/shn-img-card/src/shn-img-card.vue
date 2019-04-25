@@ -49,6 +49,7 @@ export default {
   max-width: 216px;
   background: #fff;
   border-radius: 6px;
+  border: 1px solid #ebedf0;
   transition: all 0.2s linear;
   text-align: left;
   overflow: hidden;

@@ -1,21 +1,37 @@
 /*滚动条样式*/
 div::-webkit-scrollbar {
     /*滚动条整体样式*/
-    width: 8px !important;
+    width: 5px !important;
     /*高宽分别对应横竖滚动条的尺寸*/
-    height: 8px !important;
+    height: 5px !important;
 }
 
 div::-webkit-scrollbar-thumb {
     /* 滚动条里面小方块 */
-    border-radius: 2em !important;
-    background: #82cccb !important;
+    background: #d9d9d9 !important;
 }
 
-div::-webkit-scrollbar-track {
+html::-webkit-scrollbar-track {
     /*滚动条里面轨道*/
-    border-radius: 2em !important;
-    background: #d9d9d9 !important;
+    background: #eeeeee !important;
+}
+
+/*滚动条样式*/
+html::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width: 7px !important;
+    /*高宽分别对应横竖滚动条的尺寸*/
+    height: 7px !important;
+}
+
+html::-webkit-scrollbar-thumb {
+    /* 滚动条里面小方块 */
+    background: #b6b6b6 !important;
+}
+
+html::-webkit-scrollbar-track {
+    /*滚动条里面轨道*/
+    background: #eeeeee !important;
 }
 
 .content-box {
@@ -55,4 +71,11 @@ div::-webkit-scrollbar-track {
             color: #445368;
         }
     }
+}
+
+.hljs {
+    padding: 18px 24px 0 !important;
+    line-height: 1.8;
+    font-size: 12px;
+    font-family: Menlo, Monaco, Consolas, Courier, monospace;
 }
