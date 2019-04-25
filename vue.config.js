@@ -21,7 +21,15 @@ module.exports = {
         return options
       })
   },
+
   css: {
     extract: false
-  }
+  },
+
+  publicPath: undefined,
+  outputDir: 'docs',
+  assetsDir: undefined,
+  runtimeCompiler: undefined,
+  productionSourceMap: undefined,
+  parallel: undefined
 }
