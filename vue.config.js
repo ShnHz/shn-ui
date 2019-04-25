@@ -26,9 +26,8 @@ module.exports = {
     extract: false
   },
 
-  publicPath: undefined,
+  publicPath: './',
   outputDir: 'docs',
-  assetsDir: undefined,
   runtimeCompiler: undefined,
   productionSourceMap: undefined,
   parallel: undefined
