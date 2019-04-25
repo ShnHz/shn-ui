@@ -37,7 +37,7 @@ export default {
   name: 'home',
   data() {
     return {
-      active: 0,
+      active: 1,
       ul_data: [
         {
           title: '组件',
