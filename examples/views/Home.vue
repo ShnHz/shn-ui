@@ -67,7 +67,22 @@ export default {
       ]
     }
   },
-
+  mounted() {
+    switch (this.$router.history.current.fullPath) {
+      case '/component/input':
+        this.active = 0
+        break
+      case '/component/statistic':
+        this.active = 1
+        break
+      case '/component/img-card':
+        this.active = 2
+        break
+      case '/component/collapse':
+        this.active = 3
+        break
+    }
+  },
   methods: {}
 }
 </script>
@@ -163,7 +178,7 @@ export default {
       flex: 1;
       width: 100%;
       height: 100%;
-      padding: 0 50px 0 10px;
+      padding: 0 50px 100px 10px;
       margin-left: 240px;
       // visibility: visible;
       overflow: auto;

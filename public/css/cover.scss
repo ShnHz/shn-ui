@@ -8,12 +8,12 @@ div::-webkit-scrollbar {
 
 div::-webkit-scrollbar-thumb {
     /* 滚动条里面小方块 */
-    background: #d9d9d9 !important;
+    background: #eee !important;
 }
 
-html::-webkit-scrollbar-track {
+div::-webkit-scrollbar-track {
     /*滚动条里面轨道*/
-    background: #eeeeee !important;
+    background: #fff !important;
 }
 
 /*滚动条样式*/
@@ -31,7 +31,7 @@ html::-webkit-scrollbar-thumb {
 
 html::-webkit-scrollbar-track {
     /*滚动条里面轨道*/
-    background: #eeeeee !important;
+    background: #fff !important;
 }
 
 .content-box {
@@ -70,6 +70,18 @@ html::-webkit-scrollbar-track {
             background-color: hsla(0, 0%, 100%, .7);
             color: #445368;
         }
+    }
+
+    .demo-table-title {
+        margin: 55px 0 20px;
+        font-weight: 400;
+        color: #1f2f3d;
+    }
+
+    .demo-table-introduction {
+        font-size: 14px;
+        color: #5e6d82;
+        margin: 10px 0 20px;
     }
 }
 

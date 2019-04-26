@@ -69,13 +69,21 @@
       <template v-slot:demo>
         <shn-statistic v-model="percent.value"
                        :unit="'%'"
-                       percent/>
+                       percent />
       </template>
       <template v-slot:code>
         <code class="html">{{fCode(percent.code.html)}}</code>
         <code class="javascript">{{fCode(percent.code.javascript)}}</code>
       </template>
     </shn-el-demo-block>
+
+    <!-- API -->
+    <div>
+      <h3 class="demo-table-title">API</h3>
+      <P class="demo-table-introduction">属性说明如下：</P>
+      <shn-table-simple :type="'demo'"
+                        :data="api" />
+    </div>
   </div>
 </template>
 
@@ -173,7 +181,86 @@ export default {
           `
         },
         value: '800547.28489'
-      }
+      },
+      api: [
+        {
+          parameter: 'value / v-model',
+          description: '绑定值',
+          dataTypes: 'Number',
+          optional: '',
+          default: '0'
+        },
+        {
+          parameter: 'intFontSize',
+          description: '整数位字体大小',
+          dataTypes: 'Number',
+          optional: '',
+          default: '24'
+        },
+        {
+          parameter: 'decimalFontSize',
+          description: '小数位字体大小',
+          dataTypes: 'Number',
+          optional: '',
+          default: '16'
+        },
+        {
+          parameter: 'unitFontSize',
+          description: '单位字体大小',
+          dataTypes: 'Number',
+          optional: '',
+          default: '16'
+        },
+        {
+          parameter: 'unit',
+          description: '单位标识符',
+          dataTypes: 'String',
+          optional: '',
+          default: ''
+        },
+        {
+          parameter: 'groupSeparator',
+          description: '是否开启千分位',
+          dataTypes: 'Boolean',
+          optional: 'true / false',
+          default: 'true'
+        },
+        {
+          parameter: 'decimalNum',
+          description: '保留几位小数',
+          dataTypes: 'Number',
+          optional: '',
+          default: '2'
+        },
+        {
+          parameter: 'intFontClass',
+          description: '整数位自定义类名',
+          dataTypes: 'String',
+          optional: '',
+          default: ''
+        },
+        {
+          parameter: 'decimalFontClass',
+          description: '小数位自定义类名',
+          dataTypes: 'String',
+          optional: '',
+          default: ''
+        },
+        {
+          parameter: 'unitFontClass',
+          description: '单位自定义类名',
+          dataTypes: 'String',
+          optional: '',
+          default: ''
+        },
+        {
+          parameter: 'percent',
+          description: '百分比',
+          dataTypes: 'Boolean',
+          optional: 'true / false',
+          default: 'false'
+        }
+      ]
     }
   },
   methods: {}

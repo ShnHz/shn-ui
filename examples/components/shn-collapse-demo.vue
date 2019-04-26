@@ -5,6 +5,8 @@
     <div class="demo-waring">
       <p>该组件待优化，被收缩内容带有<code>padding</code>或<code>margin</code>会导致动画卡顿</p>
     </div>
+
+    <!-- 基础用法DEMO -->
     <shn-el-demo-block :title="'基础用法'"
                        :height="354">
       <template v-slot:demo>
@@ -60,6 +62,5 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-
 </style>
 

@@ -29,7 +29,7 @@
       ref="input"
     >
     <label
-      :class="{'shn-input__label__focus':value !== ''}"
+      :class="{'shn-input__label__focus':value != ''}"
       @click="$refs.input.focus()"
       class="shn-input__label"
       v-if="pattern == 'line' && animation && !disabled"
@@ -156,7 +156,7 @@ export default {
   }
   .shn-input__label {
     position: absolute;
-    top: 25px;
+    top: 33px;
     display: block;
     width: 100%;
     margin: 0;
