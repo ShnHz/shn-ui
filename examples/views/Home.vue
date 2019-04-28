@@ -8,25 +8,22 @@
     <div class="main">
       <div class="sidebar">
         <ul>
-          <li :key="item_1.title"
-              class="nav-item"
-              v-for="item_1 in ul_data">
+          <li :key="item_1.title" class="nav-item" v-for="item_1 in ul_data">
             <a>{{item_1.title}}</a>
-            <ul class="pure-menu-list"
-                v-if="item_1.li_data.length != 0">
-              <li :key="item_2.path"
-                  class="nav-item"
-                  v-for="item_2 in item_1.li_data">
-                <a :class="{'active':active == item_2.id}"
-                   :href="item_2.path"
-                   @click="active = item_2.id">{{item_2.name}}</a>
+            <ul class="pure-menu-list" v-if="item_1.li_data.length != 0">
+              <li :key="item_2.path" class="nav-item" v-for="item_2 in item_1.li_data">
+                <a
+                  :class="{'active':active == item_2.id}"
+                  :href="item_2.path"
+                  @click="active = item_2.id"
+                >{{item_2.name}}</a>
               </li>
             </ul>
           </li>
         </ul>
       </div>
       <div class="content">
-        <router-view />
+        <router-view/>
       </div>
     </div>
   </div>
@@ -39,6 +36,10 @@ export default {
     return {
       active: 1,
       ul_data: [
+        {
+          title: '开发指南',
+          li_data: [{ id: -1, name: '安装/快速上手', path: '#/component/installation' }]
+        },
         {
           title: '组件',
           li_data: [
@@ -69,6 +70,9 @@ export default {
   },
   mounted() {
     switch (this.$router.history.current.fullPath) {
+      case '/component/installation':
+        this.active = -1
+        break
       case '/component/input':
         this.active = 0
         break

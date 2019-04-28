@@ -13,7 +13,7 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home,
-      redirect: '/component/statistic',
+      redirect: '/component/installation',
       children: [
         //组件
         ...component,

@@ -1,9 +1,19 @@
+import shnInstallation from '../components/shn-installation'
+
 import shnInputDemo from '../components/shn-input-demo'
 import shnImgCardDemo from '../components/shn-img-card-demo'
 import shnCollapseDemo from '../components/shn-collapse-demo'
 import shnStatisticDemo from '../components/shn-statistic-demo'
 
 export default [{
+        path: '/component/installation',
+        name: 'shnInstallation',
+        component: shnInstallation,
+        meta: {
+            title: '组件|SHN-UI'
+        }
+    },
+    {
         path: '/component/input',
         name: 'shnInputDemo',
         component: shnInputDemo,
