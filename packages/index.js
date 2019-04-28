@@ -1,6 +1,8 @@
 import '../public/css/result.css'
 import '../public/iconfont/iconfont.css'
 import '../public/css/shn-vue-ui-base.css'
+import '../public/css/animation.scss'
+
 
 import Input from './shn-input'
 import Statistic from './shn-statistic'
@@ -8,6 +10,7 @@ import ImgCard from './shn-img-card'
 import Collapse from './shn-collapse'
 import ElDemoBlock from './shn-el-demo-block'
 import TableSimple from './shn-table-simple'
+import BackTop from './shn-backtop'
 
 const components = [
     Input,
@@ -15,7 +18,8 @@ const components = [
     ImgCard,
     Collapse,
     ElDemoBlock,
-    TableSimple
+    TableSimple,
+    BackTop
 ]
 
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册
@@ -39,5 +43,6 @@ export default {
     ImgCard,
     Collapse,
     ElDemoBlock,
-    TableSimple
+    TableSimple,
+    BackTop
 }

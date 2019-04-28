@@ -22,7 +22,7 @@
           </li>
         </ul>
       </div>
-      <div class="content">
+      <div class="content" id="router_view_box">
         <router-view/>
       </div>
     </div>
@@ -38,7 +38,9 @@ export default {
       ul_data: [
         {
           title: '开发指南',
-          li_data: [{ id: -1, name: '安装/快速上手', path: '#/component/installation' }]
+          li_data: [
+            { id: -1, name: '安装/快速上手', path: '#/component/installation' }
+          ]
         },
         {
           title: '组件',
@@ -62,6 +64,11 @@ export default {
               id: 3,
               name: 'Collapse 折叠动画盒子',
               path: '#/component/collapse'
+            },
+            {
+              id: 4,
+              name: 'BackTop 回到顶部',
+              path: '#/component/backtop'
             }
           ]
         }
@@ -84,6 +91,9 @@ export default {
         break
       case '/component/collapse':
         this.active = 3
+        break
+      case '/component/backtop':
+        this.active = 4
         break
     }
   },
@@ -128,7 +138,7 @@ export default {
     padding: 10px 0;
     top: 80px;
     display: flex;
-    transform: translate(0, 0);
+    // transform: translate(0, 0);
     // overflow: auto;
     // visibility: hidden;
     // &:focus,
@@ -139,7 +149,7 @@ export default {
       position: fixed;
       width: 240px;
       height: 100%;
-      top: 50px;
+      top: 135px;
       // visibility: visible;
       overflow: auto;
       .nav-item {

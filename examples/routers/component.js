@@ -4,6 +4,7 @@ import shnInputDemo from '../components/shn-input-demo'
 import shnImgCardDemo from '../components/shn-img-card-demo'
 import shnCollapseDemo from '../components/shn-collapse-demo'
 import shnStatisticDemo from '../components/shn-statistic-demo'
+import shnBackTopDemo from '../components/shn-backtop-demo'
 
 export default [{
         path: '/component/installation',
@@ -40,6 +41,14 @@ export default [{
         path: '/component/statistic',
         name: 'shnStatisticDemo',
         component: shnStatisticDemo,
+        meta: {
+            title: '组件|SHN-UI'
+        }
+    },
+    {
+        path: '/component/backtop',
+        name: 'shnBackTopDemo',
+        component: shnBackTopDemo,
         meta: {
             title: '组件|SHN-UI'
         }
