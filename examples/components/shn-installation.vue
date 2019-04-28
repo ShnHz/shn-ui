@@ -7,10 +7,7 @@
     <div class="demo-tip">
       <p>该项目使用Vue.js开发</p>
       <p>
-        <a
-          href="https://cn.vuejs.org/"
-          target="_blank"
-        >https://cn.vuejs.org/</a>
+        <a href="https://cn.vuejs.org/" target="_blank">https://cn.vuejs.org/</a>
       </p>
     </div>
     <div class="demo-tip">
@@ -39,6 +36,12 @@
     <!-- NPM安装 -->
     <h3 class="demo-table-title">NPM安装</h3>
     <p class="demo-introduction">推荐使用 npm 的方式安装，它能更好地和 webpack 打包工具配合使用。</p>
+    <p>
+      <a
+        href="https://www.npmjs.com/package/shn-vue-ui"
+        target="_blank"
+      >https://www.npmjs.com/package/shn-vue-ui</a>
+    </p>
     <div class="demo-code-block">npm i shn-vue-ui -S</div>
 
     <!-- 快速上手 -->
