@@ -34,7 +34,11 @@ html::-webkit-scrollbar-track {
     background: #fff !important;
 }
 
-a,a:active,a:hover,a:visited,a:link{
+a,
+a:active,
+a:hover,
+a:visited,
+a:link {
     text-decoration: none;
     cursor: pointer;
     color: #409eff;
@@ -123,6 +127,18 @@ a,a:active,a:hover,a:visited,a:link{
         margin-bottom: 25px;
         border-radius: 4px;
         -webkit-font-smoothing: auto;
+    }
+
+    .demo-code-en-p {
+        font-size: 12px;
+        line-height: 1.5;
+        color: rgba(0, 0, 0, 0.65);
+    }
+
+    .demo-code-cn-p{
+        font-size: 14px;
+        line-height: 1.5;
+        color: rgba(64, 64, 64, 0.6);    
     }
 }
 
