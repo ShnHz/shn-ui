@@ -48,7 +48,7 @@ input[type=checkbox] {
     box-sizing: border-box;
 }
 
-a {
+a,a:active,a:hover,a:visited,a:link{
     text-decoration: none;
     cursor: pointer;
 }

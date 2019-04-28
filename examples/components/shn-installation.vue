@@ -5,9 +5,18 @@
     <!-- 致谢 -->
     <h3 class="demo-table-title">致谢</h3>
     <div class="demo-tip">
+      <p>该项目使用Vue.js开发</p>
+      <p>
+        <a
+          href="https://cn.vuejs.org/"
+          target="_blank"
+        >https://cn.vuejs.org/</a>
+      </p>
+    </div>
+    <div class="demo-tip">
       <p>
         该项目DEMO页面模仿
-        <span style="color:#ff0000;margin:0 5px;font-weight:600">Element-ui</span>页面开发
+        <span style="color:#ff0000;margin:0 5px;">Element-ui</span>页面开发
       </p>
       <p>
         <a
@@ -16,6 +25,16 @@
         >https://element.eleme.io/#/zh-CN/component/installation</a>
       </p>
     </div>
+
+    <!-- 代码仓库 -->
+    <h3 class="demo-table-title">代码仓库</h3>
+    <p class="demo-introduction">
+      github代码仓库地址
+      <a
+        href="https://github.com/ShnHz/shn-ui"
+        target="_blank"
+      >https://github.com/ShnHz/shn-ui</a> 点个star支持一下吧~
+    </p>
 
     <!-- NPM安装 -->
     <h3 class="demo-table-title">NPM安装</h3>

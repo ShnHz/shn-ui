@@ -34,6 +34,12 @@ html::-webkit-scrollbar-track {
     background: #fff !important;
 }
 
+a,a:active,a:hover,a:visited,a:link{
+    text-decoration: none;
+    cursor: pointer;
+    color: #409eff;
+}
+
 .content-box {
     padding-top: 50px;
 
