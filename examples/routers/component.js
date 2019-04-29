@@ -7,6 +7,7 @@ import shnStatisticDemo from '../components/shn-statistic-demo'
 import shnBackTopDemo from '../components/shn-backtop-demo'
 import shnButtonDemo from '../components/shn-button-demo'
 import shnFootertoolbarDemo from '../components/shn-footertoolbar-demo'
+import shnDrawerDemo from '../components/shn-drawer-demo'
 
 export default [{
         path: '/component/installation',
@@ -67,6 +68,14 @@ export default [{
         path: '/component/footertoolbar',
         name: 'shnFootertoolbarDemo',
         component: shnFootertoolbarDemo,
+        meta: {
+            title: '组件|SHN-UI'
+        }
+    },
+    {
+        path: '/component/drawer',
+        name: 'shnDrawerDemo',
+        component: shnDrawerDemo,
         meta: {
             title: '组件|SHN-UI'
         }

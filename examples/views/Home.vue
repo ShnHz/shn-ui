@@ -61,7 +61,7 @@ export default {
 
             {
               id: 1,
-              group:'数据展示',
+              group: '数据展示',
               name: 'Statistic 统计数值',
               path: '#/component/statistic'
             },
@@ -72,7 +72,7 @@ export default {
             },
             {
               id: 3,
-              group:'其他',
+              group: '其他',
               name: 'Collapse 折叠动画盒子',
               path: '#/component/collapse'
             },
@@ -82,9 +82,14 @@ export default {
               path: '#/component/backtop'
             },
             {
-              id: 6 ,
+              id: 6,
               name: 'FooterToolbar 底部工具栏',
               path: '#/component/footertoolbar'
+            },
+            {
+              id: 7,
+              name: 'Drawer 抽屉',
+              path: '#/component/drawer'
             }
           ]
         }
@@ -113,6 +118,12 @@ export default {
         break
       case '/component/button':
         this.active = 5
+        break
+      case '/component/footertoolbar':
+        this.active = 6
+        break
+      case '/component/drawer':
+        this.active = 7
         break
     }
   },
