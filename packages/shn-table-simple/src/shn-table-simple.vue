@@ -84,11 +84,11 @@ export default {
       border-bottom: 1px solid #dcdfe6;
       td {
         padding: 15px;
-        max-width: 250px;
+        // max-width: 250px;
         font-size: 14px;
         font-weight: 400;
         color: #606266;
-        white-space: nowrap;
+        white-space: normal;
         &:first-child {
           padding-left: 10px;
         }

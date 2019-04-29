@@ -7,10 +7,9 @@
     </div>
 
     <!-- 基础用法DEMO -->
-    <shn-el-demo-block :title="'基础用法'"
-                       :height="312">
+    <shn-el-demo-block :height="312" :title="'基础用法'">
       <template v-slot:demo>
-        <shn-input v-model="simple.input" />
+        <shn-input v-model="simple.input"/>
         <span style="margin-left:20px">{{simple.input}}</span>
       </template>
       <template v-slot:code>
@@ -20,19 +19,16 @@
     </shn-el-demo-block>
 
     <!-- 输入框模式DEMO -->
-    <shn-el-demo-block :title="'输入框模式'"
-                       :height="375">
+    <shn-el-demo-block :height="375" :title="'输入框模式'">
       <template v-slot:demo>
         <div style="padding:0 0 15px">
           <div style="display:inline-block;width:100px;font-size:14px">line模式</div>
-          <shn-input v-model="pattern.line_input"
-                     :pattern="'line'" />
+          <shn-input :pattern="'line'" v-model="pattern.line_input"/>
           <span style="margin-left:20px">{{pattern.line_input}}</span>
         </div>
         <div style="padding:0 0 15px">
           <div style="display:inline-block;width:100px;font-size:14px">frame模式</div>
-          <shn-input v-model="pattern.frame_input"
-                     :pattern="'frame'" />
+          <shn-input :pattern="'frame'" v-model="pattern.frame_input"/>
           <span style="margin-left:20px">{{pattern.frame_input}}</span>
         </div>
       </template>
@@ -43,21 +39,16 @@
     </shn-el-demo-block>
 
     <!-- 禁用状态DEMO -->
-    <shn-el-demo-block :title="'禁用状态'"
-                       :height="375">
+    <shn-el-demo-block :height="375" :title="'禁用状态'">
       <template v-slot:demo>
         <div style="padding:0 0 15px">
           <div style="display:inline-block;width:100px;font-size:14px">line模式</div>
-          <shn-input v-model="disabled.line_input"
-                     disabled
-                     :pattern="'line'" />
+          <shn-input :pattern="'line'" disabled v-model="disabled.line_input"/>
           <span style="margin-left:20px">{{disabled.line_input}}</span>
         </div>
         <div style="padding:0 0 15px">
           <div style="display:inline-block;width:100px;font-size:14px">frame模式</div>
-          <shn-input v-model="disabled.frame_input"
-                     disabled
-                     :pattern="'frame'" />
+          <shn-input :pattern="'frame'" disabled v-model="disabled.frame_input"/>
           <span style="margin-left:20px">{{disabled.frame_input}}</span>
         </div>
       </template>
@@ -71,8 +62,7 @@
     <div>
       <h3 class="demo-table-title">API</h3>
       <P class="demo-table-introduction">属性说明如下：</P>
-      <shn-table-simple :type="'demo'"
-                        :data="api" />
+      <shn-table-simple :data="api" :type="'demo'"/>
     </div>
   </div>
 </template>

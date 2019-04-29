@@ -12,6 +12,7 @@
             <a>{{item_1.title}}</a>
             <ul class="pure-menu-list" v-if="item_1.li_data.length != 0">
               <li :key="item_2.path" class="nav-item" v-for="item_2 in item_1.li_data">
+                <div class="nav-group__title" v-if="item_2.group">{{item_2.group}}</div>
                 <a
                   :class="{'active':active == item_2.id}"
                   :href="item_2.path"
@@ -46,12 +47,21 @@ export default {
           title: '组件',
           li_data: [
             {
+              id: 5,
+              group: '通用',
+              name: 'Button 按钮',
+              path: '#/component/button'
+            },
+            {
               id: 0,
+              group: '数据录入',
               name: 'Input 输入框',
               path: '#/component/input'
             },
+
             {
               id: 1,
+              group:'数据展示',
               name: 'Statistic 统计数值',
               path: '#/component/statistic'
             },
@@ -62,6 +72,7 @@ export default {
             },
             {
               id: 3,
+              group:'其他',
               name: 'Collapse 折叠动画盒子',
               path: '#/component/collapse'
             },
@@ -69,6 +80,11 @@ export default {
               id: 4,
               name: 'BackTop 回到顶部',
               path: '#/component/backtop'
+            },
+            {
+              id: 6 ,
+              name: 'FooterToolbar 底部工具栏',
+              path: '#/component/footertoolbar'
             }
           ]
         }
@@ -94,6 +110,9 @@ export default {
         break
       case '/component/backtop':
         this.active = 4
+        break
+      case '/component/button':
+        this.active = 5
         break
     }
   },
@@ -166,6 +185,12 @@ export default {
           position: relative;
           transition: 0.15s ease-out;
           font-weight: 700;
+        }
+        .nav-group__title {
+          font-size: 12px;
+          color: #999;
+          line-height: 26px;
+          margin-top: 15px;
         }
         .pure-menu-list {
           a {

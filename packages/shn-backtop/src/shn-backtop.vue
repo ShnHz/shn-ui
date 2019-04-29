@@ -1,5 +1,5 @@
 <template>
-  <transition name="fade">
+  <transition name="shn-fade">
     <div @click="backTop" class="shn-backtop" v-show="show">
       <div class="shn-backtop-customize-content">
         <slot></slot>

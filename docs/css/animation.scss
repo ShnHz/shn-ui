@@ -1,11 +1,11 @@
 /**淡入淡出**/
-.fade-enter-active,
-.fade-leave-active {
+.shn-fade-enter-active,
+.shn-fade-leave-active {
     transition: opacity 0.3s;
 }
 
-.fade-enter,
-.fade-leave-to {
+.shn-fade-enter,
+.shn-fade-leave-to {
     opacity: 0;
 }
 
