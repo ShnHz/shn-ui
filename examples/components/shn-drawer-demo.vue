@@ -19,7 +19,7 @@
 
     <!-- 自定义位置DEMO -->
     <shn-el-demo-block
-      :height="312"
+      :height="460"
       :introduction="'自定义位置，点击触发按钮抽屉从相应的位置滑出，点击遮罩区关闭'"
       :title="'自定义位置'"
     >
@@ -31,13 +31,31 @@
           <div :key="index" style="font-size: 14px;" v-for="(item,index) in 5">Some contents...</div>
         </shn-drawer>
 
-        <shn-drawer :visible.sync="placement.leftShow" title="Left Drawer" placement="left">
+        <shn-drawer :visible.sync="placement.leftShow" placement="left" title="Left Drawer">
           <div :key="index" style="font-size: 14px;" v-for="(item,index) in 5">Some contents...</div>
         </shn-drawer>
       </template>
       <template v-slot:code>
         <code class="html">{{fCode(placement.code.html)}}</code>
         <code class="javascript">{{fCode(placement.code.javascript)}}</code>
+      </template>
+    </shn-el-demo-block>
+
+    <!-- 二级抽屉DEMO -->
+    <shn-el-demo-block :height="460" :introduction="'在抽屉内打开新的抽屉，用以解决多分支任务的复杂状况。'" :title="'二层抽屉'">
+      <template v-slot:demo>
+        <shn-button @click="levelDrawer.oneShow = true" type="primary">Open</shn-button>
+
+        <shn-drawer :visible.sync="levelDrawer.oneShow" title="one Drawer">
+          <shn-button @click="levelDrawer.twoShow = true" type="primary">Open</shn-button>
+          <shn-drawer :visible.sync="levelDrawer.twoShow" title="two Drawer">
+            <div style="width:400px"></div>
+          </shn-drawer>
+        </shn-drawer>
+      </template>
+      <template v-slot:code>
+        <code class="html">{{fCode(levelDrawer.code.html)}}</code>
+        <code class="javascript">{{fCode(levelDrawer.code.javascript)}}</code>
       </template>
     </shn-el-demo-block>
 
@@ -80,6 +98,35 @@ export default {
       placement: {
         code: {
           html: `
+          <shn-button @click="rightShow = true" type="primary">RightOpen</shn-button>
+          <shn-button @click="leftShow = true" type="primary">leftOpen</shn-button>
+
+          <shn-drawer :visible.sync="rightShow" title="Right Drawer">
+            <div :key="index" style="font-size: 14px;" v-for="(item,index) in 5">Some contents...</div>
+          </shn-drawer>
+
+          <shn-drawer :visible.sync="leftShow" title="Left Drawer" placement="left">
+            <div :key="index" style="font-size: 14px;" v-for="(item,index) in 5">Some contents...</div>
+          </shn-drawer>
+          `,
+          javascript: `
+          export default {
+            data() {
+              return {
+                leftShow: false,
+                rightShow: false
+              }
+            }
+          }
+          `
+        },
+        leftShow: false,
+        rightShow: false
+      },
+      //多级抽屉DEMO
+      levelDrawer: {
+        code: {
+          html: `
           <shn-button @click="show = true" type="primary">Open</shn-button>
           <shn-drawer :show.sync="show" title="Basic Drawer">
             <div :key="index" style="font-size: 14px;" v-for="(item,index) in 5">Some contents...</div>
@@ -95,8 +142,8 @@ export default {
           }
           `
         },
-        leftShow: false,
-        rightShow: false
+        oneShow: false,
+        twoShow: false
       },
       api: [
         {

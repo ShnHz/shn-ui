@@ -12,7 +12,7 @@
       :style="{ width: width + 'px' }"
       class="shn-drawer-content"
     >
-      <div id="shn-drawer-content">
+      <div :id="'shn-drawer-content'+id" class="shn-drawer-content-block">
         <div class="shn-drawer-header" v-if="title != ''">{{title}}</div>
         <div class="shn-drawer-body">
           <slot></slot>
@@ -48,15 +48,22 @@ export default {
   },
   data() {
     return {
+      id: 0,
       show: this.visible,
       width: 0
     }
+  },
+  created() {
+    this.id = Math.floor(Math.random() * 50)
   },
   watch: {
     visible: function(val) {
       this.show = val
       if (this.show) {
-        this.width = document.getElementById('shn-drawer-content').offsetWidth
+        this.width = document.getElementById(
+          'shn-drawer-content' + this.id
+        ).offsetWidth
+        console.log('shn-drawer-content' + this.id)
       } else {
         this.width = 0
       }
@@ -82,13 +89,13 @@ export default {
   }
   .right {
     right: 0;
-    #shn-drawer-content {
+    .shn-drawer-content-block {
       left: 0;
     }
   }
   .left {
     left: 0;
-    #shn-drawer-content {
+    .shn-drawer-content-block {
       right: 0;
     }
   }
@@ -101,7 +108,7 @@ export default {
     box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
     transition: width 0.3s;
     overflow: hidden;
-    #shn-drawer-content {
+    .shn-drawer-content-block {
       position: absolute;
       top: 0;
       width: auto;
