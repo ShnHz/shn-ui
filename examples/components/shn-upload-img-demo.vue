@@ -43,7 +43,7 @@ export default {
           }
           `
         },
-        list: ['/img/Koala.jpg']
+        list: ['https://shnhz.github.io/shn-ui/img/Koala.jpg']
       },
       api: [
         {
