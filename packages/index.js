@@ -14,6 +14,7 @@ import BackTop from './shn-backtop'
 import Button from './shn-button'
 import FooterToolbar from './shn-footertoolbar'
 import Drawer from './shn-drawer'
+import Loading from './shn-loading'
 
 const components = [
     Input,
@@ -25,7 +26,8 @@ const components = [
     BackTop,
     Button,
     FooterToolbar,
-    Drawer
+    Drawer,
+    Loading
 ]
 
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册
@@ -53,5 +55,6 @@ export default {
     BackTop,
     Button,
     FooterToolbar,
-    Drawer
+    Drawer,
+    Loading
 }

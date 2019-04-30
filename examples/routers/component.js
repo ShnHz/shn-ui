@@ -1,4 +1,5 @@
 import shnInstallation from '../components/shn-installation'
+import shnIcon from '../components/shn-icon'
 
 import shnInputDemo from '../components/shn-input-demo'
 import shnImgCardDemo from '../components/shn-img-card-demo'
@@ -13,6 +14,14 @@ export default [{
         path: '/component/installation',
         name: 'shnInstallation',
         component: shnInstallation,
+        meta: {
+            title: '组件|SHN-UI'
+        }
+    },
+    {
+        path: '/component/icon',
+        name: 'shnIcon',
+        component: shnIcon,
         meta: {
             title: '组件|SHN-UI'
         }

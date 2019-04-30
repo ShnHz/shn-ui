@@ -12,6 +12,7 @@
       :style="{ width: width + 'px' }"
       class="shn-drawer-content"
     >
+      <shn-loading :loading="loading"/>
       <div :id="'shn-drawer-content'+id" class="shn-drawer-content-block">
         <div class="shn-drawer-header" v-if="title != ''">{{title}}</div>
         <div class="shn-drawer-body">
@@ -44,6 +45,10 @@ export default {
     maskClosable: {
       type: Boolean,
       default: true
+    },
+    loading: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -149,8 +154,6 @@ export default {
     .shn-drawer-header {
       position: relative;
       padding: 16px 24px;
-      color: rgba(0, 0, 0, 0.65);
-      background: #fff;
       border-bottom: 1px solid #e8e8e8;
       border-radius: 4px 4px 0 0;
       color: rgba(0, 0, 0, 0.85);

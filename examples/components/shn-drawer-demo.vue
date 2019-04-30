@@ -17,6 +17,25 @@
       </template>
     </shn-el-demo-block>
 
+    <!-- 加载DEMO -->
+    <shn-el-demo-block :height="627" :introduction="'在容器中加载数据时显示'" :title="'区域加载'">
+      <template v-slot:demo>
+        <shn-button @click="loadingOpen" type="primary">Open</shn-button>
+        <shn-drawer
+          :loading="loading.loading"
+          :visible.sync="loading.show"
+          @close="loading.loading = true"
+          title="Basic Drawer"
+        >
+          <div :key="index" style="font-size: 14px;" v-for="(item,index) in 5">Some contents...</div>
+        </shn-drawer>
+      </template>
+      <template v-slot:code>
+        <code class="html">{{fCode(loading.code.html)}}</code>
+        <code class="javascript">{{fCode(loading.code.javascript)}}</code>
+      </template>
+    </shn-el-demo-block>
+
     <!-- 自定义位置DEMO -->
     <shn-el-demo-block
       :height="460"
@@ -95,6 +114,43 @@ export default {
           `
         },
         show: false
+      },
+      //加载DEMO
+      loading: {
+        code: {
+          html: `
+          <shn-button @click="loadingOpen" type="primary">Open</shn-button>
+          <shn-drawer
+            :loading="loading"
+            :visible.sync="show"
+            @close="loading = true"
+            title="Basic Drawer"
+          >
+            <div :key="index" style="font-size: 14px;" v-for="(item,index) in 5">Some contents...</div>
+          </shn-drawer>
+          `,
+          javascript: `
+          export default {
+            data() {
+              return {
+                show:false,
+                loading:true
+              }
+            },
+            methods:{
+              loadingOpen() {
+                let _this = this
+                this.show = true
+                setTimeout(() => {
+                  _this.loading = false
+                }, 3000)
+              }
+            }
+          }
+          `
+        },
+        show: false,
+        loading: true
       },
       //自定义位置DEMO
       placement: {
@@ -197,7 +253,15 @@ export default {
       ]
     }
   },
-  methods: {}
+  methods: {
+    loadingOpen() {
+      let _this = this
+      this.loading.show = true
+      setTimeout(() => {
+        _this.loading.loading = false
+      }, 3000)
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

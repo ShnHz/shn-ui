@@ -71,7 +71,7 @@ export default {
   padding: 0 15px;
 
   height: 32px;
-  line-height: 1.499;
+  line-height: 1.5;
 
   font-weight: 400;
   white-space: nowrap;

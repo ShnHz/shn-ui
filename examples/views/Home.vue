@@ -40,7 +40,8 @@ export default {
         {
           title: '开发指南',
           li_data: [
-            { id: -1, name: '安装/快速上手', path: '#/component/installation' }
+            { id: -1, name: '安装/快速上手', path: '#/component/installation' },
+            { id: -2, name: 'Icon 图标', path: '#/component/icon' }
           ]
         },
         {
@@ -107,6 +108,9 @@ export default {
     switch (this.$router.history.current.fullPath) {
       case '/component/installation':
         this.active = -1
+        break
+      case '/component/icon':
+        this.active = -2
         break
       case '/component/input':
         this.active = 0

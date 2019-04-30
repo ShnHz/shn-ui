@@ -24,7 +24,10 @@
     </div>
 
     <!-- 代码仓库 -->
-    <h3 class="demo-table-title">代码仓库</h3>
+    <h3 class="demo-table-title">
+      代码仓库
+      <i class="iconfont icon-github-fill" style="margin: 0 10px;"></i>
+    </h3>
     <p class="demo-introduction">
       github代码仓库地址
       <a
