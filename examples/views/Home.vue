@@ -96,6 +96,13 @@ export default {
       ]
     }
   },
+  watch: {
+    $route: function(to, from) {
+      if (from.path != to.path) {
+        document.getElementById('router_view_box').scrollTop = 0
+      }
+    }
+  },
   mounted() {
     switch (this.$router.history.current.fullPath) {
       case '/component/installation':

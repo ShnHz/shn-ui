@@ -42,10 +42,9 @@
     </shn-el-demo-block>
 
     <!-- 二级抽屉DEMO -->
-    <shn-el-demo-block :height="460" :introduction="'在抽屉内打开新的抽屉，用以解决多分支任务的复杂状况。'" :title="'二层抽屉'">
+    <shn-el-demo-block :height="396" :introduction="'在抽屉内打开新的抽屉，用以解决多分支任务的复杂状况。'" :title="'二层抽屉'">
       <template v-slot:demo>
         <shn-button @click="levelDrawer.oneShow = true" type="primary">Open</shn-button>
-
         <shn-drawer :visible.sync="levelDrawer.oneShow" title="one Drawer">
           <shn-button @click="levelDrawer.twoShow = true" type="primary">Open</shn-button>
           <shn-drawer :visible.sync="levelDrawer.twoShow" title="two Drawer">
@@ -58,6 +57,9 @@
         <code class="javascript">{{fCode(levelDrawer.code.javascript)}}</code>
       </template>
     </shn-el-demo-block>
+    <div class="demo-waring">
+      <p>暂时只支持二层抽屉，嵌套三层及以上会导致页面卡顿且抽屉宽度出现bug。</p>
+    </div>
 
     <!-- API -->
     <div>
@@ -127,16 +129,20 @@ export default {
       levelDrawer: {
         code: {
           html: `
-          <shn-button @click="show = true" type="primary">Open</shn-button>
-          <shn-drawer :show.sync="show" title="Basic Drawer">
-            <div :key="index" style="font-size: 14px;" v-for="(item,index) in 5">Some contents...</div>
+          <shn-button @click="oneShow = true" type="primary">Open</shn-button>
+          <shn-drawer :visible.sync="oneShow" title="one Drawer">
+            <shn-button @click="twoShow = true" type="primary">Open</shn-button>
+            <shn-drawer :visible.sync="twoShow" title="two Drawer">
+              <div style="width:400px"></div>
+            </shn-drawer>
           </shn-drawer>
           `,
           javascript: `
           export default {
             data() {
               return {
-                show:false
+                oneShow:false,
+                twoShow:false
               }
             }
           }

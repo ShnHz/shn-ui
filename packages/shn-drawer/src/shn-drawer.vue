@@ -50,11 +50,44 @@ export default {
     return {
       id: 0,
       show: this.visible,
-      width: 0
+      width: 0,
+
+      shn_drawer_block_dom: [], //多级抽屉dom
+      shn_drawer_content: [], //多级抽屉dom
+      observer: null
     }
   },
   created() {
-    this.id = Math.floor(Math.random() * 50)
+    this.id = Math.floor(Math.random() * 100000)
+  },
+  mounted() {
+    let _this = this
+    let element = document
+      .getElementById('shn-drawer-content' + this.id)
+      .getElementsByClassName('shn-drawer-content')[0]
+
+    if (typeof element != 'undefined') {
+      let MutationObserver =
+        window.MutationObserver ||
+        window.WebKitMutationObserver ||
+        window.MozMutationObserver
+      this.observer = new MutationObserver(mutationList => {
+        setTimeout(() => {
+          if (mutationList[0].target.offsetWidth != 0) {
+            _this.width += mutationList[0].target.offsetWidth
+          } else {
+            _this.width = document.getElementById(
+              'shn-drawer-content' + this.id
+            ).offsetWidth
+          }
+        }, 350)
+      })
+      this.observer.observe(element, {
+        attributes: true,
+        attributeFilter: ['style'],
+        attributeOldValue: false
+      })
+    }
   },
   watch: {
     visible: function(val) {
@@ -63,7 +96,6 @@ export default {
         this.width = document.getElementById(
           'shn-drawer-content' + this.id
         ).offsetWidth
-        console.log('shn-drawer-content' + this.id)
       } else {
         this.width = 0
       }
