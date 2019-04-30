@@ -9,6 +9,7 @@ import shnBackTopDemo from '../components/shn-backtop-demo'
 import shnButtonDemo from '../components/shn-button-demo'
 import shnFootertoolbarDemo from '../components/shn-footertoolbar-demo'
 import shnDrawerDemo from '../components/shn-drawer-demo'
+import shnUploadImgDemo from '../components/shn-upload-img-demo'
 
 export default [{
         path: '/component/installation',
@@ -85,6 +86,14 @@ export default [{
         path: '/component/drawer',
         name: 'shnDrawerDemo',
         component: shnDrawerDemo,
+        meta: {
+            title: '组件|SHN-UI'
+        }
+    },
+    {
+        path: '/component/uploadimg',
+        name: 'shnUploadImgDemo',
+        component: shnUploadImgDemo,
         meta: {
             title: '组件|SHN-UI'
         }

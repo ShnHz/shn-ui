@@ -2,13 +2,6 @@
   <div class="content-box">
     <h2 class="demo-title">FooterToolbar 底部工具栏</h2>
     <p class="demo-introduction">固定在底部的工具栏。</p>
-    <!-- <div class="demo-waring">
-      <p>
-        该组件待优化，被收缩内容带有
-        <code>padding</code>或
-        <code>margin</code>会导致动画卡顿
-      </p>
-    </div>-->
 
     <!-- 基础用法DEMO -->
     <shn-el-demo-block :height="522" :title="'基础用法'">
@@ -17,7 +10,7 @@
         <p class="demo-code-cn-p">查看页面下方工具栏</p>
         <shn-footertoolbar
           :cancelButtonText="simple.cancelButtonText"
-          :visibilityHeight="50"
+          :visibilityHeight="200"
           @cancel="cancel"
           @confirm="confirm"
           target="router_view_box"

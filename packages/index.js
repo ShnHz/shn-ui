@@ -15,6 +15,7 @@ import Button from './shn-button'
 import FooterToolbar from './shn-footertoolbar'
 import Drawer from './shn-drawer'
 import Loading from './shn-loading'
+import UploadImg from './shn-upload-img'
 
 const components = [
     Input,
@@ -27,7 +28,8 @@ const components = [
     Button,
     FooterToolbar,
     Drawer,
-    Loading
+    Loading,
+    UploadImg
 ]
 
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册
@@ -56,5 +58,6 @@ export default {
     Button,
     FooterToolbar,
     Drawer,
-    Loading
+    Loading,
+    UploadImg
 }

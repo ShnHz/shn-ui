@@ -59,7 +59,11 @@ export default {
               name: 'Input 输入框',
               path: '#/component/input'
             },
-
+            {
+              id: 8,
+              name: 'UploadImg 上传图片',
+              path: '#/component/uploadimg'
+            },
             {
               id: 1,
               group: '数据展示',
@@ -135,6 +139,9 @@ export default {
         break
       case '/component/drawer':
         this.active = 7
+        break
+      case '/component/uploadimg':
+        this.active = 8
         break
     }
   },
