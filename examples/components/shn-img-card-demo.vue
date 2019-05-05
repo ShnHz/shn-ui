@@ -20,11 +20,11 @@
       <template v-slot:one>
         <div class="num-box">
           <div>
-            <i class="iconfont icon-msg"></i>
+            <i class="iconfont icon-message"></i>
             {{item.comment_count}}
           </div>
           <div>
-            <i class="iconfont icon-dianzan"></i>
+            <i class="iconfont icon-like"></i>
             {{item.digg_count}}
           </div>
         </div>
@@ -145,7 +145,10 @@ export default {
     color: #99a2aa;
     > div {
       flex: 1;
+      align-items: center;
       i {
+        position: relative;
+        top: 1px;
         margin-right: 5px;
       }
     }

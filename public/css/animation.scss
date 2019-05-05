@@ -8,4 +8,27 @@
 .shn-fade-leave-to {
     opacity: 0;
 }
-/**淡入淡出**/
+
+
+/**缩放淡入淡出**/
+.shn-modal-fade-enter-active {
+    transform-origin: 50% 200px;
+    animation: shn-modal-fade .3s;
+}
+
+.shn-modal-fade-leave-active {
+    transform-origin: 50% 200px;
+    animation: shn-modal-fade .3s reverse;
+}
+
+@keyframes shn-modal-fade {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

@@ -6,13 +6,15 @@
       class="shn-img-block"
       v-for="(item,index) in list"
     >
-      <!-- <div @click="list.splice(index, 1)" class="del">
-        <i class="iconfont icon-del"></i>
-      </div>-->
       <div class="img-box">
         <img :src="item">
         <div class="img-box-mask">
-          <i class="iconfont icon-eye" title="预览"></i>
+          <i
+            @click="previewImg = item;previewImgShow = true"
+            class="iconfont icon-eye"
+            title="预览"
+            v-if="view"
+          ></i>
           <i @click="list.splice(index, 1)" class="iconfont icon-delete" title="删除"></i>
         </div>
       </div>
@@ -33,6 +35,27 @@
         </div>
       </div>
     </div>
+
+    <shn-preview-img :visible.sync="previewImgShow" v-model="previewImg"/>
+    <shn-modal :visible.sync="cropperShow" title="裁剪图片" v-if="cropper" :maskClosable="false">
+      <template v-slot:body>
+        <div style="width:600px;height:500px">
+          <vue-cropper
+            :fixedNumber="[width,height]"
+            :full="true"
+            :img="cropperImg"
+            :outputSize="outputSize"
+            autoCrop
+            fixed
+            ref="cropper"
+          />
+        </div>
+      </template>
+      <template v-slot:footer>
+        <shn-button @click="cropperShow = false">取消</shn-button>
+        <shn-button @click="cropperConfirm" type="primary">确定</shn-button>
+      </template>
+    </shn-modal>
   </div>
 </template>
 <script>
@@ -56,6 +79,22 @@ export default {
     height: {
       type: Number,
       default: 104
+    },
+    view: {
+      type: Boolean,
+      default: true
+    },
+    cropper: {
+      type: Boolean,
+      default: false
+    },
+    cropType: {
+      type: String,
+      default: 'base64'
+    },
+    outputSize: {
+      type: Number,
+      default: 1
     }
   },
   watch: {
@@ -65,7 +104,11 @@ export default {
   },
   data() {
     return {
-      list: this.value
+      list: this.value,
+      cropperShow: false,
+      cropperImg: '',
+      previewImg: '',
+      previewImgShow: false
     }
   },
   methods: {
@@ -76,14 +119,54 @@ export default {
       reader.onloadend = function() {
         // 图片的 base64 格式, 可以直接当成 img 的 src 属性值
         let dataURL = reader.result
-        _this.list.push(dataURL)
+        if (_this.cropper) {
+          _this.cropperImg = dataURL
+          _this.cropperShow = true
+        } else {
+          _this.list.push(dataURL)
+        }
 
         e.target.value = ''
         // 插入到 DOM 中预览
       }
 
       reader.readAsDataURL(file) // 读出 base64
+    },
+    cropperConfirm() {
+      // if (this.cropType == 'base64') {
+      //   this.$refs.cropper.getCropData(data => {
+      //     this.list.push(data)
+      //   })
+      // } else if (this.cropType == 'blob') {
+      //   this.$refs.cropper.getCropBlob(data => {
+      //     this.list.push(data)
+      //   })
+      // } else {
+      //   this.$refs.cropper.getCropData(data => {
+      //     this.list.push(data)
+      //   })
+      // }
+      this.$refs.cropper.getCropData(data => {
+        this.list.push(data)
+      })
+      this.cropperShow = false
     }
+    // filteListFun() {
+    //   let _this = this
+    //   this.filteList = []
+    //   for (let i = 0; i < this.list.length; i++) {
+    //     if (typeof this.list[i] === 'object') {
+    //       let reader = new FileReader()
+    //       reader.readAsDataURL(this.list[i])
+    //       reader.onload = function(e) {
+    //         _this.filteList.push(e.target.result)
+    //       }
+    //     } else {
+    //       this.filteList.push(this.list[i])
+    //     }
+    //   }
+    //   console.log(this.list)
+    // }
   }
 }
 </script>
@@ -129,7 +212,7 @@ export default {
       width: 100%;
       overflow: hidden;
       img {
-        height: 100%;
+        // height: 100%;
         width: 100%;
       }
       .img-box-mask {

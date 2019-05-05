@@ -6,7 +6,7 @@
     @click="click"
     class="shn-button"
   >
-    <i :class="[icon === '' ? 'icon-question':icon ]" class="iconfont" v-if="icon != '' || circle"></i>
+    <i :class="[icon === '' ? 'icon-question':icon ]" class="iconfont" style="font-size:14px" v-if="icon != '' || circle"></i>
     <span class="shn-button-span" v-if="!circle">
       <slot/>
     </span>
@@ -71,7 +71,7 @@ export default {
   padding: 0 15px;
 
   height: 32px;
-  line-height: 1.5;
+  line-height: 1.6;
 
   font-weight: 400;
   white-space: nowrap;

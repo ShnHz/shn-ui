@@ -3,6 +3,16 @@
     <h2 class="demo-title">UploadImg 上传图片</h2>
     <p class="demo-introduction">通过点击或者拖拽上传图片。</p>
 
+    <div class="demo-tip">
+      <p>致谢：该组件裁剪图片功能使用vue-cropper组件完成，感谢作者的支持，附上github地址</p>
+      <p>
+        <a
+          href="https://github.com/xyxiao001/vue-cropper"
+          target="_blank"
+        >https://github.com/xyxiao001/vue-cropper</a>
+      </p>
+    </div>
+
     <!-- 基础用法DEMO -->
     <shn-el-demo-block :height="250" :title="'基础用法'">
       <template v-slot:demo>
@@ -11,6 +21,17 @@
       <template v-slot:code>
         <code class="html">{{fCode(simple.code.html)}}</code>
         <code class="javascript">{{fCode(simple.code.javascript)}}</code>
+      </template>
+    </shn-el-demo-block>
+
+    <!-- 裁剪图片DEMO -->
+    <shn-el-demo-block :height="250" :title="'裁剪图片'">
+      <template v-slot:demo>
+        <shn-upload-img :cropper="true" addText="裁剪图片/上传" cropType="blob" v-model="cropper.list"/>
+      </template>
+      <template v-slot:code>
+        <code class="html">{{fCode(cropper.code.html)}}</code>
+        <code class="javascript">{{fCode(cropper.code.javascript)}}</code>
       </template>
     </shn-el-demo-block>
 
@@ -32,6 +53,23 @@ export default {
         code: {
           html: `
           <shn-upload-img addText="上传图片" v-model="list"/>
+          `,
+          javascript: `
+          export default {
+            data(){
+              return{
+                list:[]
+              }
+            }
+          }
+          `
+        },
+        list: ['https://shnhz.github.io/shn-ui/img/Koala.jpg']
+      },
+      cropper: {
+        code: {
+          html: `
+          <shn-upload-img :cropper="true" addText="裁剪图片/上传" v-model="list"/>
           `,
           javascript: `
           export default {
@@ -73,6 +111,27 @@ export default {
           dataTypes: 'Number',
           optional: '',
           default: '104'
+        },
+        {
+          parameter: 'view',
+          description: '是否开启图片预览',
+          dataTypes: 'Boolean',
+          optional: 'true / false',
+          default: 'true'
+        },
+        {
+          parameter: 'cropper',
+          description: '是否开启图片裁剪',
+          dataTypes: 'Boolean',
+          optional: 'true / false',
+          default: 'false'
+        },
+        {
+          parameter: 'outputSize',
+          description: '裁剪生成图片的质量',
+          dataTypes: 'Number',
+          optional: '0.1 - 1',
+          default: '1'
         }
       ]
     }
