@@ -3,6 +3,12 @@
     <h2 class="demo-title">Icon 图标</h2>
     <p class="demo-introduction">语义化的矢量图形。</p>
 
+    <shn-anchor>
+      <shn-anchor-link href="icon-simple" title="使用方法"/>
+      <shn-anchor-link href="icon-ofen-list" title="常用图标"/>
+      <shn-anchor-link href="icon-list" title="图标集合"/>
+    </shn-anchor>
+
     <div class="demo-tip">
       <p>该项目使用 Ant Design 官方图标库</p>
       <p>
@@ -14,7 +20,7 @@
     </div>
     <shn-backtop :target="'router_view_box'" :visibilityHeight="200"/>
 
-    <div class="shn-icon">
+    <div class="shn-icon" id="icon-simple">
       <!-- 使用方法DEMO -->
       <shn-el-demo-block
         :height="294"
@@ -39,8 +45,25 @@
         </template>
       </shn-el-demo-block>
 
+      <!-- 常用图标 -->
+      <div id="icon-ofen-list">
+        <h3 class="demo-table-title">常用图标</h3>
+        <ul class="icon-list">
+          <li
+            :class="{'rigth_block':index % 5 === 4}"
+            :key="item"
+            v-for="(item,index) in ofen_icon_list"
+          >
+            <div>
+              <i :class="item" class="iconfont"></i>
+              <p class="icon-name">{{item}}</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
       <!-- 图标集合 -->
-      <div>
+      <div id="icon-list">
         <h3 class="demo-table-title">图标集合</h3>
         <ul class="icon-list">
           <li
@@ -82,6 +105,47 @@ export default {
           `
         }
       },
+      ofen_icon_list:[
+        'icon-reload',
+        'icon-message',
+        'icon-poweroff',
+        'icon-setting',
+        'icon-eye',
+        'icon-export',
+        'icon-location',
+        'icon-edit-square',
+        'icon-play-square',
+        'icon-adduser',
+        'icon-addteam',
+        'icon-user',
+        'icon-file-image',
+        'icon-file-unknown',
+        'icon-file',
+        'icon-like',
+        'icon-unlike',
+        'icon-cloud-upload',
+        'icon-cloud-download',
+        'icon-mail',
+        'icon-heart',
+        'icon-star',
+        'icon-right',
+        'icon-left',
+        'icon-up',
+        'icon-down',
+        'icon-question',
+        'icon-close',
+        'icon-line',
+        'icon-drag',
+        'icon-folder-fill',
+        'icon-cloud-fill',
+        'icon-star-fill',
+        'icon-eye-fill',
+        'icon-like-fill',
+        'icon-unlike-fill',
+        'icon-zoomout',
+        'icon-zoomin',
+        'icon-plus'
+      ],
       icon_list: [
         'icon-check-circle',
         'icon-CI',
