@@ -1,5 +1,5 @@
 <template>
-  <div :class="anchorClass" class="shn-anchor">
+  <div :class="{anchorClass,'shn-anchor':!customize}">
     <div class="shn-anchor-ink">
       <span
         :class="{'visible':linkBallShow}"
@@ -20,13 +20,13 @@ export default {
       type: String,
       default: 'window'
     },
-    visibilityHeight: {
-      type: Number,
-      default: 500
-    },
     anchorClass: {
       type: String,
       default: ''
+    },
+    customize:{
+      type:Boolean,
+      default:false
     }
   },
   data() {

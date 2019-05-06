@@ -95,6 +95,11 @@ export default {
               id: 7,
               name: 'Drawer 抽屉',
               path: '#/component/drawer'
+            },
+            {
+              id: 9,
+              name: 'Anchor 锚点',
+              path: '#/component/anchor'
             }
           ]
         }
@@ -104,7 +109,7 @@ export default {
   watch: {
     $route: function(to, from) {
       if (from.path != to.path) {
-        document.getElementById('router_view_box').scrollTop = 0
+        document.documentElement.scrollTop = 0
       }
     }
   },
@@ -142,6 +147,9 @@ export default {
         break
       case '/component/uploadimg':
         this.active = 8
+        break
+      case '/component/anchor':
+        this.active = 9
         break
     }
   },

@@ -1,5 +1,8 @@
 <template>
-  <div :id="'link' + this.total" @click="jump" class="shn-anchor-link" :title="title">{{title}}</div>
+  <div :id="'link' + this.total" :title="title" @click="jump" :class="{'shn-anchor-link':!($slots.default)}">
+    <span v-if="!($slots.default)">{{title}}</span>
+    <slot></slot>
+  </div>
 </template>
 <script>
 export default {
