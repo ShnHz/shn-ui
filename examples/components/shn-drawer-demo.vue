@@ -3,8 +3,16 @@
     <h2 class="demo-title">Drawer 抽屉</h2>
     <p class="demo-introduction">屏幕边缘滑出的浮层面板。</p>
 
+    <shn-anchor>
+      <shn-anchor-link href="drawer-simple" title="基础用法"/>
+      <shn-anchor-link href="drawer-loading" title="区域加载"/>
+      <shn-anchor-link href="drawer-placement" title="自定义位置"/>
+      <shn-anchor-link href="drawer-s" title="二级抽屉"/>
+      <shn-anchor-link href="api" title="API"/>
+    </shn-anchor>
+
     <!-- 基础用法DEMO -->
-    <shn-el-demo-block :height="312" :introduction="'基础抽屉，点击触发按钮抽屉从右滑出，点击遮罩区关闭'" :title="'基础用法'">
+    <shn-el-demo-block :height="312" :introduction="'基础抽屉，点击触发按钮抽屉从右滑出，点击遮罩区关闭'" :title="'基础用法'" id="drawer-simple">
       <template v-slot:demo>
         <shn-button @click="simple.show = true" type="primary">Open</shn-button>
         <shn-drawer :visible.sync="simple.show" title="Basic Drawer">
@@ -18,7 +26,7 @@
     </shn-el-demo-block>
 
     <!-- 加载DEMO -->
-    <shn-el-demo-block :height="627" :introduction="'在容器中加载数据时显示'" :title="'区域加载'">
+    <shn-el-demo-block :height="627" :introduction="'在容器中加载数据时显示'" :title="'区域加载'" id="drawer-loading">
       <template v-slot:demo>
         <shn-button @click="loadingOpen" type="primary">Open</shn-button>
         <shn-drawer
@@ -41,6 +49,7 @@
       :height="460"
       :introduction="'自定义位置，点击触发按钮抽屉从相应的位置滑出，点击遮罩区关闭'"
       :title="'自定义位置'"
+      id="drawer-placement"
     >
       <template v-slot:demo>
         <shn-button @click="placement.rightShow = true" type="primary">RightOpen</shn-button>
@@ -61,7 +70,7 @@
     </shn-el-demo-block>
 
     <!-- 二级抽屉DEMO -->
-    <shn-el-demo-block :height="396" :introduction="'在抽屉内打开新的抽屉，用以解决多分支任务的复杂状况。'" :title="'二层抽屉'">
+    <shn-el-demo-block :height="396" :introduction="'在抽屉内打开新的抽屉，用以解决多分支任务的复杂状况。'" :title="'二层抽屉'" id="drawer-s">
       <template v-slot:demo>
         <shn-button @click="levelDrawer.oneShow = true" type="primary">Open</shn-button>
         <shn-drawer :visible.sync="levelDrawer.oneShow" title="one Drawer">
@@ -81,7 +90,7 @@
     </div>
 
     <!-- API -->
-    <div>
+    <div id="api">
       <h3 class="demo-table-title">API</h3>
       <P class="demo-table-introduction">属性说明如下：</P>
       <shn-table-simple :data="api" :type="'demo'"/>

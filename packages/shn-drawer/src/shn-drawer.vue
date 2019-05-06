@@ -56,10 +56,7 @@ export default {
       id: 0,
       show: this.visible,
       width: 0,
-
-      shn_drawer_block_dom: [], //多级抽屉dom
-      shn_drawer_content: [], //多级抽屉dom
-      observer: null
+      observer: null,
     }
   },
   created() {
@@ -101,8 +98,12 @@ export default {
         this.width = document.getElementById(
           'shn-drawer-content' + this.id
         ).offsetWidth
+        this.afterOpen()
       } else {
         this.width = 0
+        if (document.getElementsByClassName('shn-drawer-mask').length == 1) {
+          this.beforeClose()
+        }
       }
     }
   },

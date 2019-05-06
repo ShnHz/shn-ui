@@ -2,16 +2,18 @@
   <div class="content-box">
     <h2 class="demo-title">Button 按钮</h2>
     <p class="demo-introduction">按钮用于开始一个即时操作。</p>
-    <!-- <div class="demo-waring">
-      <p>
-        该组件待优化，被收缩内容带有
-        <code>padding</code>或
-        <code>margin</code>会导致动画卡顿
-      </p>
-    </div>-->
+
+    <shn-anchor>
+      <shn-anchor-link href="button-simple" title="基础用法"/>
+      <shn-anchor-link href="button-disabled" title="禁用"/>
+      <shn-anchor-link href="button-circle" title="圆形按钮"/>
+      <shn-anchor-link href="button-customize" title="自定义颜色"/>
+      <shn-anchor-link href="button-block" title="block按钮"/>
+      <shn-anchor-link href="api" title="API"/>
+    </shn-anchor>
 
     <!-- 基础用法DEMO -->
-    <shn-el-demo-block :height="315" :title="'基础用法'">
+    <shn-el-demo-block :height="315" :title="'基础用法'" id="button-simple">
       <template v-slot:demo>
         <div>
           <shn-button>Default</shn-button>
@@ -32,7 +34,7 @@
     </shn-el-demo-block>
 
     <!-- 禁用DEMO -->
-    <shn-el-demo-block :height="168" :title="'禁用'">
+    <shn-el-demo-block :height="168" :title="'禁用'" id="button-disabled">
       <template v-slot:demo>
         <shn-button disabled>Default</shn-button>
         <shn-button disabled type="primary">Primary</shn-button>
@@ -46,7 +48,7 @@
     </shn-el-demo-block>
 
     <!-- 圆形按钮DEMO -->
-    <shn-el-demo-block :height="168" :title="'圆形按钮'">
+    <shn-el-demo-block :height="168" :title="'圆形按钮'" id="button-circle">
       <template v-slot:demo>
         <shn-button circle icon="icon-user"></shn-button>
         <shn-button circle icon="icon-heart-fill" type="primary"></shn-button>
@@ -60,7 +62,12 @@
     </shn-el-demo-block>
 
     <!-- 自定义颜色DEMO -->
-    <shn-el-demo-block :height="105" :title="'自定义颜色'" introduction="自定义修改颜色，其type必须设置为customize">
+    <shn-el-demo-block
+      :height="105"
+      :title="'自定义颜色'"
+      id="button-customize"
+      introduction="自定义修改颜色，其type必须设置为customize"
+    >
       <template v-slot:demo>
         <shn-button color="#2cbfbe" type="customize">customize</shn-button>
         <shn-button circle color="#2cbfbe" icon="icon-heart-fill" type="customize"></shn-button>
@@ -71,7 +78,7 @@
     </shn-el-demo-block>
 
     <!-- block按钮DEMO -->
-    <shn-el-demo-block :height="147" title="block按钮" introduction="将使按钮适合其父宽度">
+    <shn-el-demo-block :height="147" id="button-block" introduction="将使按钮适合其父宽度" title="block按钮">
       <template v-slot:demo>
         <shn-button block>Default</shn-button>
         <shn-button block type="primary">Primary</shn-button>
@@ -84,7 +91,7 @@
     </shn-el-demo-block>
 
     <!-- API -->
-    <div>
+    <div id="api">
       <h3 class="demo-table-title">API</h3>
       <P class="demo-table-introduction">属性说明如下：</P>
       <shn-table-simple :data="api" :type="'demo'"/>
@@ -97,6 +104,7 @@ export default {
   name: 'shn-backtop-demo',
   data() {
     return {
+      a: document.getElementById('router_view_box'),
       simple: {
         code: {
           html: `

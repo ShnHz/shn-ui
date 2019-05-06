@@ -17,10 +17,24 @@ Vue.prototype.fCode = function (code) {
     for (let i = 0; i < code_list.length; i++) {
       fcode = fcode + code_list[i] + '\n'
     }
-  }else {
+  } else {
     fcode = code_list[0]
   }
-
-
   return fcode
+}
+
+let _scrollTop
+
+//popup 显示时调用
+Vue.prototype.afterOpen = function () {
+  _scrollTop = document.scrollingElement.scrollTop
+  document.body.style.position = 'fixed'
+  document.body.style.top = -_scrollTop + 'px'
+}
+
+//popup 关闭时调用
+Vue.prototype.beforeClose = function () {
+  document.body.style.position = ''
+  document.body.style.top = ''
+  document.scrollingElement.scrollTop = _scrollTop
 }

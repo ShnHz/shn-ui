@@ -15,7 +15,7 @@
       <template v-slot:demo>
         <p class="demo-code-en-p">Scroll down to see the bottom-right gray button.</p>
         <p class="demo-code-cn-p">向下滚动以查看右下方的按钮。</p>
-        <shn-backtop :target="'router_view_box'" :visibilityHeight="100"/>
+        <shn-backtop :visibilityHeight="100"/>
       </template>
       <template v-slot:code>
         <code class="html">{{fCode(simple.code.html)}}</code>
@@ -26,7 +26,7 @@
     <shn-el-demo-block :height="125" :introduction="'可以自定义回到顶部按钮的样式'" :title="'自定义样式'">
       <template v-slot:demo>
         <p class="demo-code-cn-p">单击下方文字回到顶部。</p>
-        <shn-backtop :target="'router_view_box'" :visibilityHeight="0">
+        <shn-backtop :visibilityHeight="0">
           <div style="font-size:14px;margin-top:20px;cursor: pointer;">回到顶部</div>
         </shn-backtop>
       </template>

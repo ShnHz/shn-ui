@@ -7,6 +7,7 @@
         v-if="show && mask"
       ></div>
     </transition>
+
     <transition name="shn-modal-fade">
       <div class="shn-modal-content" v-if="show">
         <div class="shn-modal-content-box">
@@ -60,6 +61,11 @@ export default {
   watch: {
     visible: function(val) {
       this.show = val
+      if (this.show) {
+        this.afterOpen()
+      } else {
+        this.beforeClose()
+      }
     }
   },
   methods: {

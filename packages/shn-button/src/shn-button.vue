@@ -6,7 +6,12 @@
     @click="click"
     class="shn-button"
   >
-    <i :class="[icon === '' ? 'icon-question':icon ]" class="iconfont" style="font-size:14px" v-if="icon != '' || circle"></i>
+    <i
+      :class="[icon === '' ? 'icon-question':icon ]"
+      class="iconfont"
+      style="font-size:14px"
+      v-if="icon != '' || circle"
+    ></i>
     <span class="shn-button-span" v-if="!circle">
       <slot/>
     </span>
@@ -133,6 +138,7 @@ export default {
     transition: transform 0.5s, opacity 0.5s;
   }
 }
+
 .shn-button-success {
   color: #fff;
   background-color: #67c23a;

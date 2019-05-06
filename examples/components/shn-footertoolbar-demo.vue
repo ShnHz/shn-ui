@@ -13,7 +13,6 @@
           :visibilityHeight="200"
           @cancel="cancel"
           @confirm="confirm"
-          target="router_view_box"
         ></shn-footertoolbar>
       </template>
       <template v-slot:code>

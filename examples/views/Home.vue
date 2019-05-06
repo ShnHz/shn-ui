@@ -245,11 +245,8 @@ export default {
     .content {
       flex: 1;
       width: 100%;
-      height: 100%;
-      padding: 0 50px 100px 10px;
+      padding: 0 50px 0 10px;
       margin-left: 240px;
-      // visibility: visible;
-      overflow: auto;
     }
   }
 }

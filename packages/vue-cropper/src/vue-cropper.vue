@@ -1780,6 +1780,7 @@ export default {
     window.removeEventListener('mouseup', this.leaveCrop)
     window.removeEventListener('touchmove', this.moveCrop)
     window.removeEventListener('touchend', this.leaveCrop)
+    this.cancelScale()
   }
 }
 </script>

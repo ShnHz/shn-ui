@@ -13,8 +13,14 @@
       </p>
     </div>
 
+    <shn-anchor>
+      <shn-anchor-link href="upload-img-simple" title="基础用法"/>
+      <shn-anchor-link href="upload-img-cropper" title="裁剪图片"/>
+      <shn-anchor-link href="api" title="API"/>
+    </shn-anchor>
+
     <!-- 基础用法DEMO -->
-    <shn-el-demo-block :height="250" :title="'基础用法'">
+    <shn-el-demo-block :height="250" :title="'基础用法'" id="upload-img-simple">
       <template v-slot:demo>
         <shn-upload-img addText="上传图片" v-model="simple.list"/>
       </template>
@@ -25,7 +31,7 @@
     </shn-el-demo-block>
 
     <!-- 裁剪图片DEMO -->
-    <shn-el-demo-block :height="250" :title="'裁剪图片'">
+    <shn-el-demo-block :height="250" :title="'裁剪图片'"  id="upload-img-cropper">
       <template v-slot:demo>
         <shn-upload-img :cropper="true" addText="裁剪图片/上传" cropType="blob" v-model="cropper.list"/>
       </template>
@@ -36,7 +42,7 @@
     </shn-el-demo-block>
 
     <!-- API -->
-    <div>
+    <div id="api">
       <h3 class="demo-table-title">API</h3>
       <P class="demo-table-introduction">属性说明如下：</P>
       <shn-table-simple :data="api" :type="'demo'"/>

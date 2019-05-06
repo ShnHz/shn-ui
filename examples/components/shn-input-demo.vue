@@ -6,8 +6,15 @@
       <p>Input 为受控组件，它总会显示 Vue 绑定值。</p>
     </div>
 
+    <shn-anchor>
+      <shn-anchor-link href="input-simple" title="基础用法"/>
+      <shn-anchor-link href="input-pattern" title="模式"/>
+      <shn-anchor-link href="input-disabled" title="禁用"/>
+      <shn-anchor-link href="api" title="API"/>
+    </shn-anchor>
+
     <!-- 基础用法DEMO -->
-    <shn-el-demo-block :height="312" :title="'基础用法'">
+    <shn-el-demo-block :height="312" :title="'基础用法'" id="input-simple">
       <template v-slot:demo>
         <shn-input v-model="simple.input"/>
         <span style="margin-left:20px">{{simple.input}}</span>
@@ -19,7 +26,7 @@
     </shn-el-demo-block>
 
     <!-- 输入框模式DEMO -->
-    <shn-el-demo-block :height="375" :title="'输入框模式'">
+    <shn-el-demo-block :height="375" :title="'输入框模式'" id="input-pattern">
       <template v-slot:demo>
         <div style="padding:0 0 15px">
           <div style="display:inline-block;width:100px;font-size:14px">line模式</div>
@@ -39,7 +46,7 @@
     </shn-el-demo-block>
 
     <!-- 禁用状态DEMO -->
-    <shn-el-demo-block :height="375" :title="'禁用状态'">
+    <shn-el-demo-block :height="375" :title="'禁用状态'" id="input-disabled">
       <template v-slot:demo>
         <div style="padding:0 0 15px">
           <div style="display:inline-block;width:100px;font-size:14px">line模式</div>
@@ -59,7 +66,7 @@
     </shn-el-demo-block>
 
     <!-- API -->
-    <div>
+    <div id="api">
       <h3 class="demo-table-title">API</h3>
       <P class="demo-table-introduction">属性说明如下：</P>
       <shn-table-simple :data="api" :type="'demo'"/>
