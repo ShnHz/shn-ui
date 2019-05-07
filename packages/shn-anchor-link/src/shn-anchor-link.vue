@@ -1,5 +1,5 @@
 <template>
-  <div :id="'link' + this.total" :title="title" @click="jump" :class="{'shn-anchor-link':!($slots.default)}">
+  <div :id="'link-' + hrefTotal + '-' + hrefHeight" :title="title" @click="jump" :class="{'shn-anchor-link':!($slots.default)}">
     <span v-if="!($slots.default)">{{title}}</span>
     <slot></slot>
   </div>
@@ -19,11 +19,13 @@ export default {
   },
   data() {
     return {
-      total: 0
+      hrefTotal: 0,
+      hrefHeight:0
     }
   },
   mounted() {
-    this.total = document.getElementById(this.href).offsetTop - 10
+    this.hrefTotal = document.getElementById(this.href).offsetTop - 10
+    this.hrefHeight = document.getElementById(this.href).clientHeight + this.hrefTotal
   },
   methods: {
     jump() {

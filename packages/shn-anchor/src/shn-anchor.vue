@@ -24,9 +24,9 @@ export default {
       type: String,
       default: ''
     },
-    customize:{
-      type:Boolean,
-      default:false
+    customize: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -42,9 +42,8 @@ export default {
     let _this = this
     setTimeout(function() {
       for (let i = 0; i < _this.$slots.default.length; i++) {
-        _this.linkTotal.push(
-          parseFloat(_this.$slots.default[i].elm.id.substring(4))
-        )
+        let linkId = _this.$slots.default[i].elm.id.split('-')
+        _this.linkTotal.push([parseFloat(linkId[1]), parseFloat(linkId[2])])
       }
     })
     if (this.target === 'window') {
@@ -67,38 +66,42 @@ export default {
   methods: {
     onScroll() {
       if (this.target === 'window') {
-        this.distance =
-          Math.round(document.documentElement.scrollTop) + 10 // 获取到顶部的距离
+        this.distance = Math.round(document.documentElement.scrollTop) + 10 // 获取到顶部的距离
       } else {
         this.distance =
           Math.round(document.getElementById(this.target).scrollTop) + 10 // 获取到顶部的距离
       }
 
-      if (this.distance + 100 < this.linkTotal[0]) {
-        this.index = -1
-        this.linkBallTop = -18
-        this.linkBallShow = false
-      } else if (
-        this.linkTotal[0] - 100 <= this.distance &&
-        this.distance <= this.linkTotal[0] + 10
-      ) {
-        this.index = 0
-        this.linkBallTop = 9
-        this.linkBallShow = true
-      } else {
-        this.toScroll()
+      if (this.linkTotal.length > 0) {
+        if (this.distance + 100 < this.linkTotal[0][0]) {
+          this.index = -1
+          this.linkBallTop = -18
+          this.linkBallShow = false
+        } else if (
+          this.linkTotal[0][0] - 100 <= this.distance &&
+          this.distance <= this.linkTotal[0][0] + 10
+        ) {
+          this.index = 0
+          this.linkBallTop = 9
+          this.linkBallShow = true
+        } else {
+          this.toScroll()
+        }
       }
 
       this.activeTitle()
     },
     toScroll() {
-      for (let i = 0; i < this.linkTotal.length; i++) {
-        this.linkBallShow = true
-        if (this.distance - 100 >= this.linkTotal[i]) {
-          this.linkBallTop = 9 + (i + 1) * 28
-          this.index = i + 1
-          if (i == this.linkTotal.length - 1) {
-            this.linkBallShow = false
+      if (this.distance > this.linkTotal[this.linkTotal.length - 1][1]) {
+        this.linkBallShow = false
+        this.index = -1
+        this.linkBallTop = 9 + this.linkTotal.length * 27
+      } else {
+        for (let i = 0; i < this.linkTotal.length - 1; i++) {
+          this.linkBallShow = true
+          if (this.distance + 100 >= this.linkTotal[i + 1][0]) {
+            this.linkBallTop = 9 + (i + 1) * 27
+            this.index = i + 1
           }
         }
       }
