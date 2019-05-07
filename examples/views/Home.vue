@@ -204,7 +204,7 @@ export default {
     .sidebar {
       position: fixed;
       width: 240px;
-      height: 100%;
+      height: 80%;
       top: 135px;
       // visibility: visible;
       overflow: auto;

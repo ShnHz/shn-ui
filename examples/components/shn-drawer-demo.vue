@@ -108,7 +108,7 @@ export default {
         code: {
           html: `
           <shn-button @click="show = true" type="primary">Open</shn-button>
-          <shn-drawer :show.sync="show" title="Basic Drawer">
+          <shn-drawer :visible.sync="show" title="Basic Drawer">
             <div :key="index" style="font-size: 14px;" v-for="(item,index) in 5">Some contents...</div>
           </shn-drawer>
           `,
