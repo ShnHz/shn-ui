@@ -11,6 +11,7 @@ import shnFootertoolbarDemo from '../components/shn-footertoolbar-demo'
 import shnDrawerDemo from '../components/shn-drawer-demo'
 import shnUploadImgDemo from '../components/shn-upload-img-demo'
 import shnAnchorDemo from '../components/shn-anchor-demo'
+import shnDividerDemo from '../components/shn-divider-demo'
 
 export default [{
         path: '/component/installation',
@@ -103,6 +104,13 @@ export default [{
         path: '/component/anchor',
         name: 'shnAnchorDemo',
         component: shnAnchorDemo,
+        meta: {
+            title: '组件|SHN-UI'
+        }
+    },{
+        path: '/component/divider',
+        name: 'shnDividerDemo',
+        component: shnDividerDemo,
         meta: {
             title: '组件|SHN-UI'
         }

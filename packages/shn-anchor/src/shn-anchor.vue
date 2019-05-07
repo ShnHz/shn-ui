@@ -1,5 +1,5 @@
 <template>
-  <div :class="{anchorClass,'shn-anchor':!customize}">
+  <div :class="{anchorClass,'shn-anchor':!customize,'shn-anchor-left':position == 'left'}">
     <div class="shn-anchor-ink">
       <span
         :class="{'visible':linkBallShow}"
@@ -27,6 +27,10 @@ export default {
     customize: {
       type: Boolean,
       default: false
+    },
+    position: {
+      type: String,
+      default: 'right'
     }
   },
   data() {
@@ -97,7 +101,10 @@ export default {
           this.linkBallShow = false
           this.index = -1
           this.linkBallTop = 9 + this.linkTotal.length * 27
-        } else if (this.distance === this.scollHeight - this.clientHeight + 10) {
+        } else if (
+          this.distance ===
+          this.scollHeight - this.clientHeight + 10
+        ) {
           this.linkBallShow = true
           this.index = this.linkTotal.length - 1
           this.linkBallTop = 9 + (this.linkTotal.length - 1) * 27
@@ -179,6 +186,17 @@ export default {
     list-style: none;
     position: relative;
     padding-left: 2px;
+  }
+}
+.shn-anchor-left {
+  right: auto;
+  left: 10px;
+  .shn-anchor-ink {
+    right: 0;
+    left: auto;
+  }
+  .shn-anchor-box{
+    text-align: right;
   }
 }
 </style>

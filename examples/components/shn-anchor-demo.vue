@@ -7,8 +7,8 @@
     <shn-el-demo-block :height="147" :title="'基础用法'" id="anchor-simple">
       <template v-slot:demo>
         <p class="demo-code-en-p">see the right bar.</p>
-        <p class="demo-code-cn-p">查看页面右方工具栏</p>
-        <shn-anchor>
+        <p class="demo-code-cn-p">查看页面右方导航栏</p>
+        <shn-anchor position="right">
           <shn-anchor-link href="anchor-simple" title="基础用法"/>
           <shn-anchor-link href="anchor-customize" title="自定义样式"/>
         </shn-anchor>
@@ -44,13 +44,13 @@
 
 <script>
 export default {
-  name: 'shn-upload-img-demo',
+  name: 'shn-anchor-demo',
   data() {
     return {
       simple: {
         code: {
           html: `
-          <shn-anchor>
+          <shn-anchor position="right">
             <shn-anchor-link href="upload-img-simple" title="基础用法"/>
             <shn-anchor-link href="upload-img-cropper" title="裁剪图片"/>
           </shn-anchor>
@@ -89,6 +89,13 @@ export default {
           dataTypes: 'Boolean',
           optional: 'true / false',
           default: 'false'
+        },
+        {
+          parameter: 'position',
+          description: '导航栏位置',
+          dataTypes: 'String',
+          optional: 'left / right',
+          default: 'right'
         }
       ],
       linkApi: [

@@ -100,6 +100,11 @@ export default {
               id: 9,
               name: 'Anchor 锚点',
               path: '#/component/anchor'
+            },
+            {
+              id: 10,
+              name: 'Divider 分割线',
+              path: '#/component/divider'
             }
           ]
         }
@@ -150,6 +155,9 @@ export default {
         break
       case '/component/anchor':
         this.active = 9
+        break
+      case '/component/divider':
+        this.active = 10
         break
     }
   },

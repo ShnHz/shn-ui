@@ -1,5 +1,10 @@
 <template>
-  <div :id="'link-' + hrefTotal + '-' + hrefHeight" :title="title" @click="jump" :class="{'shn-anchor-link':!($slots.default)}">
+  <div
+    :class="{'shn-anchor-link':!($slots.default),'shn-anchor-link-left':$parent.position == 'left'}"
+    :id="'link-' + hrefTotal + '-' + hrefHeight"
+    :title="title"
+    @click="jump"
+  >
     <span v-if="!($slots.default)">{{title}}</span>
     <slot></slot>
   </div>
@@ -20,12 +25,13 @@ export default {
   data() {
     return {
       hrefTotal: 0,
-      hrefHeight:0
+      hrefHeight: 0
     }
   },
   mounted() {
     this.hrefTotal = document.getElementById(this.href).offsetTop - 10
-    this.hrefHeight = document.getElementById(this.href).clientHeight + this.hrefTotal
+    this.hrefHeight =
+      document.getElementById(this.href).clientHeight + this.hrefTotal
   },
   methods: {
     jump() {
@@ -128,5 +134,8 @@ export default {
 }
 .shn-anchor-link-active {
   color: #40a9ff !important;
+}
+.shn-anchor-link-left {
+  padding: 7px 16px 7px 0;
 }
 </style>
