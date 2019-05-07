@@ -96,8 +96,6 @@
       <P class="demo-table-introduction">属性说明如下：</P>
       <shn-table-simple :data="api" :type="'demo'"/>
     </div>
-
-    <div style="height:2000px"></div>
   </div>
 </template>
 

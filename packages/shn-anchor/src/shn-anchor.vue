@@ -32,6 +32,8 @@ export default {
   data() {
     return {
       distance: 0,
+      scollHeight: 0,
+      clientHeight: 0,
       linkTotal: [],
       linkBallShow: false,
       linkBallTop: -18,
@@ -47,8 +49,13 @@ export default {
       }
     })
     if (this.target === 'window') {
+      this.scollHeight = document.documentElement.scrollHeight
+      this.clientHeight = document.documentElement.clientHeight
+
       window.addEventListener('scroll', this.onScroll)
     } else {
+      this.scollHeight = document.getElementById(this.target).scrollHeight
+      this.clientHeight = document.getElementById(this.target).clientHeight
       document
         .getElementById(this.target)
         .addEventListener('scroll', this.onScroll)
@@ -84,6 +91,16 @@ export default {
           this.index = 0
           this.linkBallTop = 9
           this.linkBallShow = true
+        } else if (
+          this.distance > this.linkTotal[this.linkTotal.length - 1][1]
+        ) {
+          this.linkBallShow = false
+          this.index = -1
+          this.linkBallTop = 9 + this.linkTotal.length * 27
+        } else if (this.distance === this.scollHeight - this.clientHeight + 10) {
+          this.linkBallShow = true
+          this.index = this.linkTotal.length - 1
+          this.linkBallTop = 9 + (this.linkTotal.length - 1) * 27
         } else {
           this.toScroll()
         }
@@ -92,17 +109,11 @@ export default {
       this.activeTitle()
     },
     toScroll() {
-      if (this.distance > this.linkTotal[this.linkTotal.length - 1][1]) {
-        this.linkBallShow = false
-        this.index = -1
-        this.linkBallTop = 9 + this.linkTotal.length * 27
-      } else {
-        for (let i = 0; i < this.linkTotal.length - 1; i++) {
-          this.linkBallShow = true
-          if (this.distance + 100 >= this.linkTotal[i + 1][0]) {
-            this.linkBallTop = 9 + (i + 1) * 27
-            this.index = i + 1
-          }
+      for (let i = 0; i < this.linkTotal.length - 1; i++) {
+        this.linkBallShow = true
+        if (this.distance + 100 >= this.linkTotal[i + 1][0]) {
+          this.linkBallTop = 9 + (i + 1) * 27
+          this.index = i + 1
         }
       }
     },
