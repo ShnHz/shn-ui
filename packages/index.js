@@ -2,6 +2,7 @@ import '../public/css/result.css'
 import '../public/iconfont/iconfont.css'
 import '../public/css/shn-vue-ui-base.css'
 import '../public/css/animation.scss'
+import '../public/js/base.js'
 
 
 import Input from './shn-input'
@@ -24,6 +25,7 @@ import AnchorLink from './shn-anchor-link'
 import Divider from './shn-divider'
 import MenuSimple from './shn-menu-simple'
 import PulldownRefresh from './shn-pulldown-refresh'
+import LoadingPage from './shn-loading-page'
 
 const components = [
     Input,
@@ -45,7 +47,8 @@ const components = [
     AnchorLink,
     Divider,
     MenuSimple,
-    PulldownRefresh
+    PulldownRefresh,
+    LoadingPage
 ]
 
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册
@@ -83,5 +86,6 @@ export default {
     AnchorLink,
     Divider,
     MenuSimple,
-    PulldownRefresh
+    PulldownRefresh,
+    LoadingPage
 }
