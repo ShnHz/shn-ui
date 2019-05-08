@@ -1,0 +1,65 @@
+<template>
+  <div class="shn-pulldown-refresh"></div>
+</template>
+<script>
+export default {
+  name: 'shn-pulldown-refresh',
+  props: {
+    target: {
+      type: String,
+      default: 'window'
+    }
+  },
+  data() {
+    return {
+      show: false,
+      scrollTop: 0
+    }
+  },
+  mounted() {
+    if (this.target === 'window') {
+      window.addEventListener('scroll', this.scrollToBottom)
+    } else {
+      document
+        .getElementById(this.target)
+        .addEventListener('scroll', this.scrollToBottom)
+    }
+  },
+  destroyed() {
+    if (this.target === 'window') {
+      window.removeEventListener('scroll', this.scrollToBottom)
+    } else {
+      document
+        .getElementById(this.target)
+        .removeEventListener('scroll', this.scrollToBottom)
+    }
+  },
+  methods: {
+    scrollToBottom() {
+      if (this.target === 'window') {
+        const scrollHeight =
+          document.body.scrollHeight || document.documentElement.scrollHeight
+        const clientHeight =
+          document.body.clientHeight || document.documentElement.scrollHeight
+        const scrollTop =
+          document.body.scrollTop || document.documentElement.scrollTop
+        if (scrollTop >= scrollHeight - clientHeight) {
+          this.$emit('pulldown')
+        }
+      } else {
+        const scrollHeight = document.getElementById(this.target).scrollHeight
+        const clientHeight = document.getElementById(this.target).scrollHeight
+        const scrollTop = document.getElementById(this.target).scrollTop
+        if (scrollTop >= scrollHeight - clientHeight) {
+          this.$emit('pulldown')
+        }
+      }
+    }
+  }
+}
+</script>
+<style lang="scss" scoped>
+.shn-pulldown-refresh {
+  display: none;
+}
+</style>

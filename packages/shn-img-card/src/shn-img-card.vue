@@ -1,5 +1,10 @@
 <template>
-  <div class="shn-img-card inline-block" :style="{margin:margin}">
+  <div
+    :style="{margin:margin}"
+    @mouseenter="$emit('mouseenter')"
+    @mouseleave="$emit('mouseleave')"
+    class="shn-img-card inline-block"
+  >
     <div :style="{height:imgBoxHeight + 'px'}" class="shn-img-card__imgbox">
       <slot name="img"/>
     </div>
@@ -26,9 +31,9 @@ export default {
       type: Number,
       default: 200
     },
-    margin:{
-      type:String,
-      default:'0'
+    margin: {
+      type: String,
+      default: '0'
     },
     title: {
       type: String,

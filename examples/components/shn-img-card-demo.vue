@@ -4,18 +4,14 @@
     <shn-img-card
       :imgBoxHeight="240"
       :key="index"
-      :title="item.description"
-      v-for="(item,index) in data"
       :margin="'20px 30px 0 0'"
+      :title="item.description"
+      @mouseenter="imgHover(index,'mouseenter')"
+      @mouseleave="imgHover(index,'mouseleave')"
+      v-for="(item,index) in data"
     >
       <template v-slot:img>
-        <img
-          :src="item.img"
-          @mouseenter="imgHover(index,'mouseenter')"
-          @mouseleave="imgHover(index,'mouseleave')"
-          alt
-          class="video-img"
-        >
+        <img :src="item.img" alt class="video-img">
       </template>
       <template v-slot:one>
         <div class="num-box">
@@ -47,8 +43,7 @@ export default {
       data: [
         {
           description: '多么有力的一声  兄弟回家了多么有力的一声  兄弟回',
-          cover:
-            'https://p3-dy.bytecdn.cn/large/178c400123d7504519ca0.jpeg',
+          cover: 'https://p3-dy.bytecdn.cn/large/178c400123d7504519ca0.jpeg',
           // cover:
           // 'https://p3-dy.bytecdn.cn/aweme/300x400/1793c00062cbca0242ba8.jpeg',
           play_addr:
@@ -70,8 +65,7 @@ export default {
         {
           description:
             '暖心！环卫工大爷抱着车祸女孩安慰，还有手捂住她的眼睛，不让她看被扎的左腿。大爷真的心好暖～',
-          cover:
-            'https://p3-dy.bytecdn.cn/large/17a1300032adf79a63bce.jpeg',
+          cover: 'https://p3-dy.bytecdn.cn/large/17a1300032adf79a63bce.jpeg',
           play_addr:
             'https://aweme.snssdk.com/aweme/v1/playwm/?video_id=v0300fb30000bir9rqchpahuqnhugmlg&line=0',
           dynamic_cover: 'https://p9-dy.bytecdn.cn/obj/1f2e70006c92032d5ac3e',
@@ -91,8 +85,7 @@ export default {
         {
           description:
             '"我坐飞机、坐火车、坐汽车，专门来这里看看大家。"习近平总书记在重庆调研时同村民代表共话脱贫攻坚。',
-          cover:
-            'https://p3-dy.bytecdn.cn/large/1f2880000704badd96cfd.jpeg',
+          cover: 'https://p3-dy.bytecdn.cn/large/1f2880000704badd96cfd.jpeg',
           play_addr:
             'https://aweme.snssdk.com/aweme/v1/playwm/?video_id=v0200f530000biqnuhnqaba97pnai26g&line=0',
           dynamic_cover: 'https://p9-dy.bytecdn.cn/obj/1f0e1000726f5526f0079',

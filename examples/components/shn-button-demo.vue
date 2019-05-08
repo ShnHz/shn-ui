@@ -2,7 +2,6 @@
   <div class="content-box">
     <h2 class="demo-title">Button 按钮</h2>
     <p class="demo-introduction">按钮用于开始一个即时操作。</p>
-
     <shn-anchor>
       <shn-anchor-link href="button-simple" title="基础用法"/>
       <shn-anchor-link href="button-disabled" title="禁用"/>
@@ -217,7 +216,8 @@ export default {
       ]
     }
   },
-  methods: {}
+  methods: {
+  }
 }
 </script>
 <style lang="scss" scoped>
