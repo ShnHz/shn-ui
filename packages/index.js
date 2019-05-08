@@ -22,6 +22,7 @@ import Modal from './shn-modal'
 import Anchor from './shn-anchor'
 import AnchorLink from './shn-anchor-link'
 import Divider from './shn-divider'
+import MenuSimple from './shn-menu-simple'
 
 const components = [
     Input,
@@ -41,7 +42,8 @@ const components = [
     Modal,
     Anchor,
     AnchorLink,
-    Divider
+    Divider,
+    MenuSimple
 ]
 
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册
@@ -77,5 +79,6 @@ export default {
     Modal,
     Anchor,
     AnchorLink,
-    Divider
+    Divider,
+    MenuSimple
 }

@@ -105,10 +105,16 @@ export default {
               id: 10,
               name: 'Divider 分割线',
               path: '#/component/divider'
+            },
+            {
+              id: 11,
+              name: 'MenuSimple 简单菜单',
+              path: '#/component/meunsimple'
             }
           ]
         }
-      ]
+      ],
+      sidebarHover: false
     }
   },
   watch: {
@@ -158,6 +164,9 @@ export default {
         break
       case '/component/divider':
         this.active = 10
+        break
+      case '/component/meunsimple':
+        this.active = 11
         break
     }
   },
@@ -211,11 +220,18 @@ export default {
     // }
     .sidebar {
       position: fixed;
-      width: 240px;
+      margin-right: 40px;
+      width: 200px;
       height: 80%;
       top: 135px;
-      // visibility: visible;
+      visibility: hidden;
       overflow: auto;
+      &:hover {
+        visibility: visible;
+      }
+      > ul {
+        visibility: visible;
+      }
       .nav-item {
         list-style: none;
         a {

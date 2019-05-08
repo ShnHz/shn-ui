@@ -11,7 +11,7 @@
     </shn-anchor>
 
     <!-- 基础用法DEMO -->
-    <shn-el-demo-block :height="168" :title="'基础用法'" id="divider-simple">
+    <shn-el-demo-block :height="168" :title="'基础用法'" id="divider-simple" introduction="对不同章节的文本段落进行分割。">
       <template v-slot:demo>
         <p
           class="demo-code-en-p"
@@ -31,7 +31,7 @@
     </shn-el-demo-block>
 
     <!-- 设置文案DEMO -->
-    <shn-el-demo-block :height="189" :title="'设置文案'" id="divider-text">
+    <shn-el-demo-block :height="189" :title="'设置文案'" id="divider-text" introduction="可以在分割线上自定义文案内容。">
       <template v-slot:demo>
         <shn-divider>With Text</shn-divider>
         <shn-divider content-position="left">Element-ui</shn-divider>

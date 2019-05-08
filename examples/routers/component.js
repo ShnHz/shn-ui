@@ -12,6 +12,7 @@ import shnDrawerDemo from '../components/shn-drawer-demo'
 import shnUploadImgDemo from '../components/shn-upload-img-demo'
 import shnAnchorDemo from '../components/shn-anchor-demo'
 import shnDividerDemo from '../components/shn-divider-demo'
+import shnMenuSimpleDemo from '../components/shn-menu-simple-demo'
 
 export default [{
         path: '/component/installation',
@@ -107,10 +108,17 @@ export default [{
         meta: {
             title: '组件|SHN-UI'
         }
-    },{
+    }, {
         path: '/component/divider',
         name: 'shnDividerDemo',
         component: shnDividerDemo,
+        meta: {
+            title: '组件|SHN-UI'
+        }
+    }, {
+        path: '/component/meunsimple',
+        name: 'shnMenuSimpleDemo',
+        component: shnMenuSimpleDemo,
         meta: {
             title: '组件|SHN-UI'
         }
