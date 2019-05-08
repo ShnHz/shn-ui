@@ -111,6 +111,13 @@ export default {
           dataTypes: 'Array',
           optional: '',
           default: ''
+        },
+        {
+          parameter: 'activeIndex',
+          description: '当前激活菜单的 index',
+          dataTypes: 'Number',
+          optional: '',
+          default: '0'
         }
       ]
     }
