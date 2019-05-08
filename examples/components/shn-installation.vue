@@ -51,7 +51,7 @@
     <h3 class="demo-table-title">快速上手</h3>
     <p class="demo-introduction">你可以在 main.js 中引入整个 shn-ui。</p>
     <div class="demo-code-block">
-      <p>import shnUI from './../packages/index'</p>
+      <p>import shnUI from 'shn-vue-ui'</p>
       <p style="margin-top:20px">Vue.use(shnUI);</p>
     </div>
 
