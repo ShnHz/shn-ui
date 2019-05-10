@@ -22,19 +22,3 @@ Vue.prototype.fCode = function (code) {
   }
   return fcode
 }
-
-let _scrollTop
-
-//popup 显示时调用
-Vue.prototype.afterOpen = function () {
-  _scrollTop = document.scrollingElement.scrollTop
-  document.body.style.position = 'fixed'
-  document.body.style.top = -_scrollTop + 'px'
-}
-
-//popup 关闭时调用
-Vue.prototype.beforeClose = function () {
-  document.body.style.position = ''
-  document.body.style.top = ''
-  document.scrollingElement.scrollTop = _scrollTop
-}

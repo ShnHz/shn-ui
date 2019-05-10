@@ -4,18 +4,19 @@
       <div class="shn-menu-simple-nav-active-bar" ref="menuActiveBar"></div>
       <li
         :key="item.text"
-        @click="typeof item.link != 'undefined' && select(item,index)"
         @mouseenter="typeof item.link != 'undefined' && hoverColor(true,`li_${index}`)"
         @mouseleave="typeof item.link != 'undefined' && hoverColor(false,`li_${index}`)"
         class="shn-meun-simple-li"
         v-for="(item,index) in value"
       >
         <router-link :to="item.link" v-if="typeof item.link != 'undefined'">
-          <i :class="item.icon" :style="customizeColor" class="iconfont"></i>
-          <p :id="`li_${index}`">{{item.text}}</p>
+          <div @click="select(item,index)">
+            <i :class="item.icon" :style="customizeColor" class="iconfont"></i>
+            <p :id="`li_${index}`">{{item.text}}</p>
+          </div>
         </router-link>
         <div v-else>
-          <i :class="item.icon" class="iconfont"></i>
+          <i :class="item.icon"></i>
           <p>{{item.text}}</p>
         </div>
       </li>

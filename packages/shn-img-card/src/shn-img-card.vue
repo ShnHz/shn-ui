@@ -4,6 +4,7 @@
     @mouseenter="$emit('mouseenter')"
     @mouseleave="$emit('mouseleave')"
     class="shn-img-card inline-block"
+    @click="$emit('click')"
   >
     <div :style="{height:imgBoxHeight + 'px'}" class="shn-img-card__imgbox">
       <slot name="img"/>

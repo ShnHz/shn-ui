@@ -23,6 +23,8 @@
   </div>
 </template>
 <script>
+import COMMONS from '../../commons/commons'
+
 export default {
   name: 'shn-drawer',
   props: {
@@ -98,11 +100,11 @@ export default {
         this.width = document.getElementById(
           'shn-drawer-content' + this.id
         ).offsetWidth
-        this.afterOpen()
+        COMMONS.afterOpen()
       } else {
         this.width = 0
         if (document.getElementsByClassName('shn-drawer-mask').length == 1) {
-          this.beforeClose()
+          COMMONS.beforeClose()
         }
       }
     }

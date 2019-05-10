@@ -46,25 +46,25 @@ export default {
                 list: [
                   {
                     text: '首页',
-                    icon: 'icon-home-fill',
+                    icon: 'iconfont icon-home-fill',
                     link: 'home'
                   },
                   {
                     text: '热搜',
-                    icon: 'icon-fire-fill',
+                    icon: 'iconfont icon-fire-fill',
                     link: 'hot'
                   },
                   {
                     text: '收藏',
-                    icon: 'icon-star-fill'
+                    icon: 'iconfont icon-star-fill'
                   },
                   {
                     text: '商店',
-                    icon: 'icon-shop-fill'
+                    icon: 'iconfont icon-shop-fill'
                   },
                   {
                     text: '设置',
-                    icon: 'icon-setting-fill'
+                    icon: 'iconfont icon-setting-fill'
                   }
                 ]
               }
@@ -75,25 +75,25 @@ export default {
         list: [
           {
             text: '首页',
-            icon: 'icon-home-fill',
+            icon: 'iconfont icon-home-fill',
             link: 'home'
           },
           {
             text: '热搜',
-            icon: 'icon-fire-fill',
+            icon: ' iconfont icon-fire-fill',
             link: 'hot'
           },
           {
             text: '收藏',
-            icon: 'icon-star-fill'
+            icon: 'iconfont icon-star-fill'
           },
           {
             text: '商店',
-            icon: 'icon-shop-fill'
+            icon: 'iconfont icon-shop-fill'
           },
           {
             text: '设置',
-            icon: 'icon-setting-fill'
+            icon: 'iconfont icon-setting-fill'
           }
         ]
       },

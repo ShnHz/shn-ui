@@ -17,22 +17,10 @@ export default {
     }
   },
   mounted() {
-    if (this.target === 'window') {
-      window.addEventListener('scroll', this.scrollToBottom)
-    } else {
-      document
-        .getElementById(this.target)
-        .addEventListener('scroll', this.scrollToBottom)
-    }
+    this.add()
   },
   destroyed() {
-    if (this.target === 'window') {
-      window.removeEventListener('scroll', this.scrollToBottom)
-    } else {
-      document
-        .getElementById(this.target)
-        .removeEventListener('scroll', this.scrollToBottom)
-    }
+    this.remove()
   },
   methods: {
     scrollToBottom() {
@@ -48,11 +36,29 @@ export default {
         }
       } else {
         const scrollHeight = document.getElementById(this.target).scrollHeight
-        const clientHeight = document.getElementById(this.target).scrollHeight
+        const clientHeight = document.getElementById(this.target).clientHeight
         const scrollTop = document.getElementById(this.target).scrollTop
         if (scrollTop >= scrollHeight - clientHeight) {
           this.$emit('pulldown')
         }
+      }
+    },
+    add() {
+      if (this.target === 'window') {
+        window.addEventListener('scroll', this.scrollToBottom)
+      } else {
+        document
+          .getElementById(this.target)
+          .addEventListener('scroll', this.scrollToBottom)
+      }
+    },
+    remove() {
+      if (this.target === 'window') {
+        window.removeEventListener('scroll', this.scrollToBottom)
+      } else {
+        document
+          .getElementById(this.target)
+          .removeEventListener('scroll', this.scrollToBottom)
       }
     }
   }

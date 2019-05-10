@@ -9,6 +9,8 @@
   </transition>
 </template>
 <script>
+import COMMONS from '../../commons/commons'
+
 export default {
   name: 'shn-loading-page',
   props: {
@@ -23,15 +25,15 @@ export default {
     }
   },
   mounted() {
-    this.afterOpen()
+    COMMONS.afterOpen()
   },
   watch: {
     loading: function(val) {
       this.show = val
       if (this.show) {
-        this.afterOpen()
+        COMMONS.afterOpen()
       } else {
-        this.beforeClose()
+        COMMONS.beforeClose()
       }
     }
   }

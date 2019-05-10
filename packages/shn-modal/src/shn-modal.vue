@@ -31,6 +31,8 @@
   </div>
 </template>
 <script>
+import COMMONS from '../../commons/commons'
+
 export default {
   name: 'shn-modal',
   props: {
@@ -62,9 +64,9 @@ export default {
     visible: function(val) {
       this.show = val
       if (this.show) {
-        this.afterOpen()
+        COMMONS.afterOpen()
       } else {
-        this.beforeClose()
+        COMMONS.beforeClose()
       }
     }
   },
