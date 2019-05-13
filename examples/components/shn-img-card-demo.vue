@@ -16,11 +16,11 @@
       <template v-slot:one>
         <div class="num-box">
           <div>
-            <i class="iconfont icon-message"></i>
+            <i class="shni shn-message"></i>
             {{item.comment_count}}
           </div>
           <div>
-            <i class="iconfont icon-like"></i>
+            <i class="shni shn-like"></i>
             {{item.digg_count}}
           </div>
         </div>

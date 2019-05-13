@@ -2,7 +2,7 @@
   <transition name="shn-fade">
     <div class="shn-preview-img" v-if="show">
       <div class="shn-preview-img-topbar">
-        <i @click="$emit('update:visible', false)" class="iconfont icon-close"></i>
+        <i @click="$emit('update:visible', false)" class="shni shn-close"></i>
       </div>
       <div :style="imgBoxStyle" class="img-box">
         <img

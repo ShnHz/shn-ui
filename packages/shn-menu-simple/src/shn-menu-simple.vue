@@ -11,7 +11,7 @@
       >
         <router-link :to="item.link" v-if="typeof item.link != 'undefined'">
           <div @click="select(item,index)">
-            <i :class="item.icon" :style="customizeColor" class="iconfont"></i>
+            <i :class="item.icon" :style="customizeColor"></i>
             <p :id="`li_${index}`">{{item.text}}</p>
           </div>
         </router-link>

@@ -23,7 +23,7 @@
       <template v-slot:demo>
         <shn-anchor customize>
           <shn-anchor-link href="api" title="API">
-            <shn-button icon="icon-rotate-right" type="primary">API</shn-button>
+            <shn-button icon="shn-rotate-right" type="primary">API</shn-button>
           </shn-anchor-link>
         </shn-anchor>
       </template>

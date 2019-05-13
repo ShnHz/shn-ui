@@ -11,11 +11,11 @@
         <div class="img-box-mask">
           <i
             @click="previewImg = item;previewImgShow = true"
-            class="iconfont icon-eye"
+            class="shni shn-eye"
             title="预览"
             v-if="view"
           ></i>
-          <i @click="list.splice(index, 1)" class="iconfont icon-delete" title="删除"></i>
+          <i @click="list.splice(index, 1)" class="shni shn-delete" title="删除"></i>
         </div>
       </div>
     </div>
@@ -30,7 +30,7 @@
           type="file"
         >
         <div>
-          <i class="iconfont icon-plus" style="font-size:24px"></i>
+          <i class="shni shn-plus" style="font-size:24px"></i>
           <p>{{addText}}</p>
         </div>
       </div>

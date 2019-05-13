@@ -7,8 +7,8 @@
     class="shn-button"
   >
     <i
-      :class="[icon === '' ? 'icon-question':icon ]"
-      class="iconfont"
+      :class="[icon === '' ? 'shn-question':icon ]"
+      class="shni"
       style="font-size:14px"
       v-if="icon != '' || circle"
     ></i>

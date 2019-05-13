@@ -6,7 +6,7 @@
       </div>
       <div class="shn-backtop-content" v-if="!slotShow">
         <div>
-          <i class="iconfont icon-vertical-align-top"></i>
+          <i class="shni shn-vertical-align-top"></i>
         </div>
       </div>
     </div>

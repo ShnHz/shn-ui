@@ -37,7 +37,7 @@
         <shn-divider content-position="left">Element-ui</shn-divider>
         <shn-divider content-position="right">Ant Design Vue</shn-divider>
         <shn-divider content-position="right">
-          <i class="iconfont icon-github-fill"></i>github
+          <i class="shni shn-github-fill"></i>github
         </shn-divider>
       </template>
       <template v-slot:code>

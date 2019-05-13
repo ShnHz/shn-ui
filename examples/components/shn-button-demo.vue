@@ -20,7 +20,7 @@
           <shn-button type="primary">Primary</shn-button>
           <shn-button type="danger">Danger</shn-button>
           <shn-button type="warning">Warning</shn-button>
-          <shn-button icon="icon-search" type="primary">Search</shn-button>
+          <shn-button shn="shn-search" type="primary">Search</shn-button>
         </div>
         <div>
           <shn-button type="dashed">Dashed</shn-button>
@@ -49,11 +49,11 @@
     <!-- 圆形按钮DEMO -->
     <shn-el-demo-block :height="168" :title="'圆形按钮'" id="button-circle">
       <template v-slot:demo>
-        <shn-button circle icon="icon-user"></shn-button>
-        <shn-button circle icon="icon-heart-fill" type="primary"></shn-button>
+        <shn-button circle icon="shn-user"></shn-button>
+        <shn-button circle icon="shn-heart-fill" type="primary"></shn-button>
         <shn-button circle type="dashed"></shn-button>
-        <shn-button circle icon="icon-delete-fill" type="danger"></shn-button>
-        <shn-button circle icon="icon-plus" type="warning"></shn-button>
+        <shn-button circle icon="shn-delete-fill" type="danger"></shn-button>
+        <shn-button circle icon="shn-plus" type="warning"></shn-button>
       </template>
       <template v-slot:code>
         <code class="html">{{fCode(circle.code.html)}}</code>
@@ -69,7 +69,7 @@
     >
       <template v-slot:demo>
         <shn-button color="#2cbfbe" type="customize">customize</shn-button>
-        <shn-button circle color="#2cbfbe" icon="icon-heart-fill" type="customize"></shn-button>
+        <shn-button circle color="#2cbfbe" icon="shn-heart-fill" type="customize"></shn-button>
       </template>
       <template v-slot:code>
         <code class="html">{{fCode(customize.code.html)}}</code>
@@ -113,7 +113,7 @@ export default {
             <shn-button type="primary">Primary</shn-button>
             <shn-button type="danger">Danger</shn-button>
             <shn-button type="warning">Warning</shn-button>
-            <shn-button icon="icon-search" type="primary">Search</shn-button>
+            <shn-button shn="shn-search" type="primary">Search</shn-button>
           </div>
           <div>
             <shn-button type="dashed">Dashed</shn-button>
@@ -136,11 +136,11 @@ export default {
       circle: {
         code: {
           html: `
-          <shn-button circle icon="icon-user"></shn-button>
-          <shn-button circle icon="icon-heart-fill" type="primary"></shn-button>
+          <shn-button circle shn="shn-user"></shn-button>
+          <shn-button circle shn="shn-heart-fill" type="primary"></shn-button>
           <shn-button circle type="dashed"></shn-button>
-          <shn-button circle icon="icon-delete-fill" type="danger"></shn-button>
-          <shn-button circle icon="icon-plus" type="warning"></shn-button>
+          <shn-button circle shn="shn-delete-fill" type="danger"></shn-button>
+          <shn-button circle shn="shn-plus" type="warning"></shn-button>
           `
         }
       },
@@ -148,7 +148,7 @@ export default {
         code: {
           html: `
           <shn-button color="#2cbfbe" type="customize">customize</shn-button>
-          <shn-button color="#2cbfbe" circle icon="icon-heart-fill" type="customize"></shn-button>
+          <shn-button color="#2cbfbe" circle shn="shn-heart-fill" type="customize"></shn-button>
           `
         }
       },
@@ -193,7 +193,7 @@ export default {
           default: 'false'
         },
         {
-          parameter: 'icon',
+          parameter: 'shn',
           description: '图标类名',
           dataTypes: 'String',
           optional: '',
