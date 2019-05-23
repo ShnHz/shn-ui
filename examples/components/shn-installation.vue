@@ -30,10 +30,13 @@
     </h3>
     <p class="demo-introduction">
       github代码仓库地址
-      <a
+      <img
+        alt
+        class="github-img"
         href="https://github.com/ShnHz/shn-ui"
-        target="_blank"
-      >https://github.com/ShnHz/shn-ui</a> 点个star支持一下吧~
+        src="https://img.shields.io/github/stars/ShnHz/shn-ui.svg?style=social&label=Star&maxAge=2592000"
+      >
+      <a href="https://github.com/ShnHz/shn-ui" target="_blank">https://github.com/ShnHz/shn-ui</a> 点个star支持一下吧~
     </p>
 
     <!-- NPM安装 -->
@@ -77,5 +80,11 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.github-img {
+  cursor: pointer;
+  position: relative;
+  top: 5px;
+  margin: 0 8px 0 5px;
+}
 </style>
 
