@@ -1,5 +1,7 @@
 <template>
-  <div :class="{anchorClass,'shn-anchor':!customize,'shn-anchor-left':position == 'left'}">
+  <div
+    :class="[{'shn-anchor':!customize,'shn-anchor-left':position == 'left'},[anchorClass]]"
+  >
     <div class="shn-anchor-ink">
       <span
         :class="{'visible':linkBallShow}"
@@ -195,7 +197,7 @@ export default {
     right: 0;
     left: auto;
   }
-  .shn-anchor-box{
+  .shn-anchor-box {
     text-align: right;
   }
 }

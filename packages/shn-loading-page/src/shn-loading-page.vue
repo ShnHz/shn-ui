@@ -3,7 +3,7 @@
     <div class="shn-loading-page" v-show="show">
       <div class="shn-loading-mask"></div>
       <div class="shn-loading-main">
-        <img alt src="/img/time.gif">
+        <img alt src="https://shnhz.github.io/shn-ui/img/time.gif">
       </div>
     </div>
   </transition>

@@ -1,6 +1,7 @@
 <template>
   <div class="content-box">
     <h2 class="demo-title">ImgCard 图片卡片</h2>
+
     <shn-img-card
       :imgBoxHeight="240"
       :key="index"
