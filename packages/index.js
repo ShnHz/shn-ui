@@ -26,6 +26,7 @@ import Divider from './shn-divider'
 import MenuSimple from './shn-menu-simple'
 import PulldownRefresh from './shn-pulldown-refresh'
 import LoadingPage from './shn-loading-page'
+import UrlParam from './shn-url-param'
 
 const components = [
     Input,
@@ -48,7 +49,8 @@ const components = [
     Divider,
     MenuSimple,
     PulldownRefresh,
-    LoadingPage
+    LoadingPage,
+    UrlParam
 ]
 
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册
