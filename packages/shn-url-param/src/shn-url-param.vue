@@ -18,7 +18,7 @@ export default {
   data() {
     return {}
   },
-  mounted() {
+  created() {
     let param = JSON.parse(JSON.stringify(this.value))
     for (let key in param) {
       if (this.$route.query[key] != undefined) {
@@ -35,6 +35,7 @@ export default {
       }
     }
     this.$emit('input', param)
+    this.callback()
   },
   methods: {
     updateUrl() {
