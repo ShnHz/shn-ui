@@ -20,22 +20,35 @@ export default {
   },
   mounted() {
     let param = JSON.parse(JSON.stringify(this.value))
-    for (let key in this.value) {
+    for (let key in param) {
       if (this.$route.query[key] != undefined) {
-        param[key] = JSON.parse(this.$route.query[key])
+        if (Array.isArray(param[key])) {
+          param[key] = this.$route.query[key]
+            .replace('[', '')
+            .replace(']', '')
+            .split(',')
+        } else if (typeof param[key] == 'number') {
+          param[key] = Number(this.$route.query[key])
+        } else {
+          param[key] = this.$route.query[key]
+        }
       }
     }
-
     this.$emit('input', param)
   },
   methods: {
     updateUrl() {
-      let query_str = ''
-      for (let key in this.value) {
-        query_str += key + '=' + JSON.stringify(this.value[key]) + '&'
+      let param = JSON.parse(JSON.stringify(this.value))
+      for (let key in param) {
+        if (Array.isArray(param[key])) {
+          param[key] = JSON.stringify(param[key])
+        }
       }
 
-      this.$router.push(this.$router.history.current.fullPath + '?' + query_str)
+      this.$router.push({
+        path: this.$router.history.current.path,
+        query: param
+      })
 
       this.callback()
     }

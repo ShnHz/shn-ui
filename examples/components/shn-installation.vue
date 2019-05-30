@@ -59,7 +59,7 @@
     </div>
 
     <!-- 常用动效 -->
-    <h3 class="demo-table-title">常用动效</h3>
+    <h3 class="demo-table-title" @click="$refs.urlparam.updateUrl()">常用动效</h3>
     <div class="demo-code-block">
       <p>transition: all 0.2s linear;</p>
     </div>
@@ -67,6 +67,8 @@
     <!-- 开始使用 -->
     <h3 class="demo-table-title">开始使用</h3>
     <p class="demo-introduction">至此，一个基于 Vue 安装了 Shn-ui插件 的开发环境已经搭建完毕。各个组件的使用方法请参阅它们各自的文档。</p>
+
+    <shn-url-param :callback="getInfo" ref="urlparam" v-model="param"/>
   </div>
 </template>
 
@@ -74,9 +76,19 @@
 export default {
   name: 'shn-installation',
   data() {
-    return {}
+    return {
+      param: {
+        a: 21,
+        b: 'sad',
+        c: [1, 2, 3]
+      }
+    }
   },
-  methods: {}
+  methods: {
+    getInfo() {
+      console.log(1)
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
