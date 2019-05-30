@@ -35,7 +35,7 @@ export default {
       }
     }
     this.$emit('input', param)
-    this.callback()
+    this.updateUrl()
   },
   methods: {
     updateUrl() {
