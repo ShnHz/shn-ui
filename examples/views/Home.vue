@@ -76,6 +76,11 @@ export default {
               path: '#/component/img-card'
             },
             {
+              id: 12,
+              name: 'ModelMask 模块蒙版',
+              path: '#/component/model-mask'
+            },
+            {
               id: 3,
               group: '其他',
               name: 'Collapse 折叠动画盒子',

@@ -13,6 +13,7 @@ import shnUploadImgDemo from '../components/shn-upload-img-demo'
 import shnAnchorDemo from '../components/shn-anchor-demo'
 import shnDividerDemo from '../components/shn-divider-demo'
 import shnMenuSimpleDemo from '../components/shn-menu-simple-demo'
+import shnModelMaskDemo from '../components/shn-model-mask-demo'
 
 export default [{
         path: '/component/installation',
@@ -119,6 +120,14 @@ export default [{
         path: '/component/meunsimple',
         name: 'shnMenuSimpleDemo',
         component: shnMenuSimpleDemo,
+        meta: {
+            title: '组件|SHN-UI'
+        }
+    },
+    {
+        path: '/component/model-mask',
+        name: 'shnModelMaskDemo',
+        component: shnModelMaskDemo,
         meta: {
             title: '组件|SHN-UI'
         }

@@ -27,6 +27,7 @@ import MenuSimple from './shn-menu-simple'
 import PulldownRefresh from './shn-pulldown-refresh'
 import LoadingPage from './shn-loading-page'
 import UrlParam from './shn-url-param'
+import ModelMask from './shn-model-mask'
 
 const components = [
     Input,
@@ -50,7 +51,8 @@ const components = [
     MenuSimple,
     PulldownRefresh,
     LoadingPage,
-    UrlParam
+    UrlParam,
+    ModelMask
 ]
 
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册
@@ -89,5 +91,6 @@ export default {
     Divider,
     MenuSimple,
     PulldownRefresh,
-    LoadingPage
+    LoadingPage,
+    ModelMask
 }
