@@ -15,6 +15,7 @@
 
     <shn-anchor>
       <shn-anchor-link href="model-mask-simple" title="基础用法"/>
+      <shn-anchor-link href="model-mask-open-display" title="常显"/>
       <shn-anchor-link href="api" title="API"/>
     </shn-anchor>
 
@@ -27,6 +28,18 @@
       </template>
       <template v-slot:code>
         <code class="html">{{fCode(simple.code.html)}}</code>
+      </template>
+    </shn-el-demo-block>
+
+    <!-- 基础用法DEMO -->
+    <shn-el-demo-block :height="250" :title="'常显'" id="model-mask-open-display">
+      <template v-slot:demo>
+        <shn-model-mask ofenDisplay>
+          <img alt src="https://shnhz.github.io/shn-ui/img/Koala.jpg" style="width:300px">
+        </shn-model-mask>
+      </template>
+      <template v-slot:code>
+        <code class="html">{{fCode(ofenDisplay.code.html)}}</code>
       </template>
     </shn-el-demo-block>
 
@@ -53,6 +66,15 @@ export default {
           `
         }
       },
+      ofenDisplay: {
+        code: {
+          html: `
+          <shn-model-mask ofenDisplay>
+            <img alt src="https://shnhz.github.io/shn-ui/img/Koala.jpg" style="width:300px">
+          </shn-model-mask>
+          `
+        }
+      },
       api: [
         {
           parameter: 'delbtn',
@@ -60,6 +82,13 @@ export default {
           dataTypes: 'Boolean',
           optional: 'true / false',
           default: 'true'
+        },
+        {
+          parameter: 'ofenDisplay',
+          description: '是否开启常显示',
+          dataTypes: 'Boolean',
+          optional: 'true / false',
+          default: 'false'
         }
       ]
     }
