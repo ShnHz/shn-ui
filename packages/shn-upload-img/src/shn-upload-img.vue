@@ -7,7 +7,7 @@
       v-for="(item,index) in list"
     >
       <div class="img-box">
-        <img :src="item">
+        <img :src="item" />
         <div class="img-box-mask">
           <i
             @click="previewImg = item;previewImgShow = true"
@@ -28,7 +28,7 @@
           name="zjimg"
           ref="imgInput"
           type="file"
-        >
+        />
         <div>
           <i class="shni shn-plus" style="font-size:24px"></i>
           <p>{{addText}}</p>
@@ -36,8 +36,8 @@
       </div>
     </div>
 
-    <shn-preview-img :visible.sync="previewImgShow" v-model="previewImg"/>
-    <shn-modal :visible.sync="cropperShow" title="裁剪图片" v-if="cropper" :maskClosable="false">
+    <shn-preview-img :visible.sync="previewImgShow" v-model="previewImg" />
+    <shn-modal :maskClosable="false" :visible.sync="cropperShow" title="裁剪图片" v-if="cropper">
       <template v-slot:body>
         <div style="width:600px;height:500px">
           <vue-cropper

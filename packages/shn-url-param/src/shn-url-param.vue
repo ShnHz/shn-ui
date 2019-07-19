@@ -26,16 +26,24 @@ export default {
           param[key] = this.$route.query[key]
             .replace('[', '')
             .replace(']', '')
+            .replace(/\"/g, '')
             .split(',')
         } else if (typeof param[key] == 'number') {
           param[key] = Number(this.$route.query[key])
+        } else if (typeof param[key] == 'boolean') {
+          param[key] = JSON.parse(this.$route.query[key])
         } else {
           param[key] = this.$route.query[key]
         }
       }
     }
     this.$emit('input', param)
-    this.updateUrl()
+
+    if (JSON.stringify(this.$route.query) == '{}') {
+      this.updateUrl()
+    } else {
+      this.callback()
+    }
   },
   methods: {
     updateUrl() {

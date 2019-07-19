@@ -113,7 +113,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .shn-preview-img {
-  z-index: 800;
+  z-index: 9990;
   position: fixed;
   width: 100%;
   height: 100%;
