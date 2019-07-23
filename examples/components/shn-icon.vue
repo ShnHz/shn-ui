@@ -4,9 +4,9 @@
     <p class="demo-introduction">语义化的矢量图形。</p>
 
     <shn-anchor>
-      <shn-anchor-link href="shn-simple" title="使用方法"/>
-      <shn-anchor-link href="shn-ofen-list" title="常用图标"/>
-      <shn-anchor-link href="shn-list" title="图标集合"/>
+      <shn-anchor-link href="shn-simple" title="使用方法" />
+      <shn-anchor-link href="shn-ofen-list" title="常用图标" />
+      <shn-anchor-link href="shn-list" title="图标集合" />
     </shn-anchor>
 
     <div class="demo-tip">
@@ -18,7 +18,7 @@
         >https://www.shni.cn/collections/detail?spm=a313x.7781069.1998910419.de12df413&cid=9402</a>
       </p>
     </div>
-    <shn-backtop :target="'router_view_box'" :visibilityHeight="200"/>
+    <shn-backtop :target="'router_view_box'" :visibilityHeight="200" />
 
     <div class="shn-shn" id="shn-simple">
       <!-- 使用方法DEMO -->
@@ -105,7 +105,7 @@ export default {
           `
         }
       },
-      ofen_icon_list:[
+      ofen_icon_list: [
         'shn-reload',
         'shn-message',
         'shn-poweroff',
@@ -118,6 +118,7 @@ export default {
         'shn-adduser',
         'shn-addteam',
         'shn-user',
+        'shn-steam',
         'shn-file-image',
         'shn-file-unknown',
         'shn-file',
@@ -615,6 +616,7 @@ export default {
         'shn-apple-fill',
         'shn-HTML-fill',
         'shn-windows-fill',
+        'shn-steam',
         'shn-QQ',
         'shn-twitter',
         'shn-skype-fill',
@@ -661,6 +663,7 @@ export default {
         'shn-IE-square-fill',
         'shn-medium-square-fill',
         'shn-linkedin-fill',
+        'shn-steam-fill',
         'shn-QQ-square-fill',
         'shn-reddit-square-fill',
         'shn-twitter-square-fill',
