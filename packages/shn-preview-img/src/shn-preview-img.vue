@@ -11,7 +11,7 @@
           @click="!zoomType ? zoomIn():zoomOut()"
           alt
           ref="img"
-        >
+        />
       </div>
     </div>
   </transition>
@@ -40,6 +40,12 @@ export default {
   },
   watch: {
     visible: function(val) {
+      if (val) {
+        document.addEventListener('keyup', this.keyCodeEsc)
+      } else {
+        document.removeEventListener('keyup', this.keyCodeEsc)
+      }
+
       let img = new Image()
       img.src = this.value
 
@@ -106,6 +112,11 @@ export default {
             overflow: 'hidden'
           }
           break
+      }
+    },
+    keyCodeEsc(e) {
+      if (e.keyCode == 27) {
+        this.$emit('update:visible', false)
       }
     }
   }

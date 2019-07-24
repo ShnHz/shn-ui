@@ -4,12 +4,13 @@
     <p class="demo-introduction">展示统计数值</p>
 
     <shn-anchor>
-      <shn-anchor-link href="statistic-simple" title="基础用法"/>
-      <shn-anchor-link href="statistic-unit" title="单位"/>
-      <shn-anchor-link href="statistic-fontsize" title="字体大小"/>
-      <shn-anchor-link href="statistic-decimalNum" title="保留小数位数及千分位分割"/>
-      <shn-anchor-link href="statistic-percent" title="百分比"/>
-      <shn-anchor-link href="api" title="API"/>
+      <shn-anchor-link href="statistic-simple" title="基础用法" />
+      <shn-anchor-link href="statistic-unit" title="单位" />
+      <shn-anchor-link href="statistic-prefix" title="前缀" />
+      <shn-anchor-link href="statistic-fontsize" title="字体大小" />
+      <shn-anchor-link href="statistic-decimalNum" title="保留小数位数及千分位分割" />
+      <shn-anchor-link href="statistic-percent" title="百分比" />
+      <shn-anchor-link href="api" title="API" />
     </shn-anchor>
 
     <!-- 基础用法DEMO -->
@@ -20,7 +21,7 @@
       id="statistic-simple"
     >
       <template v-slot:demo>
-        <shn-statistic v-model="simple.value"/>
+        <shn-statistic v-model="simple.value" />
       </template>
       <template v-slot:code>
         <code class="html">{{fCode(simple.code.html)}}</code>
@@ -31,11 +32,23 @@
     <!-- 单位DEMO -->
     <shn-el-demo-block :height="250" :introduction="'数值后加入自定义单位'" :title="'单位'" id="statistic-unit">
       <template v-slot:demo>
-        <shn-statistic :unit="'￥'" v-model="unit.value"/>
+        <shn-statistic :unit="'￥'" v-model="unit.value" />
       </template>
       <template v-slot:code>
         <code class="html">{{fCode(unit.code.html)}}</code>
         <code class="javascript">{{fCode(unit.code.javascript)}}</code>
+      </template>
+    </shn-el-demo-block>
+
+    <!-- 前缀DEMO -->
+    <shn-el-demo-block :height="250" :introduction="'数值前加入前缀'" :title="'前缀'" id="statistic-prefix">
+      <template v-slot:demo>
+        <shn-statistic :prefix="prefix.prefix" v-model="prefix.value" style="color:#67C23A" :decimalNum="0"/>
+        <shn-statistic :prefix="prefix.prefix_2" style="margin-left:10px;color:#F56C6C" v-model="prefix.value" :decimalNum="0"/>
+      </template>
+      <template v-slot:code>
+        <code class="html">{{fCode(prefix.code.html)}}</code>
+        <code class="javascript">{{fCode(prefix.code.javascript)}}</code>
       </template>
     </shn-el-demo-block>
 
@@ -69,7 +82,7 @@
       id="statistic-decimalNum"
     >
       <template v-slot:demo>
-        <shn-statistic :decimalNum="1" :groupSeparator="false" v-model="decimalNum.value"/>
+        <shn-statistic :decimalNum="1" :groupSeparator="false" v-model="decimalNum.value" />
       </template>
       <template v-slot:code>
         <code class="html">{{fCode(decimalNum.code.html)}}</code>
@@ -85,7 +98,7 @@
       id="statistic-percent"
     >
       <template v-slot:demo>
-        <shn-statistic :unit="'%'" percent v-model="percent.value"/>
+        <shn-statistic :unit="'%'" percent v-model="percent.value" />
       </template>
       <template v-slot:code>
         <code class="html">{{fCode(percent.code.html)}}</code>
@@ -97,7 +110,7 @@
     <div id="api">
       <h3 class="demo-table-title">API</h3>
       <P class="demo-table-introduction">属性说明如下：</P>
-      <shn-table-simple :data="api" :type="'demo'"/>
+      <shn-table-simple :data="api" :type="'demo'" />
     </div>
   </div>
 </template>
@@ -142,6 +155,29 @@ export default {
           `
         },
         value: '800547.20'
+      },
+      //前缀DEMO
+      prefix: {
+        code: {
+          html: `
+          <shn-statistic v-model="prefix.value" :prefix="prefix.prefix" style="color:#67C23A" :decimalNum="0"/>
+          <shn-statistic v-model="prefix.value" :prefix="prefix.prefix_2" style="color:#F56C6C" :decimalNum="0"/>
+          `,
+          javascript: `
+          export default {
+            data() {
+              return {
+                value:'8',
+                prefix:'<i class="shni shn-arrowup" />',
+                prefix_2: '<i class="shni shn-arrowdown" />'
+              }
+            }
+          }
+          `
+        },
+        value: '8',
+        prefix: '<i class="shni shn-arrowup" />',
+        prefix_2: '<i class="shni shn-arrowdown" />'
       },
       //字体大小DEMO
       fontSize: {
@@ -201,9 +237,16 @@ export default {
         {
           parameter: 'value / v-model',
           description: '绑定值',
-          dataTypes: 'Number',
+          dataTypes: 'Number / String',
           optional: '',
           default: '0'
+        },
+        {
+          parameter: 'prefixFontSize',
+          description: '前缀字体大小',
+          dataTypes: 'Number',
+          optional: '',
+          default: '18'
         },
         {
           parameter: 'intFontSize',
@@ -227,6 +270,13 @@ export default {
           default: '16'
         },
         {
+          parameter: 'prefix',
+          description: '前缀标识符',
+          dataTypes: 'String',
+          optional: '',
+          default: ''
+        },
+        {
           parameter: 'unit',
           description: '单位标识符',
           dataTypes: 'String',
@@ -246,6 +296,13 @@ export default {
           dataTypes: 'Number',
           optional: '',
           default: '2'
+        },
+        {
+          parameter: 'prefixFontClass',
+          description: '前缀自定义类名',
+          dataTypes: 'String',
+          optional: '',
+          default: ''
         },
         {
           parameter: 'intFontClass',

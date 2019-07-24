@@ -2,13 +2,16 @@
   <!-- 
     Input Attributes
 
-      value / v-model	    | 绑定值	                       number
+      value / v-model	    | 绑定值	                       number/string
+      prefixFontSize      | 前缀字体大小                    number
       intFontSize  	      | 整数位字体大小	                number
       decimalFontSize     | 小数位字体大小                  number
       unitFontSize        | 单位字体大小                    number
       unit                | 单位标识符                      string
+      prefix              | 前缀标识符                      string
       groupSeparator      | 是否开启千分位                  boolean
       decimalNum          | 保留几位小数                    number
+      prefixFontClass     | 前缀标识符自定义类名             string
       intFontClass  	    | 整数位自定义类名	              string
       decimalFontClass    | 小数位自定义类名                string
       unitFontClass       | 单位自定义类名                  string
@@ -16,13 +19,19 @@
 
   -->
   <span class="shn-statistic">
+    <span
+      :class="prefixFontClass"
+      :style="{FontSize:prefixFontSize + 'px'}"
+      class="prefix"
+      v-html="prefix"
+    ></span>
     <span :class="intFontClass" :style="{fontSize:intFontSize + 'px'}" class="integer">{{integer}}</span>
     <span
       :class="decimalFontClass"
       :style="{fontSize:decimalFontSize + 'px'}"
       class="decimal"
     >{{decimal}}</span>
-    <span :class="unitFontClass" :style="{fontSize:unitFontSize + 'px'}" class="unit">{{unit}}</span>
+    <span :class="unitFontClass" :style="{fontSize:unitFontSize + 'px'}" class="unit" v-html="unit"></span>
   </span>
 </template>
 <script>
@@ -41,11 +50,19 @@ export default {
       type: Number,
       default: 16
     },
+    prefixFontSize: {
+      type: Number,
+      default: 18
+    },
     unitFontSize: {
       type: Number,
       default: 16
     },
     unit: {
+      type: String,
+      default: ''
+    },
+    prefix: {
       type: String,
       default: ''
     },
@@ -58,6 +75,10 @@ export default {
       default: 2
     },
     intFontClass: {
+      type: String,
+      default: ''
+    },
+    prefixFontClass: {
       type: String,
       default: ''
     },
