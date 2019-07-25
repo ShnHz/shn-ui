@@ -36,7 +36,7 @@
       </div>
     </div>
 
-    <shn-preview-img :visible.sync="previewImgShow" v-model="previewImg" />
+    <shn-preview-img :list="list" :visible.sync="previewImgShow" v-model="previewImg" />
     <shn-modal :maskClosable="false" :visible.sync="cropperShow" title="裁剪图片" v-if="cropper">
       <template v-slot:body>
         <div style="width:600px;height:500px">

@@ -134,6 +134,7 @@ export default {
         'shn-up',
         'shn-down',
         'shn-question',
+        'shn-close_1',
         'shn-close',
         'shn-line',
         'shn-drag',

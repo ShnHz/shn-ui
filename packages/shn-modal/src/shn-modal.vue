@@ -13,7 +13,7 @@
         <div class="shn-modal-content-box">
           <div @click="$emit('update:visible', false)" class="shn-modal-content-close">
             <span class="shn-modal-close-x">
-              <i class="iconfont icon-close"></i>
+              <i class="shni shn-close_1"></i>
             </span>
           </div>
           <div class="shn-modal-content-header">
@@ -123,7 +123,7 @@ export default {
         -webkit-transition: color 0.3s;
         transition: color 0.3s;
         &:hover {
-          color: rgba(0, 0, 0, 0.75);
+          // color: rgba(0, 0, 0, 0.75);
           text-decoration: none;
         }
         .shn-modal-close-x {

@@ -2,21 +2,40 @@
   <transition name="shn-fade">
     <div class="shn-preview-img" v-if="show">
       <div class="shn-preview-img-topbar">
-        <i @click="$emit('update:visible', false)" class="shni shn-close"></i>
+        <i @click="$emit('update:visible', false)" class="shni shn-close_1"></i>
       </div>
       <div :style="imgBoxStyle" class="img-box">
         <img
-          :class="{'img-width100':imgBoxStyleType === 1 && zoomType,'zoom-in':!zoomType,'zoom-out':zoomType}"
+          :class="{'img-height100':imgBoxStyleType === 1 && zoomType,'zoom-in':!zoomType,'zoom-out':zoomType}"
           :src="value"
           @click="!zoomType ? zoomIn():zoomOut()"
           alt
           ref="img"
         />
       </div>
+
+      <div class="shn-preview-img__container" v-if="list.length != 0">
+        <div
+          @click="arrowRight()"
+          class="shn-preview-img__arrow shn-preview-img__arrow--right"
+          v-show="listIndex != list.length-1"
+        >
+          <i class="shni shn-right"></i>
+        </div>
+        <div
+          @click="arrowLeft()"
+          class="shn-preview-img__arrow shn-preview-img__arrow--left"
+          v-show="listIndex != 0"
+        >
+          <i class="shni shn-left"></i>
+        </div>
+      </div>
     </div>
   </transition>
 </template>
 <script>
+import COMMONS from '../../commons/commons'
+
 export default {
   name: 'shn-preview-img',
   props: {
@@ -27,23 +46,30 @@ export default {
     visible: {
       type: Boolean,
       default: false
+    },
+    list: {
+      type: Array,
+      default: function() {
+        return []
+      }
     }
   },
   data() {
     return {
       show: this.visible,
-      list: this.value,
-      imgBoxStyle: '',
+      imgBoxStyle: {},
       imgBoxStyleType: 0,
-      zoomType: false
+      zoomType: false,
+
+      listIndex: 0
     }
   },
   watch: {
     visible: function(val) {
       if (val) {
-        document.addEventListener('keyup', this.keyCodeEsc)
+        this.afterOpen()
       } else {
-        document.removeEventListener('keyup', this.keyCodeEsc)
+        this.beforeClose()
       }
 
       let img = new Image()
@@ -74,9 +100,9 @@ export default {
           break
         case 1:
           this.imgBoxStyle = {
-            width: '768px',
+            width: 'auto',
             height: '100%',
-            overflow: 'auto'
+            overflow: 'hidden'
           }
           break
         case 2:
@@ -118,6 +144,28 @@ export default {
       if (e.keyCode == 27) {
         this.$emit('update:visible', false)
       }
+    },
+    afterOpen() {
+      COMMONS.afterOpen()
+      document.addEventListener('keyup', this.keyCodeEsc)
+
+      for (let i = 0; i < this.list.length; i++) {
+        if (this.list[i] == this.value) {
+          this.listIndex = i
+        }
+      }
+    },
+    beforeClose() {
+      COMMONS.beforeClose()
+      document.removeEventListener('keyup', this.keyCodeEsc)
+    },
+    arrowRight() {
+      this.listIndex++
+      this.$emit('input', this.list[this.listIndex])
+    },
+    arrowLeft() {
+      this.listIndex--
+      this.$emit('input', this.list[this.listIndex])
     }
   }
 }
@@ -182,11 +230,42 @@ export default {
       width: 100%;
       height: auto;
     }
+    .img-height100 {
+      height: 100%;
+      width: auto;
+    }
     .zoom-in {
       cursor: zoom-in;
     }
     .zoom-out {
       cursor: zoom-out;
+    }
+  }
+  .shn-preview-img__container {
+    .shn-preview-img__arrow {
+      width: 56px;
+      height: 56px;
+      line-height: 56px;
+      cursor: pointer;
+      transition: 0.3s;
+      border-radius: 50%;
+      background: rgba(31, 45, 61, 0.23);
+      color: #fff;
+      position: absolute;
+      top: 50%;
+      z-index: 10;
+      transform: translateY(-50%);
+      text-align: center;
+      font-size: 12px;
+      &:hover {
+        background: rgba(31, 45, 61, 0.35);
+      }
+      &.shn-preview-img__arrow--right {
+        right: 32px;
+      }
+      &.shn-preview-img__arrow--left {
+        left: 32px;
+      }
     }
   }
 }

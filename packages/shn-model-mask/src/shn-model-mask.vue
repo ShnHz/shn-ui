@@ -1,10 +1,10 @@
 <template>
   <div @click="click" class="shn-model-mask">
     <div class="shn-model-mask-height">
-      <slot/>
+      <slot />
       <div class="mask" title="查看详情">
         <div @click.stop="del" class="del" title="删除" v-if="delbtn">
-          <i class="shni shn-close"></i>
+          <i class="shni shn-close_1"></i>
         </div>
       </div>
       <div class="ofenDisplay" v-if="ofenDisplay">
@@ -49,6 +49,7 @@ export default {
     align-items: center;
     justify-content: center;
     .mask {
+      z-index: 1;
       overflow: hidden;
       position: absolute;
       width: 100%;
@@ -70,11 +71,18 @@ export default {
           position: relative;
           top: 58px;
           left: 23px;
-          color: #f56c6c;
+          color: #909399;
+          transition: color 0.3s ease;
+        }
+        &:hover {
+          i {
+            color: #f56c6c;
+          }
         }
       }
     }
     .ofenDisplay {
+      z-index: 0;
       opacity: 0.5;
       background: rgba(255, 255, 255, 0.7);
       overflow: hidden;
@@ -88,9 +96,9 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
-      i{
+      i {
         font-size: 80px;
-        color: #808080
+        color: #808080;
       }
     }
   }
