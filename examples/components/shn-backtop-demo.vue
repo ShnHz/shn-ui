@@ -52,7 +52,7 @@ export default {
       simple: {
         code: {
           html: `
-          <shn-backtop :target="'router_view_box'" :visibilityHeight="100"/>
+          <shn-backtop :visibilityHeight="100"/>
           `
         }
       },

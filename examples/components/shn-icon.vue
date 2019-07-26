@@ -18,7 +18,8 @@
         >https://www.shni.cn/collections/detail?spm=a313x.7781069.1998910419.de12df413&cid=9402</a>
       </p>
     </div>
-    <shn-backtop :target="'router_view_box'" :visibilityHeight="200" />
+    
+    <shn-backtop :visibilityHeight="300" />
 
     <div class="shn-shn" id="shn-simple">
       <!-- 使用方法DEMO -->

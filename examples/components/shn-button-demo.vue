@@ -100,7 +100,7 @@
 
 <script>
 export default {
-  name: 'shn-backtop-demo',
+  name: 'shn-button-demo',
   data() {
     return {
       a: document.getElementById('router_view_box'),
