@@ -11,10 +11,15 @@
       animation           | 动画                           boolean
       mode                | 布局方式                       string(horizontal|vertical)
       margin              | 边距                           number
+      size                | 尺寸                           large/medium/small/mini
 
   -->
   <div
-    :class="{'shn-input_frame':pattern === 'frame','shn-input_line':pattern === 'line','inline-block':mode === 'horizontal','padding-top25':pattern === 'line' && animation}"
+    :class="{'shn-input_frame':pattern === 'frame',
+    'shn-input_line':pattern === 'line',
+    'inline-block':mode === 'horizontal',
+    'padding-top25':pattern === 'line' && animation
+    }"
     :style="{margin:margin+'px'}"
     class="shn-input"
   >
@@ -27,7 +32,7 @@
       @input="handleInput"
       class="shn-input__inner"
       ref="input"
-    >
+    />
     <label
       :class="{'shn-input__label__focus':value != ''}"
       @click="$refs.input.focus()"
@@ -75,6 +80,10 @@ export default {
     margin: {
       type: Number,
       default: 0
+    },
+    size: {
+      type: String,
+      default: 'mini'
     }
   },
   data() {
@@ -138,7 +147,7 @@ export default {
 }
 .shn-input_frame {
   border-radius: 5px;
-  background: #b4bccc;
+  // background: #b4bccc;
   .shn-input__inner {
     border-radius: 4px;
     border: 1px solid #dcdfe6;

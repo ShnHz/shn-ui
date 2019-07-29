@@ -38,3 +38,33 @@
 .border-right {
     border-right: 1px solid #f0f2f5;
 }
+
+.popper__arrow,
+.popper__arrow::after {
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+}
+
+.popper__arrow {
+    border-width: 6px;
+    filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.03));
+
+    top: -6px;
+    left: 50%;
+    margin-right: 3px;
+    border-top-width: 0;
+    border-bottom-color: #ebeef5;
+}
+
+.popper__arrow::after {
+    top: -5px;
+    margin-left: -6px;
+    border-top-width: 0;
+    border-bottom-color: #fff;
+    content: ' ';
+    border-width: 6px;
+}

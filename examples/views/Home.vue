@@ -24,7 +24,7 @@
         </ul>
       </div>
       <div class="content" id="router_view_box">
-        <router-view/>
+        <router-view />
       </div>
     </div>
   </div>
@@ -63,6 +63,11 @@ export default {
               id: 8,
               name: 'UploadImg 上传图片',
               path: '#/component/uploadimg'
+            },
+            {
+              id: 13,
+              name: 'DatePicker 日期选择器',
+              path: '#/component/date-picker'
             },
             {
               id: 1,
@@ -172,6 +177,12 @@ export default {
         break
       case '/component/meunsimple':
         this.active = 11
+        break
+      case '/component/model-mask':
+        this.active = 12
+        break
+      case '/component/date-picker':
+        this.active = 13
         break
     }
   },

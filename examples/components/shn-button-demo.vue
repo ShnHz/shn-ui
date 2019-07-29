@@ -20,7 +20,7 @@
           <shn-button type="primary">Primary</shn-button>
           <shn-button type="danger">Danger</shn-button>
           <shn-button type="warning">Warning</shn-button>
-          <shn-button shn="shn-search" type="primary">Search</shn-button>
+          <shn-button icon="shn-search" type="primary">Search</shn-button>
         </div>
         <div>
           <shn-button type="dashed">Dashed</shn-button>
@@ -113,7 +113,7 @@ export default {
             <shn-button type="primary">Primary</shn-button>
             <shn-button type="danger">Danger</shn-button>
             <shn-button type="warning">Warning</shn-button>
-            <shn-button shn="shn-search" type="primary">Search</shn-button>
+            <shn-button icon="shn-search" type="primary">Search</shn-button>
           </div>
           <div>
             <shn-button type="dashed">Dashed</shn-button>

@@ -18,11 +18,11 @@
       </div>
       <div class="demo-block-control"
            @click="showCode()">
-        <i class="iconfont "
+        <i class="shni "
            :class="{
             hovering_i: hover_animation,
-            'icon-caret-down': code_height === 0,
-            'icon-caret-up': code_height !== 0
+            'shn-caret-down': code_height === 0,
+            'shn-caret-up': code_height !== 0
           }"></i>
         <span :class="{ hovering_span: hover_animation }">{{
           code_height === 0 ? '显示代码' : '隐藏代码'

@@ -5,6 +5,8 @@ preview-img: 800
 
 drawer-mask: 199
 
+drop-down-panel: 150
+
 default-backtop:101
 
 footertoolbar:100
