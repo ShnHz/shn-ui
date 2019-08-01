@@ -18,9 +18,8 @@ Vue.prototype.getlastday = function (num) {
   let date_e = new Date().getTime()
   let date_s = date_e - num * 24 * 60 * 60 * 1000
 
-  return [this.formatdate(date_s), this.formatdate(date_e)]
+  return [this.formatdate(date_s), this.gettoday()]
 }
-
 
 //格式化日期 yyyy-MM-dd
 Vue.prototype.formatdate = function (date) {

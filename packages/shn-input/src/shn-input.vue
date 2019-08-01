@@ -10,7 +10,6 @@
       disabled            | 禁用                           boolean
       animation           | 动画                           boolean
       mode                | 布局方式                       string(horizontal|vertical)
-      margin              | 边距                           number
       size                | 尺寸                           large/medium/small/mini
 
   -->
@@ -20,7 +19,6 @@
     'inline-block':mode === 'horizontal',
     'padding-top25':pattern === 'line' && animation
     }"
-    :style="{margin:margin+'px'}"
     class="shn-input"
   >
     <input
@@ -29,6 +27,8 @@
       :style="{height:height+'px',lineHeight:height + 'px'}"
       :type="type"
       :value="value"
+      @blur="$emit('blur')"
+      @focus="$emit('focus')"
       @input="handleInput"
       class="shn-input__inner"
       ref="input"
@@ -76,10 +76,6 @@ export default {
     animation: {
       type: Boolean,
       default: true
-    },
-    margin: {
-      type: Number,
-      default: 0
     },
     size: {
       type: String,

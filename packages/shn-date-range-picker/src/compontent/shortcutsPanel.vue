@@ -26,18 +26,25 @@
     <div>
       <shn-input
         :height="28"
+        @blur="handleDate(startDate)"
         pattern="frame"
-        style="width:102px;margin-right:11px"
+        style="width:100px;margin-right:14px"
         v-model="startDate"
       />
-      <shn-input :height="28" pattern="frame" style="width:102px" v-model="endDate" />
+      <shn-input
+        :height="28"
+        @blur="handleDate(endDate)"
+        pattern="frame"
+        style="width:100px"
+        v-model="endDate"
+      />
     </div>
 
     <!-- 按钮 -->
     <shn-divider style="margin:12px 0" />
     <div style="margin-top:5px;text-align:right">
-      <shn-button style="height:28px">取消</shn-button>
-      <shn-button style="height:28px;margin-right:0" type="primary">确认</shn-button>
+      <shn-button @click="cancel" style="height:28px">取消</shn-button>
+      <shn-button @click="confirm" style="height:28px;margin-right:0" type="primary">确认</shn-button>
     </div>
   </div>
 </template>
@@ -47,6 +54,12 @@ export default {
     value: {
       type: [Array, String],
       default: ''
+    }
+  },
+  watch: {
+    value: function(val) {
+      this.startDate = val[0]
+      this.endDate = val[1]
     }
   },
   data() {
@@ -109,6 +122,32 @@ export default {
     },
     handleRanges(item) {
       this.rangesActive = item.value
+      switch (item.value) {
+        case 'lastweek':
+          this.$emit('input', this.getlastday(7))
+          break
+        case 'last30':
+          this.$emit('input', this.getlastday(30))
+          break
+        case 'last90':
+          this.$emit('input', this.getlastday(90))
+          break
+        case 'last180':
+          this.$emit('input', this.getlastday(180))
+          break
+        case 'lastyear':
+          this.$emit('input', this.getlastday(365))
+          break
+      }
+    },
+    handleDate(){
+      // this.rulesDate()
+    },
+    confirm() {
+      this.$emit('confirm')
+    },
+    cancel() {
+      this.$emit('cancel')
     }
   }
 }

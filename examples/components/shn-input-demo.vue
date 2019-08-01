@@ -204,13 +204,6 @@ export default {
           dataTypes: 'String',
           optional: 'horizontal / vertical',
           default: 'horizontal'
-        },
-        {
-          parameter: 'margin',
-          description: '边距',
-          dataTypes: 'String',
-          optional: '',
-          default: '0'
         }
       ]
     }

@@ -14,7 +14,7 @@
     <transition name="drop-down">
       <div class="shn-date-picker-panel" v-show="show">
         <div class="popper__arrow" style="left:30px"></div>
-        <shortcutsPanel v-model="value"/>
+        <shortcutsPanel @cancel="handleClose" @confirm="confirm" v-model="data" />
       </div>
     </transition>
   </div>
@@ -42,19 +42,29 @@ export default {
   created() {
     this.init()
   },
+  watch: {
+    value: function(val) {
+      this.data = val
+    }
+  },
   data() {
     return {
-      show: true
+      show: true,
+      data: this.value
     }
   },
   methods: {
     init() {
-      if (this.value == '') {
+      if (this.data == '') {
         this.$emit('input', this.getlastday(30))
       }
     },
     handleClose() {
       this.show = false
+    },
+    confirm() {
+      this.$emit('input', this.data)
+      this.handleClose()
     }
   }
 }
