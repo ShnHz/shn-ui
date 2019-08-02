@@ -146,7 +146,6 @@ export default {
       }
     },
     handleDate(value) {
-      console.log(this.rulesDate(value))
       return !this.rulesDate(value)
     },
     confirm() {

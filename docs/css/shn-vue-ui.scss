@@ -1,0 +1,21 @@
+$--color-white:#fff;
+
+$--color-primary:#409EFF !default;
+$--color-primary-light-2:mix($--color-white, $--color-primary, 20%) !default; /* 66b1ff */
+$--color-primary-light-5:mix($--color-white, $--color-primary, 50%) !default; /* a0cfff */
+
+$--color-success: #67c23a !default;
+$--color-success-light-2:mix($--color-white, $--color-success, 20%) !default; /* 85ce61 */
+$--color-success-light-5:mix($--color-white, $--color-success, 50%) !default; /* b3e19d */
+
+$--color-warning: #e6a23c !default;
+$--color-warning-light-2:mix($--color-white, $--color-warning, 20%) !default; /* ebb563 */
+$--color-warning-light-5:mix($--color-white, $--color-warning, 50%) !default; /* f3d19e */
+
+$--color-danger: #f56c6c !default;
+$--color-danger-light-2:mix($--color-white, $--color-danger, 20%) !default; /* f78989 */
+$--color-danger-light-5:mix($--color-white, $--color-danger, 50%) !default; /* fab6b6 */
+
+$--color-info: #909399 !default;
+$--color-info-light-2:mix($--color-white, $--color-info, 20%) !default; /*  */
+$--color-info-light-5:mix($--color-white, $--color-info, 50%) !default; /*  */

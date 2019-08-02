@@ -32,3 +32,26 @@
         transform: scale(1);
     }
 }
+
+/**下拉菜单**/
+.drop-down-enter-active {
+    animation: dropdown 0.1s;
+}
+
+.drop-down-leave-active {
+    animation: dropdown 0.1s reverse; //reverse表示和隐藏到显示动画相反
+}
+
+@keyframes dropdown {
+    0% {
+        transform-origin: 100% 0;
+        transform: scale(1, 0);
+        opacity: 0;
+    }
+
+    100% {
+        transform-origin: 100% 0;
+        transform: scale(1, 1);
+        opacity: 1;
+    }
+}
