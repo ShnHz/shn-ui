@@ -13,7 +13,7 @@
       v-if="icon != '' || circle"
     ></i>
     <span class="shn-button-span" v-if="!circle">
-      <slot/>
+      <slot />
     </span>
   </button>
 </template>
@@ -104,9 +104,9 @@ export default {
 
   &:hover,
   &:focus {
-    color: #40a9ff;
+    color: $--color-primary;
     background-color: #fff;
-    border-color: #40a9ff;
+    border-color: $--color-primary;
   }
   i + .shn-button-span {
     margin-left: 5px;
@@ -141,57 +141,57 @@ export default {
 
 .shn-button-success {
   color: #fff;
-  background-color: #67c23a;
-  border-color: #67c23a;
+  background-color: $--color-success;
+  border-color: $--color-success;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
   -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
   &:hover,
   &:focus {
     color: #fff;
-    background-color: #85ce61;
-    border-color: #85ce61;
+    background-color: $--color-success-light-2;
+    border-color: $--color-success-light-2;
   }
   &:after {
     background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
   }
   &.disabled {
     color: #fff;
-    background-color: #b3e19d;
-    border-color: #b3e19d;
+    background-color: $--color-success-light-5;
+    border-color: $--color-success-light-5;
     &:hover,
     &:focus {
       color: #fff;
-      background-color: #b3e19d;
-      border-color: #b3e19d;
+      background-color: $--color-success-light-5;
+      border-color: $--color-success-light-5;
     }
   }
 }
 .shn-button-primary {
   color: #fff;
-  background-color: #1890ff;
-  border-color: #1890ff;
+  background-color: $--color-primary;
+  border-color: $--color-primary;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
   -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
   &:hover,
   &:focus {
     color: #fff;
-    background-color: #40a9ff;
-    border-color: #40a9ff;
+    background-color: $--color-primary-light-2;
+    border-color: $--color-primary-light-2;
   }
   &:after {
     background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
   }
   &.disabled {
     color: #fff;
-    background-color: #a0cfff;
-    border-color: #a0cfff;
+    background-color: $--color-primary-light-5;
+    border-color: $--color-primary-light-5;
     &:hover,
     &:focus {
       color: #fff;
-      background-color: #a0cfff;
-      border-color: #a0cfff;
+      background-color: $--color-primary-light-5;
+      border-color: $--color-primary-light-5;
     }
   }
 }
@@ -210,57 +210,57 @@ export default {
 }
 .shn-button-danger {
   color: #fff;
-  background-color: #f56c6c;
-  border-color: #f56c6c;
+  background-color: $--color-danger;
+  border-color: $--color-danger;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
   -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
   &:hover,
   &:focus {
     color: #fff;
-    background-color: #f78989;
-    border-color: #f78989;
+    background-color: $--color-danger-light-2;
+    border-color: $--color-danger-light-2;
   }
   &:after {
     background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
   }
   &.disabled {
     color: #fff;
-    background-color: #fab6b6;
-    border-color: #fab6b6;
+    background-color: $--color-danger-light-5;
+    border-color: $--color-danger-light-5;
     &:hover,
     &:focus {
       color: #fff;
-      background-color: #fab6b6;
-      border-color: #fab6b6;
+      background-color: $--color-danger-light-5;
+      border-color: $--color-danger-light-5;
     }
   }
 }
 .shn-button-warning {
   color: #fff;
-  background-color: #e6a23c;
-  border-color: #e6a23c;
+  background-color: $--color-warning;
+  border-color: $--color-warning;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
   -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
   &:hover,
   &:focus {
     color: #fff;
-    background-color: #ebb563;
-    border-color: #ebb563;
+    background-color: $--color-warning-light-2;
+    border-color: $--color-warning-light-2;
   }
   &:after {
     background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
   }
   &.disabled {
     color: #fff;
-    background-color: #f3d19e;
-    border-color: #f3d19e;
+    background-color: $--color-warning-light-5;
+    border-color: $--color-warning-light-5;
     &:hover,
     &:focus {
       color: #fff;
-      background-color: #f3d19e;
-      border-color: #f3d19e;
+      background-color: $--color-warning-light-5;
+      border-color: $--color-warning-light-5;
     }
   }
 }

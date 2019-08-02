@@ -257,7 +257,7 @@ export default {
       background: #fafafa;
       transition: border-color 0.3s ease;
       &:hover {
-        border-color: #409eff;
+        border-color: $--color-primary;
       }
       .shn-img-input {
         cursor: pointer;

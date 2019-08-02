@@ -165,7 +165,8 @@ export default {
       width: 8px;
       height: 8px;
       border-radius: 8px;
-      border: 2px solid #1890ff;
+      // border: 2px solid $--color-primary;
+      border: 2px solid mix(#000,$--color-primary,1);
       background-color: #fff;
       left: 50%;
       transition: all 0.3s ease-in-out;

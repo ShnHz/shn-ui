@@ -128,7 +128,7 @@ export default {
     }
     &:focus {
       outline: none;
-      border-color: #409eff;
+      border-color: $--color-primary;
     }
     &::-webkit-input-placeholder {
       /* WebKit browsers */

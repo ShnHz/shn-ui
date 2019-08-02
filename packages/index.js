@@ -3,7 +3,7 @@ import '../public/iconfont/iconfont.css'
 import '../public/css/shn-vue-ui-base.css'
 import '../public/css/animation.scss'
 import '../public/js/base.js'
-
+import '../public/js/rules.js'
 
 import Input from './shn-input'
 import Statistic from './shn-statistic'

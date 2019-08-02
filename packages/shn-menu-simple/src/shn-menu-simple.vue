@@ -102,7 +102,7 @@ export default {
       bottom: 0;
       left: 0;
       height: 2px;
-      background-color: #409eff;
+      background-color: $--color-primary;
       z-index: 1;
       transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
       list-style: none;
@@ -135,7 +135,7 @@ export default {
       a {
         cursor: pointer;
         i {
-          color: #409eff;
+          color: $--color-primary;
         }
         p {
           color: #222;

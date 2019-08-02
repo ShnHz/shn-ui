@@ -129,11 +129,11 @@ export default {
   line-height: 1.143;
   font-size: 12px;
   &:hover {
-    color: #40a9ff;
+    color: $--color-primary;
   }
 }
 .shn-anchor-link-active {
-  color: #40a9ff !important;
+  color: $--color-primary !important;
 }
 .shn-anchor-link-left {
   padding: 7px 16px 7px 0;

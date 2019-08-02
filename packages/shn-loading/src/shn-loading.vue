@@ -54,7 +54,7 @@ export default {
       height: 32px;
 
       border-radius: 50%;
-      background-color: #2d8cf0;
+      background-color: $--color-primary;
       width: 20px;
       height: 20px;
       -webkit-animation: ani-spin-bounce 1s 0s ease-in-out infinite;

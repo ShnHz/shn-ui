@@ -25,15 +25,17 @@
     <!-- 输入框 -->
     <div>
       <shn-input
+        :class="{'errorInput':startDateRules}"
         :height="28"
-        @blur="handleDate(startDate)"
+        @blur="startDateRules = handleDate(startDate)"
         pattern="frame"
         style="width:100px;margin-right:14px"
         v-model="startDate"
       />
       <shn-input
+        :class="{'errorInput':endDateRules}"
         :height="28"
-        @blur="handleDate(endDate)"
+        @blur="endDateRules = handleDate(endDate)"
         pattern="frame"
         style="width:100px"
         v-model="endDate"
@@ -113,7 +115,10 @@ export default {
       ],
 
       startDate: this.value[0],
-      endDate: this.value[1]
+      endDate: this.value[1],
+
+      startDateRules: false,
+      endDateRules: false
     }
   },
   methods: {
@@ -140,8 +145,9 @@ export default {
           break
       }
     },
-    handleDate(){
-      // this.rulesDate()
+    handleDate(value) {
+      console.log(this.rulesDate(value))
+      return !this.rulesDate(value)
     },
     confirm() {
       this.$emit('confirm')
@@ -163,7 +169,7 @@ export default {
       padding: 0 15px;
       margin: 0;
       background: #f5f5f5;
-      color: #409eff;
+      color: $--color-primary;
       cursor: pointer;
       font-size: 13px;
       transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -174,7 +180,7 @@ export default {
         border-radius: 0 4px 4px 0;
       }
       &.active {
-        background: #409eff;
+        background: $--color-primary;
         color: #fff;
       }
     }
@@ -188,14 +194,26 @@ export default {
       padding: 0 15px;
       margin-bottom: 8px;
       background: #f5f5f5;
-      color: #409eff;
+      color: $--color-primary;
       cursor: pointer;
       font-size: 13px;
       transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
       border-radius: 4px;
       &.active {
-        background: #409eff;
+        background: $--color-primary;
         color: #fff;
+      }
+    }
+  }
+
+  .errorInput {
+    input {
+      border: 1px solid $--color-danger !important;
+      &:focus {
+        border: 1px solid $--color-danger !important;
+      }
+      &:hover {
+        border: 1px solid $--color-danger !important;
       }
     }
   }
