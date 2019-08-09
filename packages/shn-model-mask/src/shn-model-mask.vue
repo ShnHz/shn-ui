@@ -3,8 +3,16 @@
     <div class="shn-model-mask-height">
       <slot />
       <div class="mask" title="查看详情">
-        <div @click.stop="del" class="del" title="删除" v-if="delbtn">
-          <i class="shni shn-close_1"></i>
+        <div class="btn-box">
+          <div @click.stop="preview" class="del" title="预览" v-if="previewbtn">
+            <i class="shni shn-search"></i>
+          </div>
+          <div @click.stop="edit" class="edit" title="编辑" v-if="editbtn">
+            <i class="shni shn-edit"></i>
+          </div>
+          <div @click.stop="del" class="del" title="删除" v-if="delbtn">
+            <i class="shni shn-delete"></i>
+          </div>
         </div>
       </div>
       <div class="ofenDisplay" v-if="ofenDisplay">
@@ -21,6 +29,14 @@ export default {
       type: Boolean,
       default: true
     },
+    editbtn: {
+      type: Boolean,
+      default: true
+    },
+    previewbtn: {
+      type: Boolean,
+      default: true
+    },
     ofenDisplay: {
       type: Boolean,
       default: false
@@ -30,8 +46,14 @@ export default {
     return {}
   },
   methods: {
+    preview() {
+      this.$emit('preview')
+    },
     del() {
       this.$emit('del')
+    },
+    edit() {
+      this.$emit('edit')
     },
     click() {
       this.$emit('click')
@@ -59,24 +81,29 @@ export default {
       background: rgba(0, 0, 0, 0.274);
       transition: all 0.3s;
       opacity: 0;
-      .del {
-        position: absolute;
-        right: -50px;
-        top: -50px;
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        // background: rgba(255, 255, 255, 0.5);
-        i {
-          position: relative;
-          top: 58px;
-          left: 23px;
-          color: #909399;
-          transition: color 0.3s ease;
-        }
-        &:hover {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .btn-box {
+        display: flex;
+        > div {
+          flex: 1;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.8);
+          transition: all 0.2s ease;
+          margin: 0 5px;
           i {
-            color: #f56c6c;
+            color: #909399;
+            font-size: 20px;
+          }
+          &:hover {
+            box-shadow: #000 0 5px 10px 0;
+            transform: translateY(-5px);
           }
         }
       }
