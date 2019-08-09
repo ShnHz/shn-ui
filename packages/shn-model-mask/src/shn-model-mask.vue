@@ -63,10 +63,12 @@ export default {
 </script>
 <style lang="scss" scoped>
 .shn-model-mask {
+  width: 100%;
   cursor: pointer;
   position: relative;
   display: inline-block;
   .shn-model-mask-height {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
