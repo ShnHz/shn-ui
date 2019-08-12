@@ -18,7 +18,21 @@
           v-if="startSelectYear < endSelectYear"
         ></i>
       </div>
-      <div class="day-panel-box_list clearfloat"></div>
+      <div class="day-panel-box_list clearfloat">
+        <table>
+          <tbody>
+            <tr>
+              <th>日</th>
+              <th>一</th>
+              <th>二</th>
+              <th>三</th>
+              <th>四</th>
+              <th>五</th>
+              <th>六</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     <!-- END -->
     <div class="day-panel-box">
@@ -313,21 +327,18 @@ export default {
       border-radius: 4px;
       height: 216px;
       overflow: hidden;
-      > div {
-        cursor: pointer;
-        display: inline-block;
-        width: 25%;
-        height: 72px;
-        line-height: 72px;
-        float: left;
-        text-align: center;
-        font-size: 12px;
-        transition: $--transition-all-2-ease;
-        &:hover {
-          background: #eee;
-        }
-        .day-panel-box_list_name {
-          font-size: 12px;
+      table {
+        padding: 8px 16px;
+        width: 100%;
+        tbody {
+          width: 100%;
+          th {
+            padding: 5px;
+            color: #606266;
+            font-weight: 400;
+            font-size: 12px;
+            border-bottom: 1px solid #ebeef5;
+          }
         }
       }
       .day-panel-box_list-select-item {
