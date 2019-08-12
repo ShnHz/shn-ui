@@ -41,7 +41,7 @@
         <div
           :class="{'month-panel-box_list-select-item':selectRange('end',item.num),'month-panel-box_list-select-item-in-range':inRange('end',item.num),'month-panel-box_list-select-item-disabled':disabled('end',item.num)}"
           :key="'month-list-'+item.name"
-          @click="handelSelect('start',item.num)"
+          @click="handelSelect('end',item.num)"
           v-for="(item) in monthList"
         >
           <div>
