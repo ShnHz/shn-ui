@@ -4,7 +4,7 @@
       <div class="year-panel-box_select">
         <p>Start</p>
         <i @click="handelRange('start','last')" class="shni shn-doubleleft"></i>
-        <span>{{startDateSelect[0]}}年 - {{startDateSelect[1]}}年</span>
+        <span>{{startDateSelect[0]}} 年 - {{startDateSelect[1]}} 年</span>
         <i
           @click="handelRange('start','next')"
           class="shni shn-doubleright"
@@ -29,7 +29,7 @@
           class="shni shn-doubleleft"
           v-if="startDateSelect[0] < endDateSelect[0]"
         ></i>
-        <span>{{endDateSelect[0]}}年 - {{endDateSelect[1]}}年</span>
+        <span>{{endDateSelect[0]}} 年 - {{endDateSelect[1]}} 年</span>
         <i @click="handelRange('end','next')" class="shni shn-doubleright"></i>
       </div>
       <div class="year-panel-box_list clearfloat">
@@ -193,6 +193,7 @@ export default {
       i {
         cursor: pointer;
         transition: $--transition-all-3-ease;
+        font-size: 12px;
         &:hover {
           color: $--color-primary;
         }

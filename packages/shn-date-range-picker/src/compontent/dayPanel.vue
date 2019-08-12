@@ -1,73 +1,44 @@
 <template>
-  <div class="quarter-panel">
+  <div class="day-panel">
     <!-- START -->
-    <div class="quarter-panel-box">
-      <div class="quarter-panel-box_select">
+    <div class="day-panel-box">
+      <div class="day-panel-box_select">
         <p>Start</p>
-        <i @click="handelRange('start','last')" class="shni shn-doubleleft"></i>
-        <span>{{startDateSelect}} 年</span>
+        <i @click="handelRangeYear('start','last')" class="shni shn-doubleleft"></i>
+        <i @click="handelRangeMonth('start','last')" class="shni shn-left"></i>
+        <span>{{startSelectYear}} 年 {{startSelectMonth}} 月</span>
         <i
-          @click="handelRange('start','next')"
+          @click="handelRangeMonth('start','next')"
+          class="shni shn-right"
+          v-if="startSelectMonth < endSelectMonth"
+        ></i>
+        <i
+          @click="handelRangeYear('start','next')"
           class="shni shn-doubleright"
-          v-if="startDateSelect < endDateSelect"
+          v-if="startSelectYear < endSelectYear"
         ></i>
       </div>
-      <div class="quarter-panel-box_list clearfloat">
-        <div
-          :class="{'quarter-panel-box_list-select-item':selectRange('start',item.listNum),
-          'quarter-panel-box_list-select-item-disabled':disabled('start',item.listNum[0]),
-          'quarter-panel-box_list-select-item-in-range':inRange('start',item.listNum[0])}"
-          :key="'quarter-list-'+item.name"
-          @click="handelSelect('start',item.listNum[0])"
-          v-for="(item) in quarterList"
-        >
-          <div>
-            <p class="quarter-panel-box_list_name">{{item.name}}</p>
-            <p class="quarter-panel-box_list_name_list">
-              <span
-                :key="'quarter-list-list-start-' + item_2"
-                v-for="(item_2,index_2) in item.list"
-              >
-                {{item_2}}
-                <span v-if="index_2 < item.list.length - 1">,</span>
-              </span>
-            </p>
-          </div>
-        </div>
-      </div>
+      <div class="day-panel-box_list clearfloat"></div>
     </div>
     <!-- END -->
-    <div class="quarter-panel-box">
-      <div class="quarter-panel-box_select">
+    <div class="day-panel-box">
+      <div class="day-panel-box_select">
         <p>End</p>
         <i
-          @click="handelRange('end','last')"
+          @click="handelRangeYear('end','last')"
           class="shni shn-doubleleft"
-          v-if="startDateSelect < endDateSelect"
+          v-if="startSelectYear < endSelectYear"
         ></i>
-        <span>{{endDateSelect}} 年</span>
-        <i @click="handelRange('end','next')" class="shni shn-doubleright"></i>
+        <i
+          @click="handelRangeMonth('end','last')"
+          class="shni shn-left"
+          v-if="startSelectMonth < endSelectMonth"
+        ></i>
+        <span>{{startSelectYear}} 年 {{endSelectMonth}} 月</span>
+        <i @click="handelRangeMonth('end','next')" class="shni shn-right"></i>
+        <i @click="handelRangeYear('end','next')" class="shni shn-doubleright"></i>
       </div>
-      <div class="quarter-panel-box_list clearfloat">
-        <div
-          :class="{'quarter-panel-box_list-select-item':selectRange('end',item.listNum),
-          'quarter-panel-box_list-select-item-disabled':disabled('end',item.listNum[2]),
-          'quarter-panel-box_list-select-item-in-range':inRange('end',item.listNum[2])}"
-          :key="'end-date-list-'+item.name"
-          @click="handelSelect('end',item.listNum[2])"
-          v-for="(item) in quarterList"
-        >
-          <div>
-            <p class="quarter-panel-box_list_name">{{item.name}}</p>
-            <p class="quarter-panel-box_list_name_list">
-              <span :key="'quarter-list-list-end-' + item_2" v-for="(item_2,index_2) in item.list">
-                {{item_2}}
-                <span v-if="index_2 < item.list.length - 1">,</span>
-              </span>
-            </p>
-          </div>
-        </div>
-      </div>
+      <div class="day-panel-box_list clearfloat"></div>
     </div>
   </div>
 </template>
@@ -84,11 +55,13 @@ export default {
       this.startDate = val[0]
       this.endDate = val[1]
 
-      this.startDateSelect = this.startYear = this.getyear(this.startDate)
-      this.endDateSelect = this.endYear = this.getyear(this.endDate)
+      this.startSelectYear = this.startYear = this.getyear(this.startDate)
+      this.endSelectYear = this.endYear = this.getyear(this.endDate)
+      this.startSelectMonth = this.startMonth = this.getmonth(this.startDate)
+      this.endSelectMonth = this.endMonth = this.getmonth(this.endDate)
 
-      this.start = this.getmonth(this.startDate)
-      this.end = this.getmonth(this.endDate)
+      this.start = this.getday(this.startDate)
+      this.end = this.getday(this.endDate)
     }
   },
   data() {
@@ -98,35 +71,15 @@ export default {
 
       start: 1,
       end: 4,
-
       startYear: 2018,
       endYear: 2019,
+      startMonth: 1,
+      endMonth: 12,
 
-      startDateSelect: 2018,
-      endDateSelect: 2019,
-
-      quarterList: [
-        {
-          name: '春',
-          list: ['1月', '2月', '3月'],
-          listNum: [1, 2, 3]
-        },
-        {
-          name: '夏',
-          list: ['4月', '5月', '6月'],
-          listNum: [4, 5, 6]
-        },
-        {
-          name: '秋',
-          list: ['7月', '8月', '9月'],
-          listNum: [7, 8, 9]
-        },
-        {
-          name: '冬',
-          list: ['10月', '11月', '12月'],
-          listNum: [10, 11, 12]
-        }
-      ]
+      startSelectYear: 2018,
+      endSelectYear: 2019,
+      startSelectMonth: 1,
+      endSelectMonth: 12
     }
   },
   mounted() {
@@ -134,24 +87,61 @@ export default {
   },
   methods: {
     init() {
-      this.start = this.getmonth(this.startDate)
-      this.end = this.getmonth(this.endDate)
+      this.startSelectYear = this.startYear = this.getyear(this.startDate)
+      this.endSelectYear = this.endYear = this.getyear(this.endDate)
+      this.startSelectMonth = this.startMonth = this.getmonth(this.startDate)
+      this.endSelectMonth = this.endMonth = this.getmonth(this.endDate)
 
-      this.startDateSelect = this.startYear = this.getyear(this.startDate)
-      this.endDateSelect = this.endYear = this.getyear(this.endDate)
+      this.start = this.getday(this.startDate)
+      this.end = this.getday(this.endDate)
     },
-    handelRange(dateType, type) {
+    handelRangeYear(dateType, type) {
       if (dateType == 'start') {
         if (type == 'next') {
-          this.startDateSelect += 1
+          this.startSelectYear += 1
         } else {
-          this.startDateSelect -= 1
+          this.startSelectYear -= 1
         }
       } else {
         if (type == 'next') {
-          this.endDateSelect += 1
+          this.endSelectYear += 1
         } else {
-          this.endDateSelect -= 1
+          this.endSelectYear -= 1
+        }
+      }
+    },
+    handelRangeMonth(dateType, type) {
+      if (dateType == 'start') {
+        if (type == 'next') {
+          if (this.startSelectMonth == 12) {
+            this.startSelectMonth = 1
+            this.startSelectYear += 1
+          } else {
+            this.startSelectMonth += 1
+          }
+        } else {
+          if (this.startSelectMonth == 1) {
+            this.startSelectMonth = 12
+            this.startSelectYear -= 1
+          } else {
+            this.startSelectMonth -= 1
+          }
+        }
+      } else {
+        if (type == 'next') {
+          if (this.endSelectMonth == 12) {
+            this.endSelectMonth = 1
+            this.endSelectYear += 1
+          } else {
+            this.endSelectMonth += 1
+          }
+        } else {
+          if (this.endSelectMonth == 1) {
+            this.endSelectMonth = 12
+            this.endSelectYear -= 1
+          } else {
+            this.endSelectMonth -= 1
+          }
         }
       }
     },
@@ -171,26 +161,20 @@ export default {
               '-' +
               this.Appendzero(item) +
               '-' +
-              this.getlastdayofmonth(this.endDateSelect, item)
+              this.getlastdayofday(this.endDateSelect, item)
           ])
         }
       }
     },
-    selectRange(dateType, list) {
+    selectRange(dateType, item) {
       if (dateType == 'end') {
-        if (
-          list.indexOf(dateType == 'start' ? this.start : this.end) > -1 &&
-          this.endDateSelect == this.endYear
-        ) {
+        if (item == this.end && this.endDateSelect == this.endYear) {
           return true
         } else {
           return false
         }
       } else {
-        if (
-          list.indexOf(dateType == 'start' ? this.start : this.end) > -1 &&
-          this.startDateSelect == this.startYear
-        ) {
+        if (item == this.start && this.startDateSelect == this.startYear) {
           return true
         } else {
           return false
@@ -283,13 +267,13 @@ export default {
 }
 </script>
 <style lang="scss">
-.quarter-panel {
+.day-panel {
   color: #333;
   display: flex;
-  .quarter-panel-box {
+  .day-panel-box {
     margin: 0 5px;
-    width: 250px;
-    .quarter-panel-box_select {
+    width: 330px;
+    .day-panel-box_select {
       position: relative;
       text-align: center;
       font-size: 14px;
@@ -304,18 +288,26 @@ export default {
       }
       .shn-doubleleft {
         position: absolute;
-        left: 40px;
+        left: 15px;
       }
       .shn-doubleright {
         position: absolute;
-        right: 40px;
+        right: 15px;
+      }
+      .shn-left {
+        position: absolute;
+        left: 30px;
+      }
+      .shn-right {
+        position: absolute;
+        right: 30px;
       }
       span {
         position: relative;
         top: -1px;
       }
     }
-    .quarter-panel-box_list {
+    .day-panel-box_list {
       margin-top: 9px;
       border: 1px solid #f5f5f5;
       border-radius: 4px;
@@ -324,8 +316,9 @@ export default {
       > div {
         cursor: pointer;
         display: inline-block;
-        width: 50%;
-        height: 108px;
+        width: 25%;
+        height: 72px;
+        line-height: 72px;
         float: left;
         text-align: center;
         font-size: 12px;
@@ -333,27 +326,22 @@ export default {
         &:hover {
           background: #eee;
         }
-        .quarter-panel-box_list_name {
-          margin-top: 25px;
-          font-size: 2em;
-        }
-        .quarter-panel-box_list_name_list {
-          font-size: 0.5em;
-          opacity: 0.75;
+        .day-panel-box_list_name {
+          font-size: 12px;
         }
       }
-      .quarter-panel-box_list-select-item {
+      .day-panel-box_list-select-item {
         color: $--color-white !important;
         background: $--color-primary !important;
       }
-      .quarter-panel-box_list-select-item-disabled {
+      .day-panel-box_list-select-item-disabled {
         color: #bbb;
         cursor: not-allowed;
         &:hover {
           background: #fff;
         }
       }
-      .quarter-panel-box_list-select-item-in-range {
+      .day-panel-box_list-select-item-in-range {
         background: #f2f6fc;
       }
     }

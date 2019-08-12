@@ -55,6 +55,7 @@
       <quarter-panel @change="input" v-if="periodsActive == 'quarter'" v-model="value" />
       <year-panel @change="input" v-if="periodsActive == 'year'" v-model="value" />
       <month-panel @change="input" v-if="periodsActive == 'month'" v-model="value" />
+      <day-panel @change="input" v-if="periodsActive == 'day' || periodsActive == 'week'" v-model="value" />
     </div>
   </div>
 </template>
@@ -62,12 +63,14 @@
 import yearPanel from './yearPanel'
 import quarterPanel from './quarterPanel'
 import monthPanel from './monthPanel'
+import dayPanel from './dayPanel'
 
 export default {
   components: {
     yearPanel,
     quarterPanel,
-    monthPanel
+    monthPanel,
+    dayPanel
   },
   props: {
     value: {

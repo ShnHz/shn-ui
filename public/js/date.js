@@ -31,6 +31,11 @@ Vue.prototype.getmonth = function (date) {
   return new Date(date).getMonth() + 1
 }
 
+//取天 dd
+Vue.prototype.getday = function (date) {
+  return new Date(date).getDate()
+}
+
 //取某年某月最后一天 dd
 Vue.prototype.getlastdayofmonth = function (year, month) {
   var date = new Date(year, month - 1, '01');
@@ -41,7 +46,7 @@ Vue.prototype.getlastdayofmonth = function (year, month) {
   //获取本月的最后一天
   let cdate = new Date(date.getTime() - 1000 * 60 * 60 * 24);
   //返回结果
-  
+
   return cdate.getDate();
 }
 
