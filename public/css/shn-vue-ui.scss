@@ -19,3 +19,7 @@ $--color-danger-light-5:mix($--color-white, $--color-danger, 50%) !default; /* f
 $--color-info: #909399 !default;
 $--color-info-light-2:mix($--color-white, $--color-info, 20%) !default; /*  */
 $--color-info-light-5:mix($--color-white, $--color-info, 50%) !default; /*  */
+
+$--transition-all-1-ease:all 0.1s ease;
+$--transition-all-2-ease:all 0.2s ease;
+$--transition-all-3-ease:all 0.3s ease;

@@ -21,6 +21,30 @@ Vue.prototype.getlastday = function (num) {
   return [this.formatdate(date_s), this.gettoday()]
 }
 
+//取年份 yyyy
+Vue.prototype.getyear = function (date) {
+  return new Date(date).getFullYear()
+}
+
+//取月份 MM
+Vue.prototype.getmonth = function (date) {
+  return new Date(date).getMonth() + 1
+}
+
+//取某年某月最后一天 dd
+Vue.prototype.getlastdayofmonth = function (year, month) {
+  var date = new Date(year, month - 1, '01');
+  //设置日期
+  date.setDate(1);
+  //设置月份
+  date.setMonth(date.getMonth() + 1);
+  //获取本月的最后一天
+  let cdate = new Date(date.getTime() - 1000 * 60 * 60 * 24);
+  //返回结果
+  
+  return cdate.getDate();
+}
+
 //格式化日期 yyyy-MM-dd
 Vue.prototype.formatdate = function (date) {
   date = new Date(date)
