@@ -21,6 +21,47 @@ Vue.prototype.getlastday = function (num) {
   return [this.formatdate(date_s), this.gettoday()]
 }
 
+//取某天的某周 周日和本周六 yyyy-MM-dd 返回数组[周日,周六]
+Vue.prototype.getsomeweek = function (date) {
+  let todayWeek = this.getweek(date)
+
+  return [this.formatdate(new Date(date).getTime() - (todayWeek) * 24 * 60 * 60 * 1000), this.formatdate(new Date(date).getTime() + (6 - todayWeek) * 24 * 60 * 60 * 1000)]
+}
+
+//取年份 yyyy
+Vue.prototype.getyear = function (date) {
+  return new Date(date).getFullYear()
+}
+
+//取月份 MM
+Vue.prototype.getmonth = function (date) {
+  return new Date(date).getMonth() + 1
+}
+
+//取天 dd
+Vue.prototype.getday = function (date) {
+  return new Date(date).getDate()
+}
+
+//取礼拜几 "星期日","星期一","星期二","星期三","星期四","星期五","星期六"
+Vue.prototype.getweek = function (date) {
+  return new Date(date).getDay()
+}
+
+//取某年某月最后一天 dd
+Vue.prototype.getlastdayofmonth = function (year, month) {
+  var date = new Date(year, month - 1, '01');
+  //设置日期
+  date.setDate(1);
+  //设置月份
+  date.setMonth(date.getMonth() + 1);
+  //获取本月的最后一天
+  let cdate = new Date(date.getTime() - 1000 * 60 * 60 * 24);
+  //返回结果
+
+  return cdate.getDate();
+}
+
 //格式化日期 yyyy-MM-dd
 Vue.prototype.formatdate = function (date) {
   date = new Date(date)

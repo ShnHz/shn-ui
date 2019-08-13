@@ -10,16 +10,16 @@
         <i
           @click="handelRangeMonth('start','next')"
           class="shni shn-right"
-          v-if="startSelectMonth < endSelectMonth"
+          v-if="type == 'day' ? startSelectMonth < endSelectMonth || startSelectYear < endSelectYear : true"
         ></i>
         <i
           @click="handelRangeYear('start','next')"
           class="shni shn-doubleright"
-          v-if="startSelectYear < endSelectYear"
+          v-if="type == 'day' ? startSelectYear < endSelectYear : true"
         ></i>
       </div>
       <div class="day-panel-box_list clearfloat">
-        <table>
+        <table cellpadding="0" cellspacing="0">
           <tbody>
             <tr>
               <th>日</th>
@@ -30,12 +30,43 @@
               <th>五</th>
               <th>六</th>
             </tr>
+            <tr :class="{'week-hover':type == 'week'}">
+              <td
+                :class="{'prev-month':item.type != 1,'select':item.type == 3,'in-range':item.type == 4}"
+                :id="item.date"
+                :key="'day-panel-box_list-start-firsttr-td'+item.value"
+                @click="handelSelect('start',item)"
+                v-for="(item) in getFirstTr('start')"
+              >{{item.value}}</td>
+            </tr>
+            <tr
+              :class="{'week-hover':type == 'week'}"
+              :key="'day-panel-box_list-start-tr-'+item"
+              v-for="item in 4"
+            >
+              <td
+                :class="{'prev-month':item_2.type != 1,'select':item_2.type == 3,'in-range':item_2.type == 4}"
+                :id="item_2.date"
+                :key="'day-panel-box_list-start-tr-td-'+item_2.value"
+                @click="handelSelect('start',item_2)"
+                v-for="item_2 in getTr('start',item)"
+              >{{item_2.value}}</td>
+            </tr>
+            <tr :class="{'week-hover':type == 'week'}">
+              <td
+                :class="{'prev-month':item.type != 1,'select':item.type == 3,'in-range':item.type == 4}"
+                :id="item.date"
+                :key="'day-panel-box_list-lasttr-td'+item.value"
+                @click="handelSelect('start',item)"
+                v-for="(item) in getLastTr('start')"
+              >{{item.value}}</td>
+            </tr>
           </tbody>
         </table>
       </div>
     </div>
     <!-- END -->
-    <div class="day-panel-box">
+    <div class="day-panel-box" v-if="type == 'day'">
       <div class="day-panel-box_select">
         <p>End</p>
         <i
@@ -46,13 +77,54 @@
         <i
           @click="handelRangeMonth('end','last')"
           class="shni shn-left"
-          v-if="startSelectMonth < endSelectMonth"
+          v-if="startSelectMonth < endSelectMonth || startSelectYear < endSelectYear"
         ></i>
-        <span>{{startSelectYear}} 年 {{endSelectMonth}} 月</span>
+        <span>{{endSelectYear}} 年 {{endSelectMonth}} 月</span>
         <i @click="handelRangeMonth('end','next')" class="shni shn-right"></i>
         <i @click="handelRangeYear('end','next')" class="shni shn-doubleright"></i>
       </div>
-      <div class="day-panel-box_list clearfloat"></div>
+      <div class="day-panel-box_list clearfloat">
+        <table cellpadding="0" cellspacing="0">
+          <tbody>
+            <tr>
+              <th>日</th>
+              <th>一</th>
+              <th>二</th>
+              <th>三</th>
+              <th>四</th>
+              <th>五</th>
+              <th>六</th>
+            </tr>
+            <tr>
+              <td
+                :class="{'prev-month':item.type != 1,'select':item.type == 3,'in-range':item.type == 4}"
+                :id="item.date"
+                :key="'day-panel-box_list-end-firsttr-td'+item.value"
+                @click="handelSelect('end',item)"
+                v-for="(item) in getFirstTr('end')"
+              >{{item.value}}</td>
+            </tr>
+            <tr :key="'day-panel-box_list-end-tr-'+item" v-for="item in 4">
+              <td
+                :class="{'prev-month':item_2.type != 1,'select':item_2.type == 3,'in-range':item_2.type == 4}"
+                :id="item_2.date"
+                :key="'day-panel-box_list-end-tr-td-'+item_2.value"
+                @click="handelSelect('end',item_2)"
+                v-for="item_2 in getTr('end',item)"
+              >{{item_2.value}}</td>
+            </tr>
+            <tr>
+              <td
+                :class="{'prev-month':item.type != 1,'select':item.type == 3,'in-range':item.type == 4}"
+                :id="item.date"
+                :key="'day-panel-box_list-lasttr-td'+item.value"
+                @click="handelSelect('end',item)"
+                v-for="(item) in getLastTr('end')"
+              >{{item.value}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </template>
@@ -62,6 +134,10 @@ export default {
     value: {
       type: [Array, String],
       default: ''
+    },
+    type: {
+      type: String,
+      default: 'day'
     }
   },
   watch: {
@@ -98,6 +174,231 @@ export default {
   },
   mounted() {
     this.init()
+  },
+  computed: {
+    getFirstTr() {
+      return function(type) {
+        let oneDayWeek = this.getweek(
+          (type == 'start' ? this.startSelectYear : this.endSelectYear) +
+            '-' +
+            (type == 'start' ? this.startSelectMonth : this.endSelectMonth) +
+            '-' +
+            '1'
+        )
+        let lastDayOfMonth = this.getlastdayofmonth(
+          type == 'start' ? this.startSelectYear : this.endSelectYear,
+          (type == 'start' ? this.startSelectMonth : this.endSelectMonth) - 1
+        )
+
+        let td = []
+        for (let i = oneDayWeek; i > 0; i--) {
+          td.push({
+            value: lastDayOfMonth - i + 1,
+            type: 0,
+            month:
+              type == 'start'
+                ? this.startSelectMonth - 1 == 0
+                  ? 12
+                  : this.startSelectMonth - 1
+                : this.endSelectMonth - 1 == 0
+                ? 12
+                : this.endSelectMonth - 1,
+            year:
+              type == 'start'
+                ? this.startSelectMonth - 1 == 0
+                  ? this.startSelectYear - 1
+                  : this.startSelectYear
+                : this.endSelectMonth - 1 == 0
+                ? this.endSelectYear - 1
+                : this.endSelectYear
+          })
+        }
+        for (let i = 0; i < 7 - oneDayWeek; i++) {
+          td.push({
+            value: i + 1,
+            type: 1,
+            month:
+              type == 'start' ? this.startSelectMonth : this.endSelectMonth,
+            year: type == 'start' ? this.startSelectYear : this.endSelectYear
+          })
+        }
+
+        td = this.inRange(td, type)
+        td = this.inSelect(td, type)
+
+        return td
+      }
+    },
+    getTr() {
+      return function(type, index) {
+        let td = []
+        let oneDayWeek = this.getweek(
+          (type == 'start' ? this.startSelectYear : this.endSelectYear) +
+            '-' +
+            (type == 'start' ? this.startSelectMonth : this.endSelectMonth) +
+            '-' +
+            '1'
+        )
+        let lastDayOfMonth = this.getlastdayofmonth(
+          type == 'start' ? this.startSelectYear : this.endSelectYear,
+          type == 'start' ? this.startSelectMonth : this.endSelectMonth
+        )
+
+        let firstTd = 8 - oneDayWeek + 7 * (index - 1)
+        for (let i = 0; i < 7; i++) {
+          if (firstTd + i > lastDayOfMonth) {
+            td.push({
+              value: firstTd + i - lastDayOfMonth,
+              type: 2,
+              month:
+                type == 'start'
+                  ? this.startSelectMonth + 1 == 13
+                    ? 1
+                    : this.startSelectMonth + 1
+                  : this.endSelectMonth + 1 == 13
+                  ? 1
+                  : this.endSelectMonth + 1,
+              year:
+                type == 'start'
+                  ? this.startSelectMonth + 1 == 13
+                    ? this.startSelectYear + 1
+                    : this.startSelectYear
+                  : this.endSelectMonth + 1 == 13
+                  ? this.endSelectYear + 1
+                  : this.endSelectYear
+            })
+          } else {
+            td.push({
+              value: firstTd + i,
+              type: 1,
+              month:
+                type == 'start' ? this.startSelectMonth : this.endSelectMonth,
+              year: type == 'start' ? this.startSelectYear : this.endSelectYear
+            })
+          }
+        }
+
+        td = this.inRange(td, type)
+        td = this.inDisabled(td, type)
+        td = this.inSelect(td, type)
+
+        return td
+      }
+    },
+    getLastTr() {
+      return function(type) {
+        let td = []
+        let oneDayWeek = this.getweek(
+          (type == 'start' ? this.startSelectYear : this.endSelectYear) +
+            '-' +
+            (type == 'start' ? this.startSelectMonth : this.endSelectMonth) +
+            '-' +
+            '1'
+        )
+        let lastDayOfMonth = this.getlastdayofmonth(
+          type == 'start' ? this.startSelectYear : this.endSelectYear,
+          type == 'start' ? this.startSelectMonth : this.endSelectMonth
+        )
+
+        let firstTd = 8 - oneDayWeek + 7 * 4
+        if (firstTd <= lastDayOfMonth) {
+          for (let i = 0; i < 7; i++) {
+            if (firstTd + i > lastDayOfMonth) {
+              td.push({
+                value: firstTd + i - lastDayOfMonth,
+                type: 2,
+                month:
+                  type == 'start'
+                    ? this.startSelectMonth + 1 == 13
+                      ? 1
+                      : this.startSelectMonth + 1
+                    : this.endSelectMonth + 1 == 13
+                    ? 1
+                    : this.endSelectMonth + 1,
+                year:
+                  type == 'start'
+                    ? this.startSelectMonth + 1 == 13
+                      ? this.startSelectYear + 1
+                      : this.startSelectYear
+                    : this.endSelectMonth + 1 == 13
+                    ? this.endSelectYear + 1
+                    : this.endSelectYear
+              })
+            } else {
+              td.push({
+                value: firstTd + i,
+                type: 1,
+                month:
+                  type == 'start' ? this.startSelectMonth : this.endSelectMonth,
+                year:
+                  type == 'start' ? this.startSelectYear : this.endSelectYear
+              })
+            }
+          }
+        } else {
+          oneDayWeek = this.getweek(
+            (type == 'start' ? this.startSelectYear : this.endSelectYear) +
+              '-' +
+              (type == 'start'
+                ? this.startSelectMonth + 1
+                : this.endSelectMonth + 1) +
+              '-' +
+              '1'
+          )
+          firstTd = oneDayWeek == 0 ? 1 : 8 - oneDayWeek
+          for (let i = 0; i < 7; i++) {
+            if (isNaN(firstTd)) {
+              td.push({
+                value: i,
+                type: 2,
+                month:
+                  type == 'start'
+                    ? this.startSelectMonth + 1 == 13
+                      ? 1
+                      : this.startSelectMonth + 1
+                    : this.endSelectMonth + 1 == 13
+                    ? 1
+                    : this.endSelectMonth + 1,
+                year:
+                  type == 'start'
+                    ? this.startSelectMonth + 1 == 13
+                      ? this.startSelectYear + 1
+                      : this.startSelectYear
+                    : this.endSelectMonth + 1 == 13
+                    ? this.endSelectYear + 1
+                    : this.endSelectYear
+              })
+            } else {
+              td.push({
+                value: firstTd + i,
+                type: 2,
+                month:
+                  type == 'start'
+                    ? this.startSelectMonth + 1 == 13
+                      ? 1
+                      : this.startSelectMonth + 1
+                    : this.endSelectMonth + 1 == 13
+                    ? 1
+                    : this.endSelectMonth + 1,
+                year:
+                  type == 'start'
+                    ? this.startSelectMonth + 1 == 13
+                      ? this.startSelectYear + 1
+                      : this.startSelectYear
+                    : this.endSelectMonth + 1 == 13
+                    ? this.endSelectYear + 1
+                    : this.endSelectYear
+              })
+            }
+          }
+        }
+
+        td = this.inRange(td, type)
+        td = this.inSelect(td, type)
+
+        return td
+      }
+    }
   },
   methods: {
     init() {
@@ -160,122 +461,73 @@ export default {
       }
     },
     handelSelect(dateType, item) {
-      if (dateType == 'start') {
-        if (!this.disabled('start', item)) {
-          this.$emit('change', [
-            this.startDateSelect + '-' + this.Appendzero(item) + '-01',
-            this.endDate
-          ])
+      let v = new Date(item.date).getTime()
+      let s = new Date(this.startDate).getTime()
+      let e = new Date(this.endDate).getTime()
+
+      if (this.type == 'day') {
+        if (dateType == 'start') {
+          if (!(v > e)) {
+            this.$emit('change', [item.date, this.endDate])
+          }
+        } else {
+          if (!(v < s)) {
+            this.$emit('change', [this.startDate, item.date])
+          }
         }
-      } else {
-        if (!this.disabled('end', item)) {
-          this.$emit('change', [
-            this.startDate,
-            this.endDateSelect +
-              '-' +
-              this.Appendzero(item) +
-              '-' +
-              this.getlastdayofday(this.endDateSelect, item)
-          ])
-        }
+      } else if (this.type == 'week') {
+        this.$emit('change', this.getsomeweek(item.date))
       }
     },
-    selectRange(dateType, item) {
-      if (dateType == 'end') {
-        if (item == this.end && this.endDateSelect == this.endYear) {
-          return true
-        } else {
-          return false
+    inSelect(td, type) {
+      if (this.type == 'day') {
+        for (let i = 0; i < td.length; i++) {
+          if (type == 'start' && this.startDate == td[i].date) {
+            td[i].type = 3
+          } else if (type == 'end' && this.endDate == td[i].date) {
+            td[i].type = 3
+          }
         }
-      } else {
-        if (item == this.start && this.startDateSelect == this.startYear) {
-          return true
-        } else {
-          return false
+      } else if (this.type == 'week') {
+        for (let i = 0; i < td.length; i++) {
+          if (this.startDate == td[i].date || this.endDate == td[i].date) {
+            td[i].type = 3
+          }
         }
       }
+
+      return td
     },
-    inRange(dateType, item) {
-      if (dateType == 'start') {
-        if (this.startYear > this.startDateSelect) {
-          return false
-        } else if (this.startYear < this.endYear) {
-          if (
-            this.startDateSelect <= this.endDateSelect &&
-            this.startDateSelect == this.endYear
-          ) {
-            if (item <= this.end) {
-              return true
-            } else {
-              return false
-            }
-          } else {
-            if (item >= this.start) {
-              return true
-            } else {
-              return false
-            }
-          }
-        } else {
-          if (item >= this.start && item <= this.end) {
-            return true
-          } else {
-            return false
-          }
-        }
-      } else {
-        if (this.endDateSelect > this.endYear) {
-          return false
-        } else if (this.startYear < this.endYear) {
-          if (
-            this.startDateSelect <= this.endDateSelect &&
-            this.endDateSelect == this.startYear
-          ) {
-            if (item >= this.start) {
-              return true
-            } else {
-              return false
-            }
-          } else {
-            if (item <= this.end) {
-              return true
-            } else {
-              return false
-            }
-          }
-        } else {
-          if (item >= this.start && item <= this.end) {
-            return true
-          } else {
-            return false
-          }
-        }
+    inRange(td) {
+      let s = new Date(this.startDate).getTime()
+      let e = new Date(this.endDate).getTime()
+      for (let i = 0; i < td.length; i++) {
+        td[i].date = `${td[i].year}-${this.Appendzero(
+          td[i].month
+        )}-${this.Appendzero(td[i].value)}`
+
+        let v = new Date(td[i].date).getTime()
+
+        if ((v > s && v < e) || v == s || v == e) td[i].type = 4
       }
+
+      return td
     },
-    disabled(dateType, item) {
-      if (dateType == 'start') {
-        if (
-          this.startDateSelect <= this.endDateSelect &&
-          this.startDateSelect == this.endYear
-        ) {
-          if (item > this.end) {
-            return true
+    inDisabled(td, type) {
+      if (this.type == 'day') {
+        let s = new Date(this.startDate).getTime()
+        let e = new Date(this.endDate).getTime()
+        for (let i = 0; i < td.length; i++) {
+          let v = new Date(td[i].date).getTime()
+
+          if (type == 'start') {
+            if (v > e) td[i].type = 2
           } else {
-            return false
-          }
-        }
-      } else {
-        if (
-          this.startDateSelect <= this.endDateSelect &&
-          this.endDateSelect == this.startYear
-        ) {
-          if (item < this.start) {
-            return true
-          } else {
-            return false
+            if (v < s) td[i].type = 2
           }
         }
       }
+      return td
     }
   }
 }
@@ -325,35 +577,63 @@ export default {
       margin-top: 9px;
       border: 1px solid #f5f5f5;
       border-radius: 4px;
-      height: 216px;
+      height: 260px;
       overflow: hidden;
       table {
-        padding: 8px 16px;
+        padding: 0px 16px;
         width: 100%;
         tbody {
           width: 100%;
           th {
-            padding: 5px;
+            padding: 2px;
             color: #606266;
             font-weight: 400;
             font-size: 12px;
             border-bottom: 1px solid #ebeef5;
           }
+          tr.week-hover {
+            &:hover {
+              background: #f5f5f5;
+              .in-range {
+                background: #f5f5f5;
+              }
+            }
+            td {
+              &:hover {
+                background: #f5f5f5;
+              }
+            }
+          }
+          td {
+            width: 32px;
+            height: 30px;
+            padding: 4px 0;
+            box-sizing: border-box;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+            font-size: 12px;
+            &:hover {
+              background: #f5f5f5;
+            }
+            &.prev-month {
+              color: #c0c4cc;
+              &:hover {
+                background: #fff;
+              }
+            }
+            &.select {
+              color: $--color-white !important;
+              background: $--color-primary !important;
+            }
+            &.in-range {
+              background: #f2f6fc;
+              &:hover {
+                background: #f5f5f5;
+              }
+            }
+          }
         }
-      }
-      .day-panel-box_list-select-item {
-        color: $--color-white !important;
-        background: $--color-primary !important;
-      }
-      .day-panel-box_list-select-item-disabled {
-        color: #bbb;
-        cursor: not-allowed;
-        &:hover {
-          background: #fff;
-        }
-      }
-      .day-panel-box_list-select-item-in-range {
-        background: #f2f6fc;
       }
     }
   }

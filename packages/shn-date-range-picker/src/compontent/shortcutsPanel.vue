@@ -55,7 +55,12 @@
       <quarter-panel @change="input" v-if="periodsActive == 'quarter'" v-model="value" />
       <year-panel @change="input" v-if="periodsActive == 'year'" v-model="value" />
       <month-panel @change="input" v-if="periodsActive == 'month'" v-model="value" />
-      <day-panel @change="input" v-if="periodsActive == 'day' || periodsActive == 'week'" v-model="value" />
+      <day-panel
+        :type="periodsActive == 'week' ? 'week' : 'day'"
+        @change="input"
+        v-if="periodsActive == 'day' || periodsActive == 'week'"
+        v-model="value"
+      />
     </div>
   </div>
 </template>
@@ -159,9 +164,8 @@ export default {
           this.input(this.getlastday(30))
           break
         case 'week':
-          this.rangesActive = 'lastweek'
-          this.input(this.getlastday(7))
-
+          this.rangesActive = 'custom'
+          this.input(this.getsomeweek(this.gettoday()))
           break
         case 'day':
           this.rangesActive = 'lastweek'

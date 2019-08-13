@@ -331,7 +331,7 @@ export default {
         font-size: 12px;
         transition: $--transition-all-2-ease;
         &:hover {
-          background: #eee;
+          background: #F5F5F5;
         }
         .quarter-panel-box_list_name {
           margin-top: 25px;

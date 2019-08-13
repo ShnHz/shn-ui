@@ -335,7 +335,7 @@ export default {
         font-size: 12px;
         transition: $--transition-all-2-ease;
         &:hover {
-          background: #eee;
+          background: #F5F5F5;
         }
         .month-panel-box_list_name {
           font-size: 12px;

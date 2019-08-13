@@ -34,24 +34,16 @@
 }
 
 /**下拉菜单**/
-.drop-down-enter-active {
-    animation: dropdown 0.1s;
-}
-
+.drop-down-enter-active,
 .drop-down-leave-active {
-    animation: dropdown 0.1s reverse; //reverse表示和隐藏到显示动画相反
+    opacity: 1;
+    transform: scaleY(1);
+    transition: $--md-fade-transition;
+    transform-origin: center top;
 }
 
-@keyframes dropdown {
-    0% {
-        transform-origin: 100% 0;
-        transform: scale(1, 0);
-        opacity: 0;
-    }
-
-    100% {
-        transform-origin: 100% 0;
-        transform: scale(1, 1);
-        opacity: 1;
-    }
+.drop-down-enter,
+.drop-down-leave-active {
+    opacity: 0;
+    transform: scaleY(0);
 }
