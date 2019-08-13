@@ -32,7 +32,7 @@
             </tr>
             <tr :class="{'week-hover':type == 'week'}">
               <td
-                :class="{'prev-month':item.type != 1,'select':item.type == 3,'in-range':item.type == 4}"
+                :class="{'prev-month':item.type != 1,'select':item.type == 3,'in-range':item.type == 4,'in-disabled':item.type == 5}"
                 :id="item.date"
                 :key="'day-panel-box_list-start-firsttr-td'+item.value"
                 @click="handelSelect('start',item)"
@@ -45,7 +45,7 @@
               v-for="item in 4"
             >
               <td
-                :class="{'prev-month':item_2.type != 1,'select':item_2.type == 3,'in-range':item_2.type == 4}"
+                :class="{'prev-month':item_2.type != 1,'select':item_2.type == 3,'in-range':item_2.type == 4,'in-disabled':item_2.type == 5}"
                 :id="item_2.date"
                 :key="'day-panel-box_list-start-tr-td-'+item_2.value"
                 @click="handelSelect('start',item_2)"
@@ -54,7 +54,7 @@
             </tr>
             <tr :class="{'week-hover':type == 'week'}">
               <td
-                :class="{'prev-month':item.type != 1,'select':item.type == 3,'in-range':item.type == 4}"
+                :class="{'prev-month':item.type != 1,'select':item.type == 3,'in-range':item.type == 4,'in-disabled':item.type == 5}"
                 :id="item.date"
                 :key="'day-panel-box_list-lasttr-td'+item.value"
                 @click="handelSelect('start',item)"
@@ -97,7 +97,7 @@
             </tr>
             <tr>
               <td
-                :class="{'prev-month':item.type != 1,'select':item.type == 3,'in-range':item.type == 4}"
+                :class="{'prev-month':item.type != 1,'select':item.type == 3,'in-range':item.type == 4,'in-disabled':item.type == 5}"
                 :id="item.date"
                 :key="'day-panel-box_list-end-firsttr-td'+item.value"
                 @click="handelSelect('end',item)"
@@ -106,7 +106,7 @@
             </tr>
             <tr :key="'day-panel-box_list-end-tr-'+item" v-for="item in 4">
               <td
-                :class="{'prev-month':item_2.type != 1,'select':item_2.type == 3,'in-range':item_2.type == 4}"
+                :class="{'prev-month':item_2.type != 1,'select':item_2.type == 3,'in-range':item_2.type == 4,'in-disabled':item_2.type == 5}"
                 :id="item_2.date"
                 :key="'day-panel-box_list-end-tr-td-'+item_2.value"
                 @click="handelSelect('end',item_2)"
@@ -115,7 +115,7 @@
             </tr>
             <tr>
               <td
-                :class="{'prev-month':item.type != 1,'select':item.type == 3,'in-range':item.type == 4}"
+                :class="{'prev-month':item.type != 1,'select':item.type == 3,'in-range':item.type == 4,'in-disabled':item.type == 5}"
                 :id="item.date"
                 :key="'day-panel-box_list-lasttr-td'+item.value"
                 @click="handelSelect('end',item)"
@@ -224,6 +224,7 @@ export default {
         }
 
         td = this.inRange(td, type)
+        td = this.inDisabled(td, type)
         td = this.inSelect(td, type)
 
         return td
@@ -394,6 +395,7 @@ export default {
         }
 
         td = this.inRange(td, type)
+        td = this.inDisabled(td, type)
         td = this.inSelect(td, type)
 
         return td
@@ -521,9 +523,12 @@ export default {
           let v = new Date(td[i].date).getTime()
 
           if (type == 'start') {
-            if (v > e) td[i].type = 2
+            if (v > e) {
+              td[i].type = 5
+              console.log(td[i])
+            }
           } else {
-            if (v < s) td[i].type = 2
+            if (v < s) td[i].type = 5
           }
         }
       }
@@ -631,6 +636,9 @@ export default {
               &:hover {
                 background: #f5f5f5;
               }
+            }
+            &.in-disabled {
+              cursor: not-allowed;
             }
           }
         }
