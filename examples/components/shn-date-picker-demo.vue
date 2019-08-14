@@ -52,11 +52,18 @@ export default {
       },
       api: [
         {
-          parameter: 'target',
-          description: '设置需要监听其滚动事件的元素,默认为窗口',
+          parameter: 'value / v-model',
+          description: '绑定值',
+          dataTypes: 'Array',
+          optional: '',
+          default: ''
+        },
+        {
+          parameter: 'rangeSeparator',
+          description: '范围间隔符',
           dataTypes: 'String',
           optional: '',
-          default: 'window'
+          default: '-'
         }
       ]
     }
