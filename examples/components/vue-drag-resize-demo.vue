@@ -1,5 +1,7 @@
 <template>
   <div class="content-box">
+    <shn-backtop :visibilityHeight="300" />
+
     <h2 class="demo-title">vueDragResize 拖拽/缩放</h2>
     <p class="demo-introduction">vue-drag-resize是一个支持拖拽与缩放的vue插件，支持vue 1.x与2.x，使用方便，上手便利。</p>
 

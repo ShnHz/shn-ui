@@ -126,6 +126,7 @@ export default {
         {
           title: '网络实用插件',
           li_data: [
+            { id: -99, name: '图片裁剪', path: '#/component/vue-cropper' },
             { id: -100, name: '拖拽/缩放', path: '#/component/vue-drag-resize' }
           ]
         }
@@ -192,6 +193,9 @@ export default {
         break
       case '/component/vue-drag-resize':
         this.active = -100
+        break
+      case '/component/vue-cropper':
+        this.active = -99
         break
     }
   },
