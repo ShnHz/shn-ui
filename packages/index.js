@@ -3,8 +3,6 @@ import '../public/iconfont/iconfont.css'
 import '../public/css/shn-vue-ui-base.css'
 import '../public/css/animation.scss'
 import '../public/js/shn-vue-ui-base.js'
-// import '../public/js/shn-vue-ui-rules.js'
-// import '../public/js/shn-vue-ui-date.js'
 
 import Input from './shn-input'
 import Statistic from './shn-statistic'

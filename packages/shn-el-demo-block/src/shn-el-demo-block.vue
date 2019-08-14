@@ -88,7 +88,6 @@ export default {
     }
     .source {
       position: relative;
-      overflow: hidden;
       padding: 24px;
     }
     .code {
