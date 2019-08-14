@@ -1,32 +1,30 @@
 <template>
   <div class="shn-el-demo-block">
-    <h3 class="demo-block-title"
-        v-if="title != ''">{{ title }}</h3>
-    <p class="demo-block-introduction"
-       v-if="introduction != ''">{{introduction}}</p>
-    <div class="demo-block"
-         @mouseover="hover_animation = true"
-         @mouseout="hover_animation = false">
+    <h3 class="demo-block-title" v-if="title != ''">{{ title }}</h3>
+    <p class="demo-block-introduction" v-if="introduction != ''">{{introduction}}</p>
+    <div @mouseout="hover_animation = false" @mouseover="hover_animation = true" class="demo-block">
       <div class="source">
         <slot name="demo" />
       </div>
-      <div class="code"
-           :style="{ height: code_height + 'px' }">
+      <div :style="{ height: code_height + 'px' }" class="code">
         <pre v-highlightjs>
           <slot name="code" />
         </pre>
       </div>
-      <div class="demo-block-control"
-           @click="showCode()">
-        <i class="shni "
-           :class="{
+      <div @click="showCode()" class="demo-block-control">
+        <i
+          :class="{
             hovering_i: hover_animation,
             'shn-caret-down': code_height === 0,
             'shn-caret-up': code_height !== 0
-          }"></i>
-        <span :class="{ hovering_span: hover_animation }">{{
+          }"
+          class="shni"
+        ></i>
+        <span :class="{ hovering_span: hover_animation }">
+          {{
           code_height === 0 ? '显示代码' : '隐藏代码'
-          }}</span>
+          }}
+        </span>
       </div>
     </div>
   </div>
@@ -89,6 +87,8 @@ export default {
         0 2px 4px 0 rgba(232, 237, 250, 0.5);
     }
     .source {
+      position: relative;
+      overflow: hidden;
       padding: 24px;
     }
     .code {

@@ -19,7 +19,6 @@ import Drawer from './shn-drawer'
 import Loading from './shn-loading'
 import UploadImg from './shn-upload-img'
 import PreviewImg from './shn-preview-img'
-import VueCropper from './vue-cropper'
 import Modal from './shn-modal'
 import Anchor from './shn-anchor'
 import AnchorLink from './shn-anchor-link'
@@ -30,6 +29,9 @@ import LoadingPage from './shn-loading-page'
 import UrlParam from './shn-url-param'
 import ModelMask from './shn-model-mask'
 import DateRangePicker from './shn-date-range-picker'
+
+import VueCropper from './vue-cropper'
+import VueDragResize from './vue-drag-resize'
 
 const components = [
     Input,
@@ -45,7 +47,6 @@ const components = [
     Loading,
     UploadImg,
     PreviewImg,
-    VueCropper,
     Modal,
     Anchor,
     AnchorLink,
@@ -55,7 +56,10 @@ const components = [
     LoadingPage,
     UrlParam,
     ModelMask,
-    DateRangePicker
+    DateRangePicker,
+
+    VueDragResize,
+    VueCropper,
 ]
 
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册

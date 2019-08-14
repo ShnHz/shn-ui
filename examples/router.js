@@ -4,6 +4,8 @@ import Home from './views/Home.vue'
 
 //组件
 import component from './routers/component'
+//网络插件
+import elseComponent from './routers/elseComponent'
 
 Vue.use(Router)
 
@@ -17,6 +19,7 @@ export default new Router({
       children: [
         //组件
         ...component,
+        ...elseComponent
       ]
     },
   ]

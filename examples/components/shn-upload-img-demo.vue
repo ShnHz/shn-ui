@@ -10,19 +10,25 @@
           href="https://github.com/xyxiao001/vue-cropper"
           target="_blank"
         >https://github.com/xyxiao001/vue-cropper</a>
+        <img
+          alt
+          class="github-img"
+          href="https://github.com/xyxiao001/vue-cropper"
+          src="https://img.shields.io/github/stars/xyxiao001/vue-cropper.svg?style=social&label=Star&maxAge=2592000"
+        />
       </p>
     </div>
 
     <shn-anchor>
-      <shn-anchor-link href="upload-img-simple" title="基础用法"/>
-      <shn-anchor-link href="upload-img-cropper" title="裁剪图片"/>
-      <shn-anchor-link href="api" title="API"/>
+      <shn-anchor-link href="upload-img-simple" title="基础用法" />
+      <shn-anchor-link href="upload-img-cropper" title="裁剪图片" />
+      <shn-anchor-link href="api" title="API" />
     </shn-anchor>
 
     <!-- 基础用法DEMO -->
     <shn-el-demo-block :height="250" :title="'基础用法'" id="upload-img-simple">
       <template v-slot:demo>
-        <shn-upload-img addText="上传图片" v-model="simple.list"/>
+        <shn-upload-img addText="上传图片" v-model="simple.list" />
       </template>
       <template v-slot:code>
         <code class="html">{{fCode(simple.code.html)}}</code>
@@ -31,9 +37,9 @@
     </shn-el-demo-block>
 
     <!-- 裁剪图片DEMO -->
-    <shn-el-demo-block :height="250" :title="'裁剪图片'"  id="upload-img-cropper">
+    <shn-el-demo-block :height="250" :title="'裁剪图片'" id="upload-img-cropper">
       <template v-slot:demo>
-        <shn-upload-img :cropper="true" addText="裁剪图片/上传" cropType="blob" v-model="cropper.list"/>
+        <shn-upload-img :cropper="true" addText="裁剪图片/上传" cropType="blob" v-model="cropper.list" />
       </template>
       <template v-slot:code>
         <code class="html">{{fCode(cropper.code.html)}}</code>
@@ -45,7 +51,7 @@
     <div id="api">
       <h3 class="demo-table-title">API</h3>
       <P class="demo-table-introduction">属性说明如下：</P>
-      <shn-table-simple :data="api" :type="'demo'"/>
+      <shn-table-simple :data="api" :type="'demo'" />
     </div>
   </div>
 </template>

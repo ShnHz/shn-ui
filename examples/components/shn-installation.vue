@@ -35,7 +35,7 @@
         class="github-img"
         href="https://github.com/ShnHz/shn-ui"
         src="https://img.shields.io/github/stars/ShnHz/shn-ui.svg?style=social&label=Star&maxAge=2592000"
-      >
+      />
       <a href="https://github.com/ShnHz/shn-ui" target="_blank">https://github.com/ShnHz/shn-ui</a> 点个star支持一下吧~
     </p>
 
@@ -79,7 +79,7 @@ export default {
   methods: {}
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .github-img {
   cursor: pointer;
   position: relative;
