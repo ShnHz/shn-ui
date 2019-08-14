@@ -63,6 +63,7 @@ export default {
       this.show = false
     },
     confirm() {
+      this.$emit('change', this.data)
       this.$emit('input', this.data)
       this.handleClose()
     }

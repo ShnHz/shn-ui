@@ -4,9 +4,9 @@
     <p class="demo-introduction">用于选择日期。</p>
 
     <!-- 日期范围选择DEMO -->
-    <shn-el-demo-block :height="522" :introduction="'可在一个选择器中便捷地选择一个时间范围'" :title="'日期范围选择'">
+    <shn-el-demo-block :height="354" :introduction="'可在一个选择器中便捷地选择一个时间范围'" :title="'日期范围选择'">
       <template v-slot:demo>
-        <shn-date-range-picker v-model="range.value" rangeSeparator="至"/>
+        <shn-date-range-picker rangeSeparator="至" v-model="range.value" />
       </template>
       <template v-slot:code>
         <code class="html">{{fCode(range.code.html)}}</code>
@@ -31,12 +31,15 @@ export default {
       range: {
         code: {
           html: `
-          
+          <shn-date-range-picker v-model="range.value" rangeSeparator="至"/>
           `,
           javascript: `
           export default {
             data() {
               return {
+                range:{
+                  value:''
+                }
               }
             },
             methods: {
