@@ -129,6 +129,8 @@
   </div>
 </template>
 <script>
+import { shnUiDate } from '../../../../public/js/shn-vue-ui-date'
+
 export default {
   props: {
     value: {
@@ -145,13 +147,13 @@ export default {
       this.startDate = val[0]
       this.endDate = val[1]
 
-      this.startSelectYear = this.startYear = this.getyear(this.startDate)
-      this.endSelectYear = this.endYear = this.getyear(this.endDate)
-      this.startSelectMonth = this.startMonth = this.getmonth(this.startDate)
-      this.endSelectMonth = this.endMonth = this.getmonth(this.endDate)
+      this.startSelectYear = this.startYear = shnUiDate.getYear(this.startDate)
+      this.endSelectYear = this.endYear = shnUiDate.getYear(this.endDate)
+      this.startSelectMonth = this.startMonth = shnUiDate.getMonth(this.startDate)
+      this.endSelectMonth = this.endMonth = shnUiDate.getMonth(this.endDate)
 
-      this.start = this.getday(this.startDate)
-      this.end = this.getday(this.endDate)
+      this.start = shnUiDate.getDay(this.startDate)
+      this.end = shnUiDate.getDay(this.endDate)
     }
   },
   data() {
@@ -178,14 +180,14 @@ export default {
   computed: {
     getFirstTr() {
       return function(type) {
-        let oneDayWeek = this.getweek(
+        let oneDayWeek = shnUiDate.getWeek(
           (type == 'start' ? this.startSelectYear : this.endSelectYear) +
             '-' +
             (type == 'start' ? this.startSelectMonth : this.endSelectMonth) +
             '-' +
             '1'
         )
-        let lastDayOfMonth = this.getlastdayofmonth(
+        let lastDayOfMonth = shnUiDate.getLastDayOfMonth(
           type == 'start' ? this.startSelectYear : this.endSelectYear,
           (type == 'start' ? this.startSelectMonth : this.endSelectMonth) - 1
         )
@@ -233,14 +235,14 @@ export default {
     getTr() {
       return function(type, index) {
         let td = []
-        let oneDayWeek = this.getweek(
+        let oneDayWeek = shnUiDate.getWeek(
           (type == 'start' ? this.startSelectYear : this.endSelectYear) +
             '-' +
             (type == 'start' ? this.startSelectMonth : this.endSelectMonth) +
             '-' +
             '1'
         )
-        let lastDayOfMonth = this.getlastdayofmonth(
+        let lastDayOfMonth = shnUiDate.getLastDayOfMonth(
           type == 'start' ? this.startSelectYear : this.endSelectYear,
           type == 'start' ? this.startSelectMonth : this.endSelectMonth
         )
@@ -289,14 +291,14 @@ export default {
     getLastTr() {
       return function(type) {
         let td = []
-        let oneDayWeek = this.getweek(
+        let oneDayWeek = shnUiDate.getWeek(
           (type == 'start' ? this.startSelectYear : this.endSelectYear) +
             '-' +
             (type == 'start' ? this.startSelectMonth : this.endSelectMonth) +
             '-' +
             '1'
         )
-        let lastDayOfMonth = this.getlastdayofmonth(
+        let lastDayOfMonth = shnUiDate.getLastDayOfMonth(
           type == 'start' ? this.startSelectYear : this.endSelectYear,
           type == 'start' ? this.startSelectMonth : this.endSelectMonth
         )
@@ -337,7 +339,7 @@ export default {
             }
           }
         } else {
-          oneDayWeek = this.getweek(
+          oneDayWeek = shnUiDate.getWeek(
             (type == 'start' ? this.startSelectYear : this.endSelectYear) +
               '-' +
               (type == 'start'
@@ -404,13 +406,13 @@ export default {
   },
   methods: {
     init() {
-      this.startSelectYear = this.startYear = this.getyear(this.startDate)
-      this.endSelectYear = this.endYear = this.getyear(this.endDate)
-      this.startSelectMonth = this.startMonth = this.getmonth(this.startDate)
-      this.endSelectMonth = this.endMonth = this.getmonth(this.endDate)
+      this.startSelectYear = this.startYear = shnUiDate.getYear(this.startDate)
+      this.endSelectYear = this.endYear = shnUiDate.getYear(this.endDate)
+      this.startSelectMonth = this.startMonth = shnUiDate.getMonth(this.startDate)
+      this.endSelectMonth = this.endMonth = shnUiDate.getMonth(this.endDate)
 
-      this.start = this.getday(this.startDate)
-      this.end = this.getday(this.endDate)
+      this.start = shnUiDate.getDay(this.startDate)
+      this.end = shnUiDate.getDay(this.endDate)
     },
     handelRangeYear(dateType, type) {
       if (dateType == 'start') {
@@ -478,7 +480,7 @@ export default {
           }
         }
       } else if (this.type == 'week') {
-        this.$emit('change', this.getsomeweek(item.date))
+        this.$emit('change', shnUiDate.getSomeWeek(item.date))
       }
     },
     inSelect(td, type) {
@@ -504,9 +506,9 @@ export default {
       let s = new Date(this.startDate).getTime()
       let e = new Date(this.endDate).getTime()
       for (let i = 0; i < td.length; i++) {
-        td[i].date = `${td[i].year}-${this.Appendzero(
+        td[i].date = `${td[i].year}-${shnUiDate.appendZero(
           td[i].month
-        )}-${this.Appendzero(td[i].value)}`
+        )}-${shnUiDate.appendZero(td[i].value)}`
 
         let v = new Date(td[i].date).getTime()
 
@@ -525,7 +527,6 @@ export default {
           if (type == 'start') {
             if (v > e) {
               td[i].type = 5
-              console.log(td[i])
             }
           } else {
             if (v < s) td[i].type = 5

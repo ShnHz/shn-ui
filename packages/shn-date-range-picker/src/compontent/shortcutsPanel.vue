@@ -70,6 +70,9 @@ import quarterPanel from './quarterPanel'
 import monthPanel from './monthPanel'
 import dayPanel from './dayPanel'
 
+import { shnUiRules } from '../../../../public/js/shn-vue-ui-rules'
+import { shnUiDate } from '../../../../public/js/shn-vue-ui-date'
+
 export default {
   components: {
     yearPanel,
@@ -153,23 +156,23 @@ export default {
       switch (item.value) {
         case 'year':
           this.rangesActive = 'lastyear'
-          this.input(this.getlastday(365))
+          this.input(shnUiDate.getLastDay(365))
           break
         case 'quarter':
           this.rangesActive = 'last90'
-          this.input(this.getlastday(90))
+          this.input(shnUiDate.getLastDay(90))
           break
         case 'month':
           this.rangesActive = 'last30'
-          this.input(this.getlastday(30))
+          this.input(shnUiDate.getLastDay(30))
           break
         case 'week':
           this.rangesActive = 'custom'
-          this.input(this.getsomeweek(this.gettoday()))
+          this.input(shnUiDate.getSomeWeek(shnUiDate.getToday()))
           break
         case 'day':
           this.rangesActive = 'lastweek'
-          this.input(this.getlastday(7))
+          this.input(shnUiDate.getLastDay(7))
           break
       }
     },
@@ -177,26 +180,26 @@ export default {
       this.rangesActive = item.value
       switch (item.value) {
         case 'lastweek':
-          this.input(this.getlastday(7))
+          this.input(shnUiDate.getLastDay(7))
           break
         case 'last30':
-          this.input(this.getlastday(30))
+          this.input(shnUiDate.getLastDay(30))
           break
         case 'last90':
-          this.input(this.getlastday(90))
+          this.input(shnUiDate.getLastDay(90))
           break
         case 'last180':
-          this.input(this.getlastday(180))
+          this.input(shnUiDate.getLastDay(180))
           break
         case 'lastyear':
-          this.input(this.getlastday(365))
+          this.input(shnUiDate.getLastDay(365))
           break
       }
     },
     handleDate(value) {
       this.rangesActive = 'custom'
       this.input([this.startDate, this.endDate])
-      return !this.rulesDate(value)
+      return !shnUiRules.rulesDate(value)
     },
     input(data) {
       this.$emit('input', data)

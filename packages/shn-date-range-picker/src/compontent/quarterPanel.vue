@@ -72,6 +72,8 @@
   </div>
 </template>
 <script>
+import { shnUiDate } from '../../../../public/js/shn-vue-ui-date'
+
 export default {
   props: {
     value: {
@@ -84,11 +86,11 @@ export default {
       this.startDate = val[0]
       this.endDate = val[1]
 
-      this.startDateSelect = this.startYear = this.getyear(this.startDate)
-      this.endDateSelect = this.endYear = this.getyear(this.endDate)
+      this.startDateSelect = this.startYear = shnUiDate.getYear(this.startDate)
+      this.endDateSelect = this.endYear = shnUiDate.getYear(this.endDate)
 
-      this.start = this.getmonth(this.startDate)
-      this.end = this.getmonth(this.endDate)
+      this.start = shnUiDate.getMonth(this.startDate)
+      this.end = shnUiDate.getMonth(this.endDate)
     }
   },
   data() {
@@ -134,11 +136,11 @@ export default {
   },
   methods: {
     init() {
-      this.start = this.getmonth(this.startDate)
-      this.end = this.getmonth(this.endDate)
+      this.start = shnUiDate.getMonth(this.startDate)
+      this.end = shnUiDate.getMonth(this.endDate)
 
-      this.startDateSelect = this.startYear = this.getyear(this.startDate)
-      this.endDateSelect = this.endYear = this.getyear(this.endDate)
+      this.startDateSelect = this.startYear = shnUiDate.getYear(this.startDate)
+      this.endDateSelect = this.endYear = shnUiDate.getYear(this.endDate)
     },
     handelRange(dateType, type) {
       if (dateType == 'start') {
@@ -159,7 +161,7 @@ export default {
       if (dateType == 'start') {
         if (!this.disabled('start', item)) {
           this.$emit('change', [
-            this.startDateSelect + '-' + this.Appendzero(item) + '-01',
+            this.startDateSelect + '-' + shnUiDate.appendZero(item) + '-01',
             this.endDate
           ])
         }
@@ -169,9 +171,9 @@ export default {
             this.startDate,
             this.endDateSelect +
               '-' +
-              this.Appendzero(item) +
+              shnUiDate.appendZero(item) +
               '-' +
-              this.getlastdayofmonth(this.endDateSelect, item)
+              shnUiDate.getLastDayOfMonth(this.endDateSelect, item)
           ])
         }
       }

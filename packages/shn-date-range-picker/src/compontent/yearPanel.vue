@@ -47,6 +47,8 @@
   </div>
 </template>
 <script>
+import { shnUiDate } from '../../../../public/js/shn-vue-ui-date'
+
 export default {
   props: {
     value: {
@@ -59,8 +61,8 @@ export default {
       this.startDate = val[0]
       this.endDate = val[1]
 
-      this.start = this.getyear(val[0])
-      this.end = this.getyear(val[1])
+      this.start = shnUiDate.getYear(val[0])
+      this.end = shnUiDate.getYear(val[1])
 
       this.startDateSelect = [
         Math.floor(this.start / 10) * 10,
@@ -115,8 +117,8 @@ export default {
   },
   methods: {
     init() {
-      this.start = this.getyear(this.startDate)
-      this.end = this.getyear(this.endDate)
+      this.start = shnUiDate.getYear(this.startDate)
+      this.end = shnUiDate.getYear(this.endDate)
 
       this.startDateSelect = [
         Math.floor(this.start / 10) * 10,

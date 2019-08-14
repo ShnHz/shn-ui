@@ -6,7 +6,6 @@ import store from './store'
 
 import '../public/css/cover.scss';
 import '../public/iconfont/iconfont.css';
-import '../public/js/date';
 
 // 导入组件库
 import shnUI from './../packages/index'

@@ -23,6 +23,7 @@
 import clickoutside from '../../../public/js/clickoutside'
 import shortcutsPanel from './compontent/shortcutsPanel'
 
+import {shnUiDate} from '../../../public/js/shn-vue-ui-date'
 export default {
   name: 'shn-date-range-picker',
   directives: { clickoutside },
@@ -56,7 +57,7 @@ export default {
   methods: {
     init() {
       if (this.data == '') {
-        this.$emit('input', this.getlastday(30))
+        this.$emit('input', shnUiDate.getLastDay(30))
       }
     },
     handleClose() {
