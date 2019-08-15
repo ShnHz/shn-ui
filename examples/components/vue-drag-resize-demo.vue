@@ -57,12 +57,15 @@
     </shn-el-demo-block>
 
     <!-- 拖拽方向DEMO -->
-    <shn-el-demo-block :height="210" :title="'拖拽方向'" id="vue-draag-resize-axis">
+    <shn-el-demo-block :height="231" :title="'拖拽方向'" id="vue-draag-resize-axis">
       <template v-slot:demo>
-        <div style="height:200px">
-          <vue-drag-resize :h="100" :w="100" :x="20" :y="20" axis="x">
+        <div style="height:200px;">
+          <vue-drag-resize :h="100" :w="100" :x="20" :y="20" axis="x" parentLimitation>
             <div class="simple-block">
-              <div>左右拖动</div>
+              <div>
+                <p>左右拖动</p>
+                <p>禁止超出</p>
+              </div>
             </div>
           </vue-drag-resize>
         </div>
@@ -135,10 +138,11 @@ export default {
       axis: {
         code: {
           html: `
-          <vue-drag-resize :h="100" :w="100" :x="20" :y="20" axis="x">
+          <vue-drag-resize :h="100" :w="100" :x="20" :y="20" axis="x" parentLimitation>
             <div class="simple-block">
               <div>
-                我可以被左右拖动
+                <p>左右拖动</p>
+                <p>禁止超出</p>
               </div>
             </div>
           </vue-drag-resize>
@@ -247,7 +251,7 @@ export default {
         },
         {
           parameter: 'parentLimitation',
-          description: '是否超出父级元素',
+          description: '是否禁止超出父级元素',
           dataTypes: 'Boolean',
           optional: 'true / false',
           default: 'false'

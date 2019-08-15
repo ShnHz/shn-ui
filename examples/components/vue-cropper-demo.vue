@@ -3,7 +3,7 @@
     <shn-backtop :visibilityHeight="300" />
 
     <h2 class="demo-title">vueCropper 图片裁剪</h2>
-    <p class="demo-introduction">vue-cropper一个优雅的图片裁剪插件。</p>
+    <p class="demo-introduction">vue-cropper是一个优雅的图片裁剪插件。</p>
 
     <div class="demo-tip">
       <p>该插件的作者是xyxiao001，附上github地址</p>
