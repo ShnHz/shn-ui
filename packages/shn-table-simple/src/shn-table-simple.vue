@@ -14,7 +14,7 @@
         <td v-for="(item_td,key) in item_tr"
             :key="key">
           <span v-if="item_td != '' && item_td != null"
-                :class="{'parameter':key === 'parameter' && type === 'demo','dataTypes':key === 'dataTypes'  && type === 'demo'}">
+                :class="{'parameter':key === 'parameter' && type === 'demo','dataTypes':key === 'dataTypes'  && type === 'demo' ,'description':key === 'description'  && type === 'demo'}">
             {{item_td}}
           </span>
           <span v-else>
@@ -97,6 +97,10 @@ export default {
         }
         .dataTypes {
           color: #bd6f9c;
+        }
+        .description{
+          display: inline-block;
+          max-width: 300px;
         }
       }
     }

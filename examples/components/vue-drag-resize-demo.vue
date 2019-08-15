@@ -240,7 +240,7 @@ export default {
           description: '元素缩放的节点定义',
           dataTypes: 'Array',
           optional: '',
-          default: `['tl', 'tm', 'tr', 'mr', 'br', 'bm', 'bl', 'ml']`
+          default: ''
         },
         {
           parameter: 'preventActiveBehavior',
@@ -258,25 +258,25 @@ export default {
         },
         {
           parameter: 'parentW',
-          description: '父级宽度',
+          description:
+            '父级宽度，该值限制了元素可以拖动的水平最大宽度，前提是parentLimitation=true',
           dataTypes: 'Number',
-          optional:
-            '该值限制了元素可以拖动的水平最大宽度，前提是parentLimitation=true',
+          optional: '',
           default: '0'
         },
         {
           parameter: 'parenth',
-          description: '父级高度',
+          description:
+            '父级高度,该值限制了元素可以拖动的水平最大高度，前提是parentLimitation=true',
           dataTypes: 'Number',
-          optional:
-            '该值限制了元素可以拖动的水平最大高度，前提是parentLimitation=true',
+          optional: '',
           default: '0'
         },
         {
           parameter: 'axis',
           description: '允许拖拽的方向',
           dataTypes: 'String',
-          optional: '取值可以为x、 y、 both、none',
+          optional: 'x / y / both / none',
           default: 'both'
         },
         {
