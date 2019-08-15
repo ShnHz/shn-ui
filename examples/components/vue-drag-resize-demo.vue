@@ -20,6 +20,16 @@
         />
       </p>
     </div>
+    <!-- 安装 -->
+    <h3 class="demo-table-title">安装</h3>
+    <p class="demo-introduction">推荐使用 npm 的方式安装，它能更好地和 webpack 打包工具配合使用。</p>
+    <div class="demo-code-block">
+      <p>npm i -s vue-drag-resize</p>
+      <shn-divider />
+      <p>main.js里面使用</p>
+      <p>import VueDragResize from 'vue-drag-resize'</p>
+      <p>Vue.component('vue-drag-resize', VueDragResize)</p>
+    </div>
 
     <shn-anchor>
       <shn-anchor-link href="vue-draag-resize-simple" title="基础用法" />

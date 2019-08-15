@@ -21,6 +21,24 @@
       </p>
     </div>
 
+    <!-- 安装 -->
+    <h3 class="demo-table-title">安装</h3>
+    <p class="demo-introduction">推荐使用 npm 的方式安装，它能更好地和 webpack 打包工具配合使用。</p>
+    <div class="demo-code-block">
+      <p>npm install vue-cropper</p>
+      <p>yarn add vue-cropper</p>
+      <shn-divider />
+      <p>main.js里面使用</p>
+      <p>import VueCropper from 'vue-cropper'</p>
+      <p>Vue.use(VueCropper)</p>
+      <shn-divider />
+      <p>组件内使用</p>
+      <p>import { VueCropper } from 'vue-cropper'</p>
+      <p>components: {</p>
+      <p style="padding-left:10px">VueCropper</p>
+      <p>}</p>
+    </div>
+
     <shn-anchor>
       <shn-anchor-link href="vue-draag-resize-simple" title="基础用法" />
       <shn-anchor-link href="vue-draag-resize-fix" title="截图框固定比例" />
@@ -30,7 +48,12 @@
     </shn-anchor>
 
     <!-- 基础用法DEMO -->
-    <shn-el-demo-block :height="354" :title="'基础用法'" id="vue-draag-resize-simple" introduction="需要使用外层容器包裹并设置宽高。">
+    <shn-el-demo-block
+      :height="354"
+      :title="'基础用法'"
+      id="vue-draag-resize-simple"
+      introduction="需要使用外层容器包裹并设置宽高。"
+    >
       <template v-slot:demo>
         <div style="width:100%;height:500px">
           <vue-cropper
