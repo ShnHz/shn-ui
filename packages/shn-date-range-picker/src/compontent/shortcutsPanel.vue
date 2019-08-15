@@ -8,7 +8,7 @@
           :key="'period' + index + item.value"
           @click="handlePeriod(item)"
           class="period"
-          v-for="(item,index) in periods"
+          v-for="(item,index) in computedPeriods"
         >{{item.label}}</li>
       </ul>
 
@@ -84,6 +84,28 @@ export default {
     value: {
       type: [Array, String],
       default: ''
+    },
+    periodsList: {
+      type: Array,
+      default: function() {
+        return []
+      }
+    }
+  },
+  computed: {
+    computedPeriods: function() {
+      let list = []
+      if (this.periodsList.length == 0) {
+        return this.periods
+      } else {
+        for (let i = 0; i < this.periods.length; i++) {
+          if (this.periodsList.indexOf(this.periods[i].value) > -1) {
+            list.push(this.periods[i])
+          }
+        }
+      }
+
+      return list
     }
   },
   watch: {
@@ -94,7 +116,7 @@ export default {
   },
   data() {
     return {
-      periodsActive: 'day',
+      periodsActive: this.periodsList.length == 0 ? 'day' : this.periodsList[0],
       periods: [
         {
           value: 'day',
@@ -224,6 +246,7 @@ export default {
       display: inline-flex;
       list-style: none;
       outline: none;
+      min-width: 215px;
       .period {
         padding: 0 15px;
         margin: 0;

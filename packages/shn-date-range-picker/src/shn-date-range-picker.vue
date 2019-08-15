@@ -14,7 +14,7 @@
     <transition name="drop-down">
       <div class="shn-date-picker-panel" v-show="show">
         <div class="popper__arrow" style="left:30px"></div>
-        <shortcutsPanel @cancel="handleClose" @confirm="confirm" v-model="data" />
+        <shortcutsPanel @cancel="handleClose" @confirm="confirm" v-model="data" :periodsList="periods"/>
       </div>
     </transition>
   </div>
@@ -23,7 +23,7 @@
 import clickoutside from '../../../public/js/clickoutside'
 import shortcutsPanel from './compontent/shortcutsPanel'
 
-import {shnUiDate} from '../../../public/js/shn-vue-ui-date'
+import { shnUiDate } from '../../../public/js/shn-vue-ui-date'
 export default {
   name: 'shn-date-range-picker',
   directives: { clickoutside },
@@ -38,6 +38,12 @@ export default {
     rangeSeparator: {
       type: String,
       default: '-'
+    },
+    periods: {
+      type: Array,
+      default: function() {
+        return []
+      }
     }
   },
   created() {
