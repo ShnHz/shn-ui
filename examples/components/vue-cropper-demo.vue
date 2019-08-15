@@ -30,7 +30,7 @@
     </shn-anchor>
 
     <!-- 基础用法DEMO -->
-    <shn-el-demo-block :height="354" :title="'基础用法'" id="vue-draag-resize-simple">
+    <shn-el-demo-block :height="354" :title="'基础用法'" id="vue-draag-resize-simple" introduction="需要使用外层容器包裹并设置宽高。">
       <template v-slot:demo>
         <div style="width:100%;height:500px">
           <vue-cropper
