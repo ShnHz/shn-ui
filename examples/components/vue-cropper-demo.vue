@@ -55,7 +55,7 @@
     </shn-el-demo-block>
 
     <!-- 截图框固定比例DEMO -->
-    <shn-el-demo-block :height="210" :title="'截图框固定比例'" id="vue-draag-resize-fix">
+    <shn-el-demo-block :height="126" :title="'截图框固定比例'" id="vue-draag-resize-fix">
       <template v-slot:demo>
         <div style="width:100%;height:500px">
           <vue-cropper
