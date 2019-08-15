@@ -47,6 +47,7 @@
             :w="100"
             :x="20"
             :y="20"
+            :z="1"
             v-on:dragging="resize"
             v-on:resizing="resize"
           >
