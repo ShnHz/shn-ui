@@ -4,7 +4,10 @@
       <div class="shn-country-picker-editor">
         <div class="shn-country-picker-editor-body">
           <span :class="'flag_' + value" class="shn-country-picker-editor-flags"></span>
-          <span class="shn-country-picker-editor-span">{{value.toUpperCase()}}</span>
+          <span
+            :class="{'ellipsis' : chinese}"
+            class="shn-country-picker-editor-span"
+          >{{chinese ? formatChinese() : value.toUpperCase() }}</span>
           <i :class="{'is-reverse':show}" class="shni shn-up"></i>
         </div>
       </div>
@@ -13,14 +16,14 @@
     <transition name="drop-down">
       <div class="shn-country-picker-panel" v-show="show">
         <div class="popper__arrow" style="left:30px"></div>
-        <div class="shn-country-picker-panel-search">
+        <div class="shn-country-picker-panel-search" v-if="search">
           <shn-input
             :height="28"
             :pattern="'frame'"
             placeholder="请输入关键字搜索"
             style="width:100%"
             suffix-icon="shn-search"
-            v-model="search"
+            v-model="input"
           />
         </div>
         <shn-divider style="margin: 0 0;" />
@@ -62,15 +65,13 @@ export default {
       type: String,
       default: 'cn'
     },
-    rangeSeparator: {
-      type: String,
-      default: '-'
+    search: {
+      type: Boolean,
+      default: false
     },
-    periods: {
-      type: Array,
-      default: function() {
-        return []
-      }
+    chinese: {
+      type: Boolean,
+      default: false
     }
   },
   created() {
@@ -85,7 +86,7 @@ export default {
     return {
       show: false,
       data: 'cn',
-      search: '',
+      input: '',
 
       list: {
         热门国家: [
@@ -180,7 +181,7 @@ export default {
       }
     },
     showListData() {
-      if (this.search == '') {
+      if (this.input == '') {
         return this.list
       } else {
         let list = {}
@@ -188,7 +189,9 @@ export default {
           let ul = []
           for (let i = 0; i < this.list[k].length; i++) {
             for (let j = 0; j < this.list[k][i].length; j++) {
-              if (this.list[k][i][j].indexOf(this.search) > -1) {
+              if (
+                this.list[k][i][j].indexOf(this.input.toLocaleLowerCase()) > -1
+              ) {
                 ul.push(this.list[k][i])
               }
             }
@@ -200,8 +203,17 @@ export default {
         return list
       }
     },
+    formatChinese() {
+      for (let k in this.list) {
+        for (let i = 0; i < this.list[k].length; i++) {
+          if (this.list[k][i][0] == this.value) {
+            return this.list[k][i][1]
+          }
+        }
+      }
+    },
     handleClose() {
-      this.search = ''
+      this.input = ''
       this.show = false
     },
     handleClick(item) {
@@ -249,6 +261,9 @@ export default {
       width: 50px;
       padding: 0 0 0 5px;
       text-align: left;
+      &.ellipsis {
+        width: 100px;
+      }
     }
   }
 

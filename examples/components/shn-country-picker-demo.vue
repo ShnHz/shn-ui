@@ -14,6 +14,28 @@
       </template>
     </shn-el-demo-block>
 
+    <!-- 基础用法DEMO -->
+    <shn-el-demo-block :height="354" :title="'搜索功能'">
+      <template v-slot:demo>
+        <shn-country-picker search v-model="search.value" />
+      </template>
+      <template v-slot:code>
+        <code class="html">{{fCode(search.code.html)}}</code>
+        <code class="javascript">{{fCode(search.code.javascript)}}</code>
+      </template>
+    </shn-el-demo-block>
+
+    <!-- 基础用法DEMO -->
+    <shn-el-demo-block :height="354" :title="'显示中文'">
+      <template v-slot:demo>
+        <shn-country-picker chinese search v-model="chinese.value" />
+      </template>
+      <template v-slot:code>
+        <code class="html">{{fCode(chinese.code.html)}}</code>
+        <code class="javascript">{{fCode(chinese.code.javascript)}}</code>
+      </template>
+    </shn-el-demo-block>
+
     <!-- API -->
     <div>
       <h3 class="demo-table-title">API</h3>
@@ -31,13 +53,13 @@ export default {
       simple: {
         code: {
           html: `
-          <shn-date-range-picker v-model="range.value" rangeSeparator="至" />
+          <shn-country-picker v-model="simple.value" />
           `,
           javascript: `
           export default {
             data() {
               return {
-                range:{
+                simple:{
                   value:''
                 }
               }
@@ -50,16 +72,38 @@ export default {
         },
         value: ''
       },
-      periods: {
+      search: {
         code: {
           html: `
-          <shn-date-range-picker v-model="periods.value" rangeSeparator="至" :periods="['month','year']"/>
+          <shn-country-picker v-model="search.value" search/>
           `,
           javascript: `
           export default {
             data() {
               return {
-                periods:{
+                search:{
+                  value:''
+                }
+              }
+            },
+            methods: {
+          
+            }
+          }
+          `
+        },
+        value: ''
+      },
+      chinese: {
+        code: {
+          html: `
+          <shn-country-picker v-model="search.value" search chinese/>
+          `,
+          javascript: `
+          export default {
+            data() {
+              return {
+                chinese:{
                   value:''
                 }
               }
@@ -79,6 +123,20 @@ export default {
           dataTypes: 'Array',
           optional: '',
           default: ''
+        },
+        {
+          parameter: 'search',
+          description: '是否开启搜索',
+          dataTypes: 'Boolean',
+          optional: 'true / false',
+          default: 'true'
+        },
+        {
+          parameter: 'chinese',
+          description: '按钮内值是否显示中文',
+          dataTypes: 'String',
+          optional: 'true / false',
+          default: 'false'
         }
       ]
     }
