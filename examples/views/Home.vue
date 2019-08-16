@@ -70,6 +70,11 @@ export default {
               path: '#/component/date-picker'
             },
             {
+              id: 14,
+              name: 'CountryPicker 国家选择器',
+              path: '#/component/country-picker'
+            },
+            {
               id: 1,
               group: '数据展示',
               name: 'Statistic 统计数值',
@@ -195,6 +200,9 @@ export default {
         break
       case '/component/date-picker':
         this.active = 13
+        break
+      case '/component/vue-country':
+        this.active = 14
         break
       case '/component/vue-drag-resize':
         this.active = -100

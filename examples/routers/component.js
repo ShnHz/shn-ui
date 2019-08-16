@@ -15,6 +15,7 @@ import shnDividerDemo from '../components/shn-divider-demo'
 import shnMenuSimpleDemo from '../components/shn-menu-simple-demo'
 import shnModelMaskDemo from '../components/shn-model-mask-demo'
 import shnDatePickerDemo from '../components/shn-date-picker-demo'
+import shnCountryPickerDemo from '../components/shn-country-picker-demo'
 
 export default [{
         path: '/component/installation',
@@ -137,6 +138,14 @@ export default [{
         path: '/component/date-picker',
         name: 'shnDatePickerDemo',
         component: shnDatePickerDemo,
+        meta: {
+            title: '组件|SHN-UI'
+        }
+    },
+    {
+        path: '/component/country-picker',
+        name: 'shnCountryPickerDemo',
+        component: shnCountryPickerDemo,
         meta: {
             title: '组件|SHN-UI'
         }

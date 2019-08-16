@@ -10,8 +10,8 @@
       disabled            | 禁用                           boolean
       animation           | 动画                           boolean
       mode                | 布局方式                       string(horizontal|vertical)
-      size                | 尺寸                           large/medium/small/mini
-
+      suffix-icon
+      prefix-icon
   -->
   <div
     :class="{'shn-input_frame':pattern === 'frame',
@@ -22,6 +22,7 @@
     class="shn-input"
   >
     <input
+      :class="{'suffix-icon':suffixIcon,'prefix-icon':prefixIcon}"
       :disabled="disabled"
       :placeholder="placeholder_c"
       :style="{height:height+'px',lineHeight:height + 'px'}"
@@ -33,6 +34,9 @@
       class="shn-input__inner"
       ref="input"
     />
+    <i :class="suffixIcon" class="suffix-icon shni" v-if="suffixIcon != '' && pattern === 'frame'"></i>
+    <i :class="prefixIcon" class="prefix-icon shni" v-if="prefixIcon != '' && pattern === 'frame'"></i>
+
     <label
       :class="{'shn-input__label__focus':value != ''}"
       @click="$refs.input.focus()"
@@ -80,6 +84,14 @@ export default {
     size: {
       type: String,
       default: 'mini'
+    },
+    suffixIcon: {
+      type: String,
+      default: ''
+    },
+    prefixIcon: {
+      type: String,
+      default: ''
     }
   },
   data() {
@@ -111,6 +123,18 @@ export default {
   width: 180px;
   position: relative;
   font-size: 14px;
+  i {
+    color: #c0c4cc;
+    &.prefix-icon {
+      position: absolute;
+      left: 5px;
+    }
+    &.suffix-icon {
+      position: absolute;
+      right: 5px;
+    }
+  }
+
   .shn-input__inner {
     -webkit-appearance: none;
     background-color: #fff;
@@ -123,6 +147,12 @@ export default {
     padding: 0 0 0 15px;
     transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
     width: 100%;
+    &.suffix-icon {
+      padding-right: 25px;
+    }
+    &.prefix-icon {
+      padding-left: 25px;
+    }
     &:hover {
       border-color: #c0c4cc;
     }

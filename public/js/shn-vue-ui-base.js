@@ -22,3 +22,15 @@ Vue.prototype.fCode = function (code) {
   }
   return fcode
 }
+
+//数组去重
+Vue.prototype.unique = function (array) {
+  var res = [];
+  for (var i = 0, len = array.length; i < len; i++) {
+      var current = array[i];
+      if (res.indexOf(current) === -1) {
+          res.push(current)
+      }
+  }
+  return res;
+}

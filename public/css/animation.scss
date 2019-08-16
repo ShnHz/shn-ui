@@ -40,10 +40,12 @@
     transform: scaleY(1);
     transition: $--md-fade-transition;
     transform-origin: center top;
+    // transform: translateZ(0);
 }
 
 .drop-down-enter,
 .drop-down-leave-active {
     opacity: 0;
     transform: scaleY(0);
+    // transform: translateZ(0);
 }

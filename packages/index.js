@@ -1,5 +1,6 @@
 import '../public/css/result.css'
 import '../public/iconfont/iconfont.css'
+import '../public/css/flags.css'
 import '../public/css/shn-vue-ui-base.css'
 import '../public/css/animation.scss'
 import '../public/js/shn-vue-ui-base.js'
@@ -27,6 +28,7 @@ import LoadingPage from './shn-loading-page'
 import UrlParam from './shn-url-param'
 import ModelMask from './shn-model-mask'
 import DateRangePicker from './shn-date-range-picker'
+import CountryPicker from './shn-country-picker'
 
 import VueCropper from './vue-cropper'
 import VueDragResize from './vue-drag-resize'
@@ -55,6 +57,7 @@ const components = [
     UrlParam,
     ModelMask,
     DateRangePicker,
+    CountryPicker,
 
     VueDragResize,
     VueCropper,
@@ -89,7 +92,6 @@ export default {
     Loading,
     UploadImg,
     PreviewImg,
-    VueCropper,
     Modal,
     Anchor,
     AnchorLink,
@@ -97,5 +99,10 @@ export default {
     MenuSimple,
     PulldownRefresh,
     LoadingPage,
-    ModelMask
+    ModelMask,
+    DateRangePicker,
+    CountryPicker,
+
+    VueDragResize,
+    VueCropper
 }
