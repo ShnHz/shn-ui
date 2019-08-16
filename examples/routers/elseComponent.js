@@ -1,5 +1,6 @@
 import vueDragResize from '../components/vue-drag-resize-demo'
 import vueCropper from '../components/vue-cropper-demo'
+import vueCookies from '../components/vue-cookies-demo'
 
 export default [{
         path: '/component/vue-drag-resize',
@@ -15,6 +16,14 @@ export default [{
         component: vueCropper,
         meta: {
             title: '插件| vue-cropper'
+        }
+    },
+    {
+        path: '/component/vue-cookies',
+        name: 'vueCookies',
+        component: vueCookies,
+        meta: {
+            title: '插件| vue-cookies'
         }
     }
 ]

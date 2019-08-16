@@ -2,21 +2,23 @@
   <div class="content-box">
     <shn-backtop :visibilityHeight="300" />
 
-    <h2 class="demo-title">vueDragResize 拖拽/缩放</h2>
-    <p class="demo-introduction">vue-drag-resize是一个支持拖拽与缩放的vue插件，支持vue 1.x与2.x，使用方便，上手便利。</p>
+    <h2 class="demo-title">vueCookies 操作Cookies</h2>
+    <p
+      class="demo-introduction"
+    >在vue中如果想要操作cookie，可以使用vue-cookies插件，这是一个简单的Vue.js插件，专门用于在vue中处理浏览器的cookie操作，vue-cookies没有依赖关系，它可以独立存在，对vuejs友好。</p>
 
     <div class="demo-tip">
-      <p>该插件的作者是kirillmurashov，附上github地址</p>
+      <p>该插件的作者是cmp-cc，附上github地址</p>
       <p>
         <a
-          href="https://github.com/kirillmurashov/vue-drag-resize"
+          href="https://github.com/cmp-cc/vue-cookies"
           target="_blank"
-        >https://github.com/kirillmurashov/vue-drag-resize</a>
+        >https://github.com/cmp-cc/vue-cookies</a>
         <img
           alt
           class="github-img"
-          href="https://github.com/kirillmurashov/vue-drag-resize"
-          src="https://img.shields.io/github/stars/kirillmurashov/vue-drag-resize.svg?style=social&label=Star&maxAge=2592000"
+          href="https://github.com/cmp-cc/vue-cookies"
+          src="https://img.shields.io/github/stars/cmp-cc/vue-cookies.svg?style=social&label=Star&maxAge=2592000"
         />
       </p>
     </div>
@@ -24,96 +26,45 @@
     <h3 class="demo-table-title">安装</h3>
     <p class="demo-introduction">推荐使用 npm 的方式安装，它能更好地和 webpack 打包工具配合使用。</p>
     <div class="demo-code-block">
-      <p>npm i -s vue-drag-resize</p>
+      <p>npm install vue-cookies --save</p>
       <shn-divider />
       <p>main.js里面使用</p>
-      <p>import VueDragResize from 'vue-drag-resize'</p>
-      <p>Vue.component('vue-drag-resize', VueDragResize)</p>
+      <p>import VueCookies from 'vue-cookies'</p>
+      <p>Vue.use(VueCookies)</p>
     </div>
-
-    <shn-anchor>
-      <shn-anchor-link href="vue-draag-resize-simple" title="基础用法" />
-      <shn-anchor-link href="vue-draag-resize-axis" title="拖动方向" />
-      <shn-anchor-link href="api" title="API" />
-      <shn-anchor-link href="event" title="事件" />
-    </shn-anchor>
 
     <!-- 基础用法DEMO -->
-    <shn-el-demo-block :height="648" :title="'基础用法'" id="vue-draag-resize-simple">
-      <template v-slot:demo>
-        <div style="height:200px">
-          <vue-drag-resize
-            :h="100"
-            :w="100"
-            :x="20"
-            :y="20"
-            :z="1"
-            v-on:dragging="resize"
-            v-on:resizing="resize"
-          >
-            <div class="simple-block">
-              <div>
-                我可以被拖动
-                <p>{{ simple.top }} х {{ simple.left }}</p>
-                <p>{{ simple.width }} х {{ simple.height }}</p>
-              </div>
-            </div>
-          </vue-drag-resize>
-        </div>
-      </template>
-      <template v-slot:code>
-        <code class="html">{{fCode(simple.code.html)}}</code>
-        <code class="javascript">{{fCode(simple.code.javascript)}}</code>
-      </template>
-    </shn-el-demo-block>
-
-    <!-- 拖拽方向DEMO -->
-    <shn-el-demo-block :height="231" :title="'拖拽方向'" id="vue-draag-resize-axis">
-      <template v-slot:demo>
-        <div style="height:200px;">
-          <vue-drag-resize
-            :h="100"
-            :isResizable="false"
-            :w="100"
-            :x="20"
-            :y="20"
-            axis="x"
-            parentLimitation
-          >
-            <div class="simple-block">
-              <div>
-                <p>左右拖动</p>
-                <p>禁止超出</p>
-                <p>禁止缩放</p>
-              </div>
-            </div>
-          </vue-drag-resize>
-        </div>
-      </template>
-      <template v-slot:code>
-        <code class="html">{{fCode(axis.code.html)}}</code>
-      </template>
-    </shn-el-demo-block>
-
-    <!-- API -->
-    <div id="api">
-      <h3 class="demo-table-title">API</h3>
-      <P class="demo-table-introduction">属性说明如下：</P>
-      <shn-table-simple :data="api" :type="'demo'" />
-    </div>
-
-    <!-- 事件 -->
-    <div id="event">
-      <h3 class="demo-table-title">事件</h3>
-      <P class="demo-table-introduction">事件说明如下：</P>
-      <shn-table-simple :data="event" :type="'demo'" />
+    <h3 class="demo-table-title">基础用法</h3>
+    <div class="demo-code-block">
+      <p>- 设置全局配置，设置cookie过期时间和url</p>
+      <p>this.$cookies.config(expireTimes[,path])</p>
+      <p style="margin-top:10px">this.$cookies.config('30d')</p>
+      <p>this.$cookies.config(new Date(2019,03,13).toUTCString())</p>
+      <p>this.$cookies.config(60 * 60 * 24 * 30,'')</p>
+      <shn-divider />
+      <p>- 设置一个cookie</p>
+      <p>this.$cookies.set(keyName, value[, expireTimes[, path[, domain[, secure]]]])</p>
+      <p  style="margin-top:10px">this.$cookies.set("user_session","25j_7Sl6xDq2Kc3ym0fmrSSk2xV2XkUkX")</p>
+      <shn-divider />
+      <p>- 获取一个cookie</p>
+      <p>this.$cookies.get(keyName)</p>
+      <shn-divider />
+      <p>- 删除一个cookie</p>
+      <p>this.$cookies.remove(keyName [, path [, domain]])</p>
+      <shn-divider />
+      <p>- 检查某个cookie是否存在</p>
+      <p>this.$cookies.isKey(keyName)</p>
+      <shn-divider />
+      <p>- 获取所有 cookie name，以数组形式返回</p>
+      <p>this.$cookies.keys()</p>
+      <shn-divider />
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'vue-drag-resize-demo',
+  name: 'vue-cookies-demo',
   data() {
     return {
       simple: {
@@ -158,12 +109,11 @@ export default {
       axis: {
         code: {
           html: `
-          <vue-drag-resize :h="100" :w="100" :x="20" :y="20" axis="x" parentLimitation :isResizable="false">
+          <vue-drag-resize :h="100" :w="100" :x="20" :y="20" axis="x" parentLimitation>
             <div class="simple-block">
               <div>
                 <p>左右拖动</p>
                 <p>禁止超出</p>
-                <p>禁止缩放</p>
               </div>
             </div>
           </vue-drag-resize>
