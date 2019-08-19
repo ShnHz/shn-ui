@@ -14,7 +14,12 @@
     <transition name="drop-down">
       <div class="shn-date-picker-panel" v-show="show">
         <div class="popper__arrow" style="left:30px"></div>
-        <shortcutsPanel @cancel="handleClose" @confirm="confirm" v-model="data" :periodsList="periods"/>
+        <shortcutsPanel
+          :periodsList="periods"
+          @cancel="handleClose"
+          @confirm="confirm"
+          v-model="data"
+        />
       </div>
     </transition>
   </div>
@@ -94,6 +99,7 @@ export default {
   }
 
   .shn-date-picker-panel {
+    backface-visibility: hidden;
     z-index: 150;
     position: absolute;
     margin: 5px 0;
