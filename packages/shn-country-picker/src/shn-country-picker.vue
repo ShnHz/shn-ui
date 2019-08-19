@@ -65,17 +65,49 @@ export default {
       type: String,
       default: 'cn'
     },
+    sort: {
+      type: Boolean,
+      default: true
+    },
     search: {
       type: Boolean,
       default: false
     },
+    searchSort: {
+      type: Boolean,
+      default: true
+    },
     chinese: {
       type: Boolean,
       default: false
+    },
+    option: {
+      type: Object,
+      default: function() {
+        return {}
+      }
     }
   },
   created() {
     this.init()
+  },
+  mounted() {
+    this.$nextTick(function() {
+      if (!this.sort) {
+        let list = {}
+        list['国家 / 地区'] = new Array()
+        for (let k in this.list) {
+          for (let i = 0; i < this.list[k].length; i++) {
+            list['国家 / 地区'].push(this.list[k][i])
+          }
+        }
+        this.list = list
+        // console.log(list)
+      }
+      if (JSON.stringify(this.option) != '{}') {
+        this.list = this.option
+      }
+    })
   },
   watch: {
     value: function(val) {
@@ -89,7 +121,7 @@ export default {
       input: '',
 
       list: {
-        热门国家: [
+        '热门国家 / 地区': [
           ['cn', '中国'],
           ['us', '美国'],
           ['jp', '日本'],
@@ -185,6 +217,9 @@ export default {
         return this.list
       } else {
         let list = {}
+        if (!this.searchSort) {
+          list['搜索结果'] = new Array()
+        }
         for (let k in this.list) {
           let ul = []
           for (let i = 0; i < this.list[k].length; i++) {
@@ -192,14 +227,19 @@ export default {
               if (
                 this.list[k][i][j].indexOf(this.input.toLocaleLowerCase()) > -1
               ) {
-                ul.push(this.list[k][i])
+                if (this.searchSort) {
+                  ul.push(this.list[k][i])
+                } else {
+                  list['搜索结果'].push(this.list[k][i])
+                }
               }
             }
           }
-          if (ul.length != 0) {
+          if (ul.length != 0 && this.searchSort) {
             list[k] = ul
           }
         }
+
         return list
       }
     },
