@@ -201,7 +201,7 @@ export default {
       case '/component/date-picker':
         this.active = 13
         break
-      case '/component/vue-country':
+      case '/component/country-picker':
         this.active = 14
         break
       case '/component/vue-drag-resize':

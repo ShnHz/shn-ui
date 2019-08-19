@@ -328,6 +328,7 @@ export default {
       width: 255px;
       height: 300px;
       overflow-y: scroll;
+      overflow-x: hidden;
       transform: translateZ(0px);
 
       .shn-country-picker-panel-ul {
