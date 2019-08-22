@@ -257,13 +257,13 @@ export default {
       this.show = false
     },
     handleClick(item) {
-      this.$emit('change', item[0])
       this.$emit('input', item[0])
+      this.$emit('change', item[0])
       this.handleClose()
     },
     confirm() {
-      this.$emit('change', this.data)
       this.$emit('input', this.data)
+      this.$emit('change', this.data)
       this.handleClose()
     }
   }
