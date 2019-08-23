@@ -7,7 +7,7 @@
       <template v-slot:demo>
         <p class="demo-code-en-p">see the bottom left modal.</p>
         <p class="demo-code-cn-p">查看页面右下方模态框</p>
-        <shn-widget-modal :visible.sync="simple.show" title="我可以被拖动及缩放" :isResizable="false">
+        <shn-widget-modal :visible.sync="simple.show" title="我可以被拖动及缩放">
           <p>这是内容</p>
           <p>这是内容</p>
           <p>这是内容</p>
