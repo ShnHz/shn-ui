@@ -125,6 +125,11 @@ export default {
               id: 11,
               name: 'MenuSimple 简单菜单',
               path: '#/component/meunsimple'
+            },
+            {
+              id: 15,
+              name: 'WidgetModal 可拖动模态框',
+              path: '#/component/widget-modal'
             }
           ]
         },
@@ -203,6 +208,9 @@ export default {
         break
       case '/component/country-picker':
         this.active = 14
+        break
+      case '/component/widget-modal':
+        this.active = 15
         break
       case '/component/vue-drag-resize':
         this.active = -100

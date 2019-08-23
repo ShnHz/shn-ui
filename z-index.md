@@ -3,7 +3,12 @@ loading-mask: 1000
 
 preview-img: 800
 
+modal: 200
+
 drawer-mask: 199
+modal-mask: 199
+
+widget-modal:190
 
 drop-down-panel: 150
 

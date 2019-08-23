@@ -29,6 +29,7 @@ import UrlParam from './shn-url-param'
 import ModelMask from './shn-model-mask'
 import DateRangePicker from './shn-date-range-picker'
 import CountryPicker from './shn-country-picker'
+import WidgetModal from './shn-widget-modal'
 
 import VueCropper from './vue-cropper'
 import VueDragResize from './vue-drag-resize'
@@ -58,6 +59,7 @@ const components = [
     ModelMask,
     DateRangePicker,
     CountryPicker,
+    WidgetModal,
 
     VueDragResize,
     VueCropper
@@ -102,6 +104,7 @@ export default {
     ModelMask,
     DateRangePicker,
     CountryPicker,
+    WidgetModal,
 
     VueDragResize,
     VueCropper

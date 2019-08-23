@@ -16,6 +16,7 @@ import shnMenuSimpleDemo from '../components/shn-menu-simple-demo'
 import shnModelMaskDemo from '../components/shn-model-mask-demo'
 import shnDatePickerDemo from '../components/shn-date-picker-demo'
 import shnCountryPickerDemo from '../components/shn-country-picker-demo'
+import shnWidgetModalDemo from '../components/shn-widget-modal-demo'
 
 export default [{
         path: '/component/installation',
@@ -146,6 +147,13 @@ export default [{
         path: '/component/country-picker',
         name: 'shnCountryPickerDemo',
         component: shnCountryPickerDemo,
+        meta: {
+            title: '组件|SHN-UI'
+        }
+    }, {
+        path: '/component/widget-modal',
+        name: 'shnWidgetModalDemo',
+        component: shnWidgetModalDemo,
         meta: {
             title: '组件|SHN-UI'
         }

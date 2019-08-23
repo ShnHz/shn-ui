@@ -201,13 +201,6 @@ export default {
           default: 'false'
         },
         {
-          parameter: 'isResizable',
-          description: '是否允许缩放',
-          dataTypes: 'Boolean',
-          optional: 'true / false',
-          default: 'true'
-        },
-        {
           parameter: 'w',
           description: '组件宽度',
           dataTypes: 'Number',

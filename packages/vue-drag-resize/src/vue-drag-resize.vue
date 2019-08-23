@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="active || isActive ? 'active' : 'inactive'"
+    :class="[ofenActive ? 'ofen-active' : (active || isActive ? 'active' : 'inactive'),!isDraggable ? 'isDraggableNo' : '']"
     :style="style"
     @mousedown="bodyDown($event)"
     @touchend="up($event)"
@@ -9,7 +9,7 @@
   >
     <slot></slot>
     <div
-      :class="['vdr-stick-' + stick, isResizable ? '' : 'not-resizable']"
+      :class="['vdr-stick-' + stick, isResizable ? '' : 'not-resizable',aspectRatio ? 'aspectRatio' : '']"
       :key="stick"
       :style="vdrStick(stick)"
       @mousedown.stop.prevent="stickDown(stick, $event)"
@@ -44,6 +44,10 @@ export default {
     parentScaleY: {
       type: Number,
       default: 1
+    },
+    ofenActive: {
+      type: Boolean,
+      default: false
     },
     isActive: {
       type: Boolean,
@@ -252,6 +256,7 @@ export default {
       let dragHandles = Array.prototype.slice.call(
         this.$el.querySelectorAll(this.dragHandle)
       )
+
       for (let i in dragHandles) {
         dragHandles[i].setAttribute('data-drag-handle', this._uid)
       }
@@ -485,8 +490,10 @@ export default {
     },
 
     stickDown: function(stick, ev) {
-      if (!this.isResizable || !this.active) {
-        return
+      if (!this.ofenActive || !this.isResizable) {
+        if (!this.isResizable || !this.active) {
+          return
+        }
       }
 
       this.stickDrag = true
@@ -1000,6 +1007,73 @@ export default {
 .inactive .vdr-stick {
   display: none;
 }
+.ofen-active.vdr {
+  cursor: move;
+  &.isDraggableNo {
+    cursor: default;
+  }
+  .vdr-stick {
+    display: block;
+    &.vdr-stick-ml {
+      position: absolute;
+      width: 10px;
+      height: 100% !important;
+      top: 0px;
+      left: -5px;
+      cursor: col-resize;
+      opacity: 0;
+      &.aspectRatio {
+        display: none;
+      }
+    }
+    &.vdr-stick-mr {
+      position: absolute;
+      width: 10px;
+      height: 100% !important;
+      top: 0px;
+      right: -5px;
+      cursor: col-resize;
+      opacity: 0;
+      &.aspectRatio {
+        display: none;
+      }
+    }
+    &.vdr-stick-tm {
+      position: absolute;
+      width: 100% !important;
+      height: 10px;
+      top: -5px;
+      left: 0px;
+      cursor: row-resize;
+      opacity: 0;
+      &.aspectRatio {
+        display: none;
+      }
+    }
+    &.vdr-stick-bm {
+      position: absolute;
+      width: 100% !important;
+      height: 10px;
+      bottom: -5px;
+      left: 0px;
+      cursor: row-resize;
+      opacity: 0;
+      &.aspectRatio {
+        display: none;
+      }
+    }
+    &.vdr-stick-tl,
+    &.vdr-stick-br,
+    &.vdr-stick-tr,
+    &.vdr-stick-bl {
+      width: 20px !important;
+      height: 20px !important;
+      z-index: 1;
+      opacity: 0;
+    }
+  }
+}
+
 .vdr-stick-tl,
 .vdr-stick-br {
   cursor: nwse-resize;
