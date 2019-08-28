@@ -7,6 +7,7 @@
       <div :style="imgBoxStyle" class="img-box">
         <img
           :class="{'img-height100':imgBoxStyleType === 1 && zoomType,'zoom-in':!zoomType,'zoom-out':zoomType}"
+          :style="imgBoxStyle"
           :src="value"
           @click="!zoomType ? zoomIn():zoomOut()"
           alt
@@ -107,8 +108,8 @@ export default {
           break
         case 2:
           this.imgBoxStyle = {
-            width: 'auto',
-            height: '100%',
+            width: '100%',
+            height: 'auto',
             overflow: 'hidden'
           }
           break
@@ -126,15 +127,15 @@ export default {
           break
         case 1:
           this.imgBoxStyle = {
-            width: '80%',
+            width: 'auto',
             height: '768px',
             overflow: 'hidden'
           }
           break
         case 2:
           this.imgBoxStyle = {
-            width: 'auto',
-            height: '768px',
+            width: '768px',
+            height: 'auto',
             overflow: 'hidden'
           }
           break
@@ -223,6 +224,7 @@ export default {
       background: rgba(255, 255, 255, 0.082) !important;
     }
     img {
+      object-fit: cover;
       width: auto;
       height: 100%;
     }

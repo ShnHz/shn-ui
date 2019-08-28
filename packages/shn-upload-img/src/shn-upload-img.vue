@@ -41,12 +41,12 @@
       <template v-slot:body>
         <div style="width:600px;height:500px">
           <vue-cropper
-            :fixedNumber="[width,height]"
+            :fixed="fixed"
+            :fixedNumber="fixedNumber"
             :full="true"
             :img="cropperImg"
             :outputSize="outputSize"
             autoCrop
-            fixed
             ref="cropper"
           />
         </div>
@@ -95,6 +95,16 @@ export default {
     outputSize: {
       type: Number,
       default: 1
+    },
+    fixed: {
+      type: Boolean,
+      default: true
+    },
+    fixedNumber: {
+      type: Array,
+      default: function() {
+        return [1, 1]
+      }
     }
   },
   watch: {
@@ -124,6 +134,7 @@ export default {
           _this.cropperShow = true
         } else {
           _this.list.push(dataURL)
+          _this.$emit('change', dataURL, this.list)
         }
 
         e.target.value = ''
@@ -133,22 +144,28 @@ export default {
       reader.readAsDataURL(file) // 读出 base64
     },
     cropperConfirm() {
-      // if (this.cropType == 'base64') {
-      //   this.$refs.cropper.getCropData(data => {
-      //     this.list.push(data)
-      //   })
-      // } else if (this.cropType == 'blob') {
-      //   this.$refs.cropper.getCropBlob(data => {
-      //     this.list.push(data)
-      //   })
-      // } else {
-      //   this.$refs.cropper.getCropData(data => {
-      //     this.list.push(data)
-      //   })
-      // }
-      this.$refs.cropper.getCropData(data => {
-        this.list.push(data)
-      })
+      let _this = this
+      if (this.cropType == 'base64') {
+        this.$refs.cropper.getCropData(data => {
+          _this.list.push(data)
+          _this.$emit('change', data, _this.list)
+        })
+      } else if (this.cropType == 'blob') {
+        this.$refs.cropper.getCropBlob(data => {
+          let reader = new window.FileReader()
+          reader.readAsDataURL(data)
+          reader.onloadend = function() {
+            _this.list.push(reader.result)
+          }
+          
+          _this.$emit('change', data, _this.list)
+        })
+      } else {
+        this.$refs.cropper.getCropData(data => {
+          _this.list.push(data)
+          _this.$emit('change', data, _this.list)
+        })
+      }
       this.cropperShow = false
     }
     // filteListFun() {
@@ -212,8 +229,9 @@ export default {
       width: 100%;
       overflow: hidden;
       img {
-        // height: 100%;
+        height: 100%;
         width: 100%;
+        object-fit: cover;
       }
       .img-box-mask {
         display: flex;

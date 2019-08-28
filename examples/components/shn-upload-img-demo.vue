@@ -28,7 +28,7 @@
     <!-- 基础用法DEMO -->
     <shn-el-demo-block :height="250" :title="'基础用法'" id="upload-img-simple">
       <template v-slot:demo>
-        <shn-upload-img addText="上传图片" v-model="simple.list" />
+        <shn-upload-img @change="handelChange" addText="上传图片" v-model="simple.list" />
       </template>
       <template v-slot:code>
         <code class="html">{{fCode(simple.code.html)}}</code>
@@ -39,7 +39,14 @@
     <!-- 裁剪图片DEMO -->
     <shn-el-demo-block :height="250" :title="'裁剪图片'" id="upload-img-cropper">
       <template v-slot:demo>
-        <shn-upload-img :cropper="true" addText="裁剪图片/上传" cropType="blob" v-model="cropper.list" />
+        <shn-upload-img
+          :cropper="true"
+          :fixed="false"
+          @change="handelChange"
+          addText="裁剪图片/上传"
+          cropType="blob"
+          v-model="cropper.list"
+        />
       </template>
       <template v-slot:code>
         <code class="html">{{fCode(cropper.code.html)}}</code>
@@ -112,14 +119,14 @@ export default {
         },
         {
           parameter: 'width',
-          description: '图片限制宽度',
+          description: '图片模块宽度',
           dataTypes: 'Number',
           optional: '',
           default: '104'
         },
         {
           parameter: 'height',
-          description: '图片限制高度',
+          description: '图片模块高度',
           dataTypes: 'Number',
           optional: '',
           default: '104'
@@ -139,16 +146,41 @@ export default {
           default: 'false'
         },
         {
+          parameter: 'fixed',
+          description: '是否开启截图框宽高固定比例',
+          dataTypes: 'Boolean',
+          optional: 'true / false',
+          default: 'true'
+        },
+        {
+          parameter: 'fixedNumber',
+          description: '截图框的宽高比例',
+          dataTypes: 'Array',
+          optional: '[宽度, 高度]',
+          default: '[1, 1]'
+        },
+        {
           parameter: 'outputSize',
           description: '裁剪生成图片的质量',
           dataTypes: 'Number',
           optional: '0.1 - 1',
           default: '1'
+        },
+        {
+          parameter: 'cropType',
+          description: '生成图片格式',
+          dataTypes: 'String',
+          optional: 'base64 / blob',
+          default: 'base64'
         }
       ]
     }
   },
-  methods: {}
+  methods: {
+    handelChange(data) {
+      console.log(data)
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
