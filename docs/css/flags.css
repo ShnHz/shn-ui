@@ -242,7 +242,7 @@
 .flag_zm,
 .flag_zw {
   display: inline-block;
-  background: url("https://shnhz.github.io/shn-ui/img/flag_sprite.png") no-repeat;
+  background: url("https://raw.githubusercontent.com/ShnHz/shn-ui/master/public/img/flag_sprite.png") no-repeat;
   overflow: hidden;
   text-indent: -9999px;
   text-align: left;
