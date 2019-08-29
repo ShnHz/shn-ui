@@ -37,15 +37,17 @@
     </shn-el-demo-block>
 
     <!-- 裁剪图片DEMO -->
-    <shn-el-demo-block :height="250" :title="'裁剪图片'" id="upload-img-cropper">
+    <shn-el-demo-block :height="543" :title="'裁剪图片'" id="upload-img-cropper">
       <template v-slot:demo>
         <shn-upload-img
           :cropper="true"
-          :fixed="false"
           @change="handelChange"
           addText="裁剪图片/上传"
           cropType="blob"
           v-model="cropper.list"
+          :width="300"
+          :height="300"
+          :fixedNumber="[1.4,2]"
         />
       </template>
       <template v-slot:code>
@@ -88,13 +90,27 @@ export default {
       cropper: {
         code: {
           html: `
-          <shn-upload-img :cropper="true" addText="裁剪图片/上传" v-model="list"/>
+          <shn-upload-img
+            :cropper="true"
+            @change="handelChange"
+            addText="裁剪图片/上传"
+            cropType="blob"
+            v-model="cropper.list"
+            :width="300"
+            :height="300"
+            :fixedNumber="[1.4,2]"
+          />
           `,
           javascript: `
           export default {
             data(){
               return{
                 list:[]
+              }
+            },
+            methods: {
+              handelChange(data) {
+                console.log(data)
               }
             }
           }

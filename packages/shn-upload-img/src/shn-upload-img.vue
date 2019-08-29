@@ -168,22 +168,6 @@ export default {
       }
       this.cropperShow = false
     }
-    // filteListFun() {
-    //   let _this = this
-    //   this.filteList = []
-    //   for (let i = 0; i < this.list.length; i++) {
-    //     if (typeof this.list[i] === 'object') {
-    //       let reader = new FileReader()
-    //       reader.readAsDataURL(this.list[i])
-    //       reader.onload = function(e) {
-    //         _this.filteList.push(e.target.result)
-    //       }
-    //     } else {
-    //       this.filteList.push(this.list[i])
-    //     }
-    //   }
-    //   console.log(this.list)
-    // }
   }
 }
 </script>
