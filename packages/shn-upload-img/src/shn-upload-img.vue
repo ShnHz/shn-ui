@@ -4,7 +4,7 @@
       :key="index"
       :style="{width:width + 'px',height:height + 'px'}"
       class="shn-img-block"
-      v-for="(item,index) in list"
+      v-for="(item,index) in formatImg"
     >
       <div class="img-box">
         <img :src="item" />
@@ -15,11 +15,15 @@
             title="预览"
             v-if="view"
           ></i>
-          <i @click="list.splice(index, 1)" class="shni shn-delete" title="删除"></i>
+          <i @click="list.splice(index, 1)" class="shni shn-delete" title="删除" v-if="!disabled"></i>
         </div>
       </div>
     </div>
-    <div :style="{width:width + 'px',height:height + 'px'}" class="shn-upload-img-block">
+    <div
+      :style="{width:width + 'px',height:height + 'px'}"
+      class="shn-upload-img-block"
+      v-if="(max == 0 || max > list.length) && !disabled"
+    >
       <div>
         <input
           @change="changeImage($event)"
@@ -59,6 +63,7 @@
   </div>
 </template>
 <script>
+import { type } from 'os'
 export default {
   name: 'shn-upload-img',
   props: {
@@ -105,9 +110,20 @@ export default {
       default: function() {
         return [1, 1]
       }
+    },
+    max: {
+      type: Number,
+      default: 0
+    },
+    disabled:{
+      type: Boolean,
+      default: false
     }
   },
   watch: {
+    value: function(data){
+      this.list = data
+    },
     list: function() {
       this.$emit('input', this.list)
     }
@@ -119,6 +135,21 @@ export default {
       cropperImg: '',
       previewImg: '',
       previewImgShow: false
+    }
+  },
+  computed: {
+    formatImg() {
+      let list = []
+      for (let i = 0; i < this.list.length; i++) {
+        if (typeof this.list[i].type != 'undefined') {
+          let url = window.URL.createObjectURL(this.list[i])
+          list.push(url)
+        } else {
+          list.push(this.list[i])
+        }
+      }
+
+      return list
     }
   },
   methods: {
@@ -152,12 +183,7 @@ export default {
         })
       } else if (this.cropType == 'blob') {
         this.$refs.cropper.getCropBlob(data => {
-          let reader = new window.FileReader()
-          reader.readAsDataURL(data)
-          reader.onloadend = function() {
-            _this.list.push(reader.result)
-          }
-          
+          _this.list.push(data)
           _this.$emit('change', data, _this.list)
         })
       } else {
@@ -247,6 +273,7 @@ export default {
     position: relative;
     float: left;
     display: block;
+    margin-bottom: 8px;
     > div {
       cursor: pointer;
       display: flex;

@@ -41,13 +41,14 @@
       <template v-slot:demo>
         <shn-upload-img
           :cropper="true"
+          :fixedNumber="[1.4,2]"
+          :height="300"
+          :max="2"
+          :width="300"
           @change="handelChange"
           addText="裁剪图片/上传"
           cropType="blob"
           v-model="cropper.list"
-          :width="300"
-          :height="300"
-          :fixedNumber="[1.4,2]"
         />
       </template>
       <template v-slot:code>
@@ -99,6 +100,7 @@ export default {
             :width="300"
             :height="300"
             :fixedNumber="[1.4,2]"
+            :max="2"
           />
           `,
           javascript: `
@@ -130,6 +132,13 @@ export default {
           parameter: 'addText',
           description: '上传图片框文本',
           dataTypes: 'String',
+          optional: '',
+          default: ''
+        },
+        {
+          parameter: 'max',
+          description: '上传图片限制个数',
+          dataTypes: 'Number',
           optional: '',
           default: ''
         },
@@ -188,6 +197,13 @@ export default {
           dataTypes: 'String',
           optional: 'base64 / blob',
           default: 'base64'
+        },
+        {
+          parameter: '只读',
+          description: 'disabled',
+          dataTypes: 'Boolean',
+          optional: 'true / false',
+          default: 'false'
         }
       ]
     }
