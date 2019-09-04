@@ -7,8 +7,8 @@
       <div :style="imgBoxStyle" class="img-box">
         <img
           :class="{'img-height100':imgBoxStyleType === 1 && zoomType,'zoom-in':!zoomType,'zoom-out':zoomType}"
+          :src="value ? value : list[listIndex]"
           :style="imgBoxStyle"
-          :src="value"
           @click="!zoomType ? zoomIn():zoomOut()"
           alt
           ref="img"
@@ -42,7 +42,7 @@ export default {
   props: {
     value: {
       type: String,
-      default: ''
+      default: null
     },
     visible: {
       type: Boolean,
@@ -73,19 +73,69 @@ export default {
         this.beforeClose()
       }
 
+      let _this = this
+
       let img = new Image()
-      img.src = this.value
+      img.src = this.value ? this.value : this.list[0]
 
-      if (img.width === img.height) {
-        this.imgBoxStyleType = 0
-      } else if (img.width < img.height) {
-        this.imgBoxStyleType = 1
+      if (img.width == 0 || img.height == 0) {
+        let timer = setInterval(() => {
+          if (img.width != 0 && img.height != 0) {
+            if (img.width === img.height) {
+              _this.imgBoxStyleType = 0
+            } else if (img.width < img.height) {
+              _this.imgBoxStyleType = 1
+            } else {
+              _this.imgBoxStyleType = 2
+            }
+
+            _this.zoomOut()
+            _this.show = val
+            clearInterval(timer)
+          }
+        }, 100)
       } else {
-        this.imgBoxStyleType = 2
+        if (img.width === img.height) {
+          this.imgBoxStyleType = 0
+        } else if (img.width < img.height) {
+          this.imgBoxStyleType = 1
+        } else {
+          this.imgBoxStyleType = 2
+        }
+        this.zoomOut()
+        this.show = val
       }
+    },
+    listIndex: function(val) {
+      let _this = this
+      let img = new Image()
+      img.src = this.list[val]
 
-      this.zoomOut()
-      this.show = val
+      if (img.width == 0 || img.height == 0) {
+        let timer = setInterval(() => {
+          if (img.width != 0 && img.height != 0) {
+            if (img.width === img.height) {
+              _this.imgBoxStyleType = 0
+            } else if (img.width < img.height) {
+              _this.imgBoxStyleType = 1
+            } else {
+              _this.imgBoxStyleType = 2
+            }
+
+            _this.zoomOut()
+            clearInterval(timer)
+          }
+        }, 100)
+      } else {
+        if (img.width === img.height) {
+          this.imgBoxStyleType = 0
+        } else if (img.width < img.height) {
+          this.imgBoxStyleType = 1
+        } else {
+          this.imgBoxStyleType = 2
+        }
+        this.zoomOut()
+      }
     }
   },
   methods: {
@@ -151,7 +201,7 @@ export default {
       document.addEventListener('keyup', this.keyCodeEsc)
 
       for (let i = 0; i < this.list.length; i++) {
-        if (this.list[i] == this.value) {
+        if (this.list[i] == (this.value ? this.value : this.list[0])) {
           this.listIndex = i
         }
       }

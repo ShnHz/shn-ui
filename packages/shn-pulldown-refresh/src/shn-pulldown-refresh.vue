@@ -8,6 +8,20 @@ export default {
     target: {
       type: String,
       default: 'window'
+    },
+    iframe: {
+      type: Boolean,
+      default: false
+    },
+    // 滚动条滚动高度
+    tops: {
+      type: Number,
+      default: 0
+    },
+    // iframe窗体高度
+    iframeHeight: {
+      type: Number,
+      default: 0
     }
   },
   data() {
@@ -24,22 +38,28 @@ export default {
   },
   methods: {
     scrollToBottom() {
-      if (this.target === 'window') {
-        const scrollHeight =
-          document.body.scrollHeight || document.documentElement.scrollHeight
-        const clientHeight =
-          document.body.clientHeight || document.documentElement.scrollHeight
-        const scrollTop =
-          document.body.scrollTop || document.documentElement.scrollTop
-        if (scrollTop >= scrollHeight - clientHeight) {
+      if (this.iframe) {
+        if (this.tops >= this.iframeHeight) {
           this.$emit('pulldown')
         }
       } else {
-        const scrollHeight = document.getElementById(this.target).scrollHeight
-        const clientHeight = document.getElementById(this.target).clientHeight
-        const scrollTop = document.getElementById(this.target).scrollTop
-        if (scrollTop >= scrollHeight - clientHeight) {
-          this.$emit('pulldown')
+        if (this.target === 'window') {
+          const scrollHeight =
+            document.body.scrollHeight || document.documentElement.scrollHeight
+          const clientHeight =
+            document.body.clientHeight || document.documentElement.scrollHeight
+          const scrollTop =
+            document.body.scrollTop || document.documentElement.scrollTop
+          if (scrollTop >= scrollHeight - clientHeight) {
+            this.$emit('pulldown')
+          }
+        } else {
+          const scrollHeight = document.getElementById(this.target).scrollHeight
+          const clientHeight = document.getElementById(this.target).clientHeight
+          const scrollTop = document.getElementById(this.target).scrollTop
+          if (scrollTop >= scrollHeight - clientHeight) {
+            this.$emit('pulldown')
+          }
         }
       }
     },
