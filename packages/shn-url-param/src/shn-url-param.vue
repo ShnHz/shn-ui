@@ -13,6 +13,10 @@ export default {
     },
     callback: {
       type: Function
+    },
+    pullRefresh: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -28,6 +32,10 @@ export default {
             .replace(']', '')
             .replace(/\"/g, '')
             .split(',')
+        } else if (this.pullRefresh && (key == 'start' || key == 'begin')) {
+          param[key] = 0
+        } else if (this.pullRefresh && (key == 'end')) {
+          param[key] = param['pagenum']
         } else if (typeof param[key] == 'number') {
           param[key] = Number(this.$route.query[key])
         } else if (typeof param[key] == 'boolean') {

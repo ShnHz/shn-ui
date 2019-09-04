@@ -30,6 +30,15 @@ export default {
       scrollTop: 0
     }
   },
+  watch: {
+    tops: function(to, from) {
+      if (this.iframe) {
+        if (to == this.iframeHeight) {
+          this.$emit('pulldown')
+        }
+      }
+    }
+  },
   mounted() {
     this.add()
   },
@@ -38,47 +47,45 @@ export default {
   },
   methods: {
     scrollToBottom() {
-      if (this.iframe) {
-        if (this.tops >= this.iframeHeight) {
+      if (this.target === 'window') {
+        const scrollHeight =
+          document.body.scrollHeight || document.documentElement.scrollHeight
+        const clientHeight =
+          document.body.clientHeight || document.documentElement.scrollHeight
+        const scrollTop =
+          document.body.scrollTop || document.documentElement.scrollTop
+        if (scrollTop >= scrollHeight - clientHeight) {
           this.$emit('pulldown')
         }
       } else {
-        if (this.target === 'window') {
-          const scrollHeight =
-            document.body.scrollHeight || document.documentElement.scrollHeight
-          const clientHeight =
-            document.body.clientHeight || document.documentElement.scrollHeight
-          const scrollTop =
-            document.body.scrollTop || document.documentElement.scrollTop
-          if (scrollTop >= scrollHeight - clientHeight) {
-            this.$emit('pulldown')
-          }
-        } else {
-          const scrollHeight = document.getElementById(this.target).scrollHeight
-          const clientHeight = document.getElementById(this.target).clientHeight
-          const scrollTop = document.getElementById(this.target).scrollTop
-          if (scrollTop >= scrollHeight - clientHeight) {
-            this.$emit('pulldown')
-          }
+        const scrollHeight = document.getElementById(this.target).scrollHeight
+        const clientHeight = document.getElementById(this.target).clientHeight
+        const scrollTop = document.getElementById(this.target).scrollTop
+        if (scrollTop >= scrollHeight - clientHeight) {
+          this.$emit('pulldown')
         }
       }
     },
     add() {
-      if (this.target === 'window') {
-        window.addEventListener('scroll', this.scrollToBottom)
-      } else {
-        document
-          .getElementById(this.target)
-          .addEventListener('scroll', this.scrollToBottom)
+      if (!this.iframe) {
+        if (this.target === 'window') {
+          window.addEventListener('scroll', this.scrollToBottom)
+        } else {
+          document
+            .getElementById(this.target)
+            .addEventListener('scroll', this.scrollToBottom)
+        }
       }
     },
     remove() {
-      if (this.target === 'window') {
-        window.removeEventListener('scroll', this.scrollToBottom)
-      } else {
-        document
-          .getElementById(this.target)
-          .removeEventListener('scroll', this.scrollToBottom)
+      if (!this.iframe) {
+        if (this.target === 'window') {
+          window.removeEventListener('scroll', this.scrollToBottom)
+        } else {
+          document
+            .getElementById(this.target)
+            .removeEventListener('scroll', this.scrollToBottom)
+        }
       }
     }
   }
