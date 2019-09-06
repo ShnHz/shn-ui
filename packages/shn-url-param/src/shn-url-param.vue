@@ -27,14 +27,14 @@ export default {
     for (let key in param) {
       if (this.$route.query[key] != undefined) {
         if (Array.isArray(param[key])) {
-          if (param[key].length == 1 && param[key][0] == '') {
-            param[key].length = 0
-          } else {
+          if (JSON.parse(this.$route.query[key]).length != 0) {
             param[key] = this.$route.query[key]
               .replace('[', '')
               .replace(']', '')
               .replace(/\"/g, '')
               .split(',')
+          }else{
+            param[key].length = 0
           }
         } else if (this.pullRefresh && (key == 'start' || key == 'begin')) {
           param[key] = 0

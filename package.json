@@ -1,6 +1,6 @@
 {
   "name": "shn-vue-ui",
-  "version": "1.1.21",
+  "version": "1.1.26",
   "description": "A Component Library for Vue.js.",
   "main": "lib/shn-vue-ui.umd.min.js",
   "private": false,
