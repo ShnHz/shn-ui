@@ -27,14 +27,18 @@ export default {
     for (let key in param) {
       if (this.$route.query[key] != undefined) {
         if (Array.isArray(param[key])) {
-          param[key] = this.$route.query[key]
-            .replace('[', '')
-            .replace(']', '')
-            .replace(/\"/g, '')
-            .split(',')
+          if (param[key].length == 1 && param[key][0] == '') {
+            param[key].length = 0
+          } else {
+            param[key] = this.$route.query[key]
+              .replace('[', '')
+              .replace(']', '')
+              .replace(/\"/g, '')
+              .split(',')
+          }
         } else if (this.pullRefresh && (key == 'start' || key == 'begin')) {
           param[key] = 0
-        } else if (this.pullRefresh && (key == 'end')) {
+        } else if (this.pullRefresh && key == 'end') {
           param[key] = param['pagenum']
         } else if (typeof param[key] == 'number') {
           param[key] = Number(this.$route.query[key])

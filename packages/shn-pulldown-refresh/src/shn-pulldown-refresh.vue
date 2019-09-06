@@ -8,35 +8,12 @@ export default {
     target: {
       type: String,
       default: 'window'
-    },
-    iframe: {
-      type: Boolean,
-      default: false
-    },
-    // 滚动条滚动高度
-    tops: {
-      type: Number,
-      default: 0
-    },
-    // iframe窗体高度
-    iframeHeight: {
-      type: Number,
-      default: 0
     }
   },
   data() {
     return {
       show: false,
       scrollTop: 0
-    }
-  },
-  watch: {
-    tops: function(to, from) {
-      if (this.iframe) {
-        if (to == this.iframeHeight) {
-          this.$emit('pulldown')
-        }
-      }
     }
   },
   mounted() {
@@ -51,7 +28,7 @@ export default {
         const scrollHeight =
           document.body.scrollHeight || document.documentElement.scrollHeight
         const clientHeight =
-          document.body.clientHeight || document.documentElement.scrollHeight
+          document.body.clientHeight || document.documentElement.clientHeight
         const scrollTop =
           document.body.scrollTop || document.documentElement.scrollTop
         if (scrollTop >= scrollHeight - clientHeight) {
@@ -67,25 +44,21 @@ export default {
       }
     },
     add() {
-      if (!this.iframe) {
-        if (this.target === 'window') {
-          window.addEventListener('scroll', this.scrollToBottom)
-        } else {
-          document
-            .getElementById(this.target)
-            .addEventListener('scroll', this.scrollToBottom)
-        }
+      if (this.target === 'window') {
+        window.addEventListener('scroll', this.scrollToBottom)
+      } else {
+        document
+          .getElementById(this.target)
+          .addEventListener('scroll', this.scrollToBottom)
       }
     },
     remove() {
-      if (!this.iframe) {
-        if (this.target === 'window') {
-          window.removeEventListener('scroll', this.scrollToBottom)
-        } else {
-          document
-            .getElementById(this.target)
-            .removeEventListener('scroll', this.scrollToBottom)
-        }
+      if (this.target === 'window') {
+        window.removeEventListener('scroll', this.scrollToBottom)
+      } else {
+        document
+          .getElementById(this.target)
+          .removeEventListener('scroll', this.scrollToBottom)
       }
     }
   }
