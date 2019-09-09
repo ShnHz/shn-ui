@@ -6,7 +6,7 @@
     <!-- 基础用法DEMO -->
     <shn-el-demo-block :height="354" :title="'基础用法'">
       <template v-slot:demo>
-        <shn-country-picker :sort="false" v-model="simple.value" />
+        <shn-country-picker :sort="false" v-model="simple.value"/>
       </template>
       <template v-slot:code>
         <code class="html">{{fCode(simple.code.html)}}</code>
@@ -15,9 +15,9 @@
     </shn-el-demo-block>
 
     <!-- 搜索功能DEMO -->
-    <shn-el-demo-block :height="354" :title="'搜索功能'">
+    <shn-el-demo-block :height="354" :title="'搜索功能'" >
       <template v-slot:demo>
-        <shn-country-picker :search-sort="false" search v-model="search.value" />
+        <shn-country-picker :search-sort="false" search v-model="search.value"/>
       </template>
       <template v-slot:code>
         <code class="html">{{fCode(search.code.html)}}</code>
@@ -28,7 +28,7 @@
     <!-- 显示中文DEMO -->
     <shn-el-demo-block :height="354" :title="'显示中文'">
       <template v-slot:demo>
-        <shn-country-picker chinese search v-model="chinese.value" />
+        <shn-country-picker chinese search v-model="chinese.value"/>
       </template>
       <template v-slot:code>
         <code class="html">{{fCode(chinese.code.html)}}</code>
@@ -204,6 +204,13 @@ export default {
           dataTypes: 'Object',
           optional: '',
           default: ''
+        },
+        {
+          parameter: 'all',
+          description: '是否显示全部选项',
+          dataTypes: 'Boolean',
+          optional: 'true / false',
+          default: 'false'
         }
       ]
     }

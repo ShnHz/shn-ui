@@ -7,7 +7,7 @@
           <span
             :class="{'ellipsis' : chinese}"
             class="shn-country-picker-editor-span"
-          >{{chinese ? formatChinese() : value.toUpperCase() }}</span>
+          >{{chinese ? formatChinese() : value != '' ? value.toUpperCase() : 'All' }}</span>
           <i :class="{'is-reverse':show}" class="shni shn-up"></i>
         </div>
       </div>
@@ -42,7 +42,7 @@
               v-for="item in group"
             >
               <span :class="'flag_' + item[0]" class="shn-country-picker-panel-flags"></span>
-              {{item[1]}} - {{item[0].toUpperCase()}}
+              {{item[1]}} - {{item[0] != '' ? item[0].toUpperCase() : 'All'}}
             </li>
             <div class="shn-country-picker-panel-divider-box">
               <shn-divider style="margin: 12px 0;" />
@@ -81,6 +81,10 @@ export default {
       type: Boolean,
       default: false
     },
+    all: {
+      type: Boolean,
+      default: false
+    },
     option: {
       type: Object,
       default: function() {
@@ -102,7 +106,15 @@ export default {
           }
         }
         this.list = list
+
+        if (this.all) {
+          this.list['国家 / 地区'].unshift(['', '全部'])
+        }
         // console.log(list)
+      } else {
+        if (this.all) {
+          this.list['热门国家 / 地区'].unshift(['', '全部'])
+        }
       }
       if (JSON.stringify(this.option) != '{}') {
         this.list = this.option
@@ -208,7 +220,7 @@ export default {
   },
   methods: {
     init() {
-      if (this.value == '') {
+      if (this.value == '' && !this.all) {
         this.$emit('input', this.data)
       }
     },
@@ -282,6 +294,7 @@ export default {
       // top: -1px;
       .shn-country-picker-editor-flags {
         position: relative;
+        width: 24px;
       }
       i {
         display: inline-block;
@@ -355,6 +368,7 @@ export default {
           align-items: center;
           cursor: pointer;
           .shn-country-picker-panel-flags {
+            width: 24px;
             margin-right: 20px;
           }
           &:hover {
