@@ -295,6 +295,7 @@ export default {
       .shn-country-picker-editor-flags {
         position: relative;
         width: 24px;
+        height: 24px;
       }
       i {
         display: inline-block;

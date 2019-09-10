@@ -90,6 +90,32 @@ export default {
       default: function() {
         return []
       }
+    },
+    // rangesList: {
+    //   type: Array,
+    //   default: function() {
+    //     return [
+    //       {
+    //         key: 'lastweek',
+    //         num: 7
+    //       },
+    //       {
+    //         key: 'last30',
+    //         num: 30
+    //       },
+    //       {
+    //         key: 'last90',
+    //         num: 90
+    //       },
+    //       {
+    //         key: 'lastyear',
+    //         num: 365
+    //       }
+    //     ]
+    //   }
+    // }
+    allDate: {
+      type: Array
     }
   },
   computed: {
@@ -142,10 +168,10 @@ export default {
 
       rangesActive: 'last30',
       ranges: [
-        {
-          value: 'lastweek',
-          label: '最近一周'
-        },
+        // {
+        //   value: 'lastweek',
+        //   label: '最近一周'
+        // },
         {
           value: 'last30',
           label: '最近一个月'
@@ -157,6 +183,10 @@ export default {
         {
           value: 'lastyear',
           label: '最近一年'
+        },
+        {
+          value: 'all',
+          label: '全部时间'
         },
         {
           value: 'custom',
@@ -215,6 +245,9 @@ export default {
           break
         case 'lastyear':
           this.input(shnUiDate.getLastDay(365))
+          break
+        case 'all':
+          this.input(this.allDate)
           break
       }
     },

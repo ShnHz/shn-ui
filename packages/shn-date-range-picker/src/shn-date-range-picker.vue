@@ -19,6 +19,7 @@
           @cancel="handleClose"
           @confirm="confirm"
           v-model="data"
+          :allDate="allDate"
         />
       </div>
     </transition>
@@ -48,6 +49,12 @@ export default {
       type: Array,
       default: function() {
         return []
+      }
+    },
+    allDate: {
+      type: Array,
+      default: function() {
+        return ['1970-01-01', shnUiDate.getToday()]
       }
     }
   },

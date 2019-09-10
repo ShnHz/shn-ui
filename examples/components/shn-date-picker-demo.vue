@@ -6,7 +6,7 @@
     <!-- 日期范围选择DEMO -->
     <shn-el-demo-block :height="354" :introduction="'可在一个选择器中便捷地选择一个时间范围'" :title="'日期范围选择'">
       <template v-slot:demo>
-        <shn-date-range-picker rangeSeparator="至" v-model="range.value" />
+        <shn-date-range-picker rangeSeparator="至" v-model="range.value"/>
       </template>
       <template v-slot:code>
         <code class="html">{{fCode(range.code.html)}}</code>
@@ -112,6 +112,13 @@ export default {
           dataTypes: 'Array',
           optional: 'day / week / month / quarter / year',
           default: 'all'
+        },
+        {
+          parameter: 'allDate',
+          description: '全部日期数组',
+          dataTypes: 'Array',
+          optional: '',
+          default: `['1970-01-01',today]`
         }
       ]
     }
