@@ -15,11 +15,12 @@
       <div class="shn-date-picker-panel" v-show="show">
         <div class="popper__arrow" style="left:30px"></div>
         <shortcutsPanel
+          :allDate="allDate"
           :periodsList="periods"
           @cancel="handleClose"
           @confirm="confirm"
+          ref="shortcutsPanel"
           v-model="data"
-          :allDate="allDate"
         />
       </div>
     </transition>
@@ -58,7 +59,7 @@ export default {
       }
     }
   },
-  created() {
+  mounted() {
     this.init()
   },
   watch: {
@@ -73,7 +74,7 @@ export default {
     }
   },
   methods: {
-    init() {
+    create() {
       if (this.data == '') {
         this.$emit('input', shnUiDate.getLastDay(30))
       }

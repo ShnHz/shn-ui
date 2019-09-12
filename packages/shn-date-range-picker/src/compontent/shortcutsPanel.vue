@@ -166,7 +166,7 @@ export default {
         }
       ],
 
-      rangesActive: 'last30',
+      rangesActive: 'custom',
       ranges: [
         // {
         //   value: 'lastweek',
