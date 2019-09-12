@@ -1,12 +1,14 @@
 import shnInstallation from '../components/shn-installation'
 import shnIcon from '../components/shn-icon'
 
+import shnButtonDemo from '../components/shn-button-demo'
+import shnShadowDemo from '../components/shn-shadow-demo'
+
 import shnInputDemo from '../components/shn-input-demo'
 import shnImgCardDemo from '../components/shn-img-card-demo'
 import shnCollapseDemo from '../components/shn-collapse-demo'
 import shnStatisticDemo from '../components/shn-statistic-demo'
 import shnBackTopDemo from '../components/shn-backtop-demo'
-import shnButtonDemo from '../components/shn-button-demo'
 import shnFootertoolbarDemo from '../components/shn-footertoolbar-demo'
 import shnDrawerDemo from '../components/shn-drawer-demo'
 import shnUploadImgDemo from '../components/shn-upload-img-demo'
@@ -77,6 +79,14 @@ export default [{
         path: '/component/button',
         name: 'shnButtonDemo',
         component: shnButtonDemo,
+        meta: {
+            title: '组件|SHN-UI'
+        }
+    },
+    {
+        path: '/component/shadow',
+        name: 'shnShadowDemo',
+        component: shnShadowDemo,
         meta: {
             title: '组件|SHN-UI'
         }

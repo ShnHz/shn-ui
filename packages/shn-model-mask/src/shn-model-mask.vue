@@ -131,10 +131,13 @@ export default {
     }
   }
   &:hover {
-    .mask {
-      opacity: 1;
-      background: rgba(0, 0, 0, 0.274);
+    .shn-model-mask-height {
+      .mask {
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.274);
+      }
     }
+
     .ofenDisplay {
       opacity: 0;
     }

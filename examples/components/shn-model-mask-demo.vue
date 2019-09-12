@@ -23,7 +23,11 @@
     <shn-el-demo-block :height="250" :title="'基础用法'" id="model-mask-simple">
       <template v-slot:demo>
         <shn-model-mask>
-          <img alt src="https://shnhz.github.io/shn-ui/img/Koala.jpg" style="width:300px" />
+          <img
+            alt
+            src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1568282817743&di=dc9dfb1055716f6583583ec783db2d96&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201305%2F26%2F20130526140022_5fMJe.jpeg"
+            style="width:300px"
+          />
         </shn-model-mask>
       </template>
       <template v-slot:code>
@@ -35,7 +39,11 @@
     <shn-el-demo-block :height="250" :title="'常显'" id="model-mask-open-display">
       <template v-slot:demo>
         <shn-model-mask ofenDisplay>
-          <img alt src="https://shnhz.github.io/shn-ui/img/Koala.jpg" style="width:300px" />
+          <img
+            alt
+            src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1568282817743&di=dc9dfb1055716f6583583ec783db2d96&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201305%2F26%2F20130526140022_5fMJe.jpeg"
+            style="width:300px"
+          />
         </shn-model-mask>
       </template>
       <template v-slot:code>

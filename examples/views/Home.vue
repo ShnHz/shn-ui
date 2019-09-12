@@ -48,86 +48,91 @@ export default {
           title: '组件',
           li_data: [
             {
-              id: 5,
+              id: '000',
               group: '通用',
               name: 'Button 按钮',
               path: '#/component/button'
             },
             {
-              id: 0,
+              id: '001',
+              name: 'Shadow 投影',
+              path: '#/component/shadow'
+            },
+            {
+              id: '100',
               group: '数据录入',
               name: 'Input 输入框',
               path: '#/component/input'
             },
             {
-              id: 8,
+              id: '101',
               name: 'UploadImg 上传图片',
               path: '#/component/uploadimg'
             },
             {
-              id: 13,
+              id: '102',
               name: 'DatePicker 日期选择器',
               path: '#/component/date-picker'
             },
             {
-              id: 14,
+              id: '103',
               name: 'CountryPicker 国家选择器',
               path: '#/component/country-picker'
             },
             {
-              id: 1,
+              id: '200',
               group: '数据展示',
               name: 'Statistic 统计数值',
               path: '#/component/statistic'
             },
             {
-              id: 2,
+              id: '201',
               name: 'ImgCard 图片卡片',
               path: '#/component/img-card'
             },
             {
-              id: 12,
+              id: '202',
               name: 'ModelMask 模块蒙版',
               path: '#/component/model-mask'
             },
             {
-              id: 3,
+              id: '300',
               group: '其他',
               name: 'Collapse 折叠动画盒子',
               path: '#/component/collapse'
             },
             {
-              id: 4,
+              id: '301',
               name: 'BackTop 回到顶部',
               path: '#/component/backtop'
             },
             {
-              id: 6,
+              id: '302',
               name: 'FooterToolbar 底部工具栏',
               path: '#/component/footertoolbar'
             },
             {
-              id: 7,
+              id: '303',
               name: 'Drawer 抽屉',
               path: '#/component/drawer'
             },
             {
-              id: 9,
+              id: '304',
               name: 'Anchor 锚点',
               path: '#/component/anchor'
             },
             {
-              id: 10,
+              id: '304',
               name: 'Divider 分割线',
               path: '#/component/divider'
             },
             {
-              id: 11,
+              id: '306',
               name: 'MenuSimple 简单菜单',
               path: '#/component/meunsimple'
             },
             {
-              id: 15,
+              id: '307',
               name: 'WidgetModal 可拖动模态框',
               path: '#/component/widget-modal'
             }
@@ -165,52 +170,55 @@ export default {
         this.active = -2
         break
       case '/component/input':
-        this.active = 0
+        this.active = '100'
         break
       case '/component/statistic':
-        this.active = 1
+        this.active = '200'
         break
       case '/component/img-card':
-        this.active = 2
+        this.active = '201'
         break
       case '/component/collapse':
-        this.active = 3
+        this.active = '300'
         break
       case '/component/backtop':
-        this.active = 4
+        this.active = '301'
         break
       case '/component/button':
-        this.active = 5
+        this.active = '000'
+        break
+      case '/component/shadow':
+        this.active = '001'
         break
       case '/component/footertoolbar':
-        this.active = 6
+        this.active = '302'
         break
       case '/component/drawer':
-        this.active = 7
+        this.active = '303'
         break
       case '/component/uploadimg':
-        this.active = 8
+        this.active = '101'
         break
       case '/component/anchor':
-        this.active = 9
+        this.active = '304'
         break
       case '/component/divider':
-        this.active = 10
+        this.active = '305'
         break
       case '/component/meunsimple':
-        this.active = 11
+        this.active = '306'
         break
       case '/component/model-mask':
-        this.active = 12
+        this.active = '202'
         break
       case '/component/date-picker':
-        this.active = 13
+        this.active = '102'
         break
       case '/component/country-picker':
-        this.active = 14
+        this.active = '103'
         break
       case '/component/widget-modal':
-        this.active = 15
+        this.active = '307'
         break
       case '/component/vue-drag-resize':
         this.active = -100
