@@ -60,7 +60,9 @@ export default {
     }
   },
   mounted() {
-    this.init()
+    if (this.data == '') {
+      this.$emit('input', shnUiDate.getLastDay(30))
+    }
   },
   watch: {
     value: function(val) {
