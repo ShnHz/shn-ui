@@ -2,13 +2,14 @@
   <div class="content-box">
     <h2 class="demo-title">Button 按钮</h2>
     <p class="demo-introduction">按钮用于开始一个即时操作。</p>
+
     <shn-anchor>
-      <shn-anchor-link href="button-simple" title="基础用法"/>
-      <shn-anchor-link href="button-disabled" title="禁用"/>
-      <shn-anchor-link href="button-circle" title="圆形按钮"/>
-      <shn-anchor-link href="button-customize" title="自定义颜色"/>
-      <shn-anchor-link href="button-block" title="block按钮"/>
-      <shn-anchor-link href="api" title="API"/>
+      <shn-anchor-link href="button-simple" title="基础用法" />
+      <shn-anchor-link href="button-disabled" title="禁用" />
+      <shn-anchor-link href="button-circle" title="圆形按钮" />
+      <shn-anchor-link href="button-customize" title="自定义颜色" />
+      <shn-anchor-link href="button-block" title="block按钮" />
+      <shn-anchor-link href="api" title="API" />
     </shn-anchor>
 
     <!-- 基础用法DEMO -->
@@ -93,7 +94,7 @@
     <div id="api">
       <h3 class="demo-table-title">API</h3>
       <P class="demo-table-introduction">属性说明如下：</P>
-      <shn-table-simple :data="api" :type="'demo'"/>
+      <shn-table-simple :data="api" :type="'demo'" />
     </div>
   </div>
 </template>

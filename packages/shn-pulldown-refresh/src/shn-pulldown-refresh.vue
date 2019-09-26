@@ -8,6 +8,10 @@ export default {
     target: {
       type: String,
       default: 'window'
+    },
+    bottom: {
+      type: Number,
+      default: 0
     }
   },
   data() {
@@ -31,7 +35,7 @@ export default {
           document.body.clientHeight || document.documentElement.clientHeight
         const scrollTop =
           document.body.scrollTop || document.documentElement.scrollTop
-        if (scrollTop >= scrollHeight - clientHeight) {
+        if (scrollTop >= scrollHeight - clientHeight - this.bottom) {
           this.$emit('pulldown')
         }
       } else {

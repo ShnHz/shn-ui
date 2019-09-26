@@ -33,7 +33,10 @@ export default {
   data() {
     return {
       show: false,
-      scrollTop: 0
+      scrollTop: 0,
+
+      down: false,
+      timerIn: false
     }
   },
   mounted() {
@@ -59,14 +62,24 @@ export default {
   },
   methods: {
     scrollToTop() {
+      let _scrollTop = 0
+
       if (this.target === 'window') {
-        this.scrollTop =
+        _scrollTop =
           window.pageYOffset ||
           document.documentElement.scrollTop ||
           document.body.scrollTop
       } else {
-        this.scrollTop = document.getElementById(this.target).scrollTop
+        _scrollTop = document.getElementById(this.target).scrollTop
       }
+
+      if (_scrollTop > this.scrollTop && this.timerIn) {
+        this.down = true
+      } else {
+        this.down = false
+      }
+
+      this.scrollTop = _scrollTop
 
       if (this.visibilityHeight != 0) {
         if (this.scrollTop > this.visibilityHeight) {
@@ -79,6 +92,11 @@ export default {
     backTop() {
       let _this = this
       let timer = setInterval(() => {
+        _this.timerIn = true
+        if (_this.down) {
+          clearInterval(timer)
+          _this.timerIn = false
+        }
         let ispeed = Math.floor(-_this.scrollTop / 5)
         if (this.target === 'window') {
           document.documentElement.scrollTop = document.body.scrollTop =
@@ -90,6 +108,7 @@ export default {
         }
         if (_this.scrollTop === 0) {
           clearInterval(timer)
+          _this.timerIn = false
         }
       }, 16)
     }
