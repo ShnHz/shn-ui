@@ -147,7 +147,8 @@ export default {
               name: '拖拽/缩放',
               path: '#/component/vue-drag-resize'
             },
-            { id: -101, name: '操作Cookies', path: '#/component/vue-cookies' }
+            { id: -101, name: '操作Cookies', path: '#/component/vue-cookies' },
+            { id: -102, name: '云词', path: '#/component/vue-word-cloud' }
           ]
         }
       ],
@@ -228,6 +229,9 @@ export default {
         break
       case '/component/vue-cookies':
         this.active = -101
+        break
+        case '/component/vue-word-cloud':
+        this.active = -102
         break
     }
   },

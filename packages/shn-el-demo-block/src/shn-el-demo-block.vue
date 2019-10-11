@@ -2,7 +2,11 @@
   <div class="shn-el-demo-block">
     <h3 class="demo-block-title" v-if="title != ''">{{ title }}</h3>
     <p class="demo-block-introduction" v-if="introduction != ''">{{introduction}}</p>
-    <div @mouseout="hover_animation = false" @mouseover="hover_animation = true" class="demo-block">
+    <div
+      @mouseout="arrowAnimation ? hover_animation = false : null"
+      @mouseover="arrowAnimation ? hover_animation = true : null"
+      class="demo-block"
+    >
       <div class="source">
         <slot name="demo" />
       </div>
@@ -14,13 +18,13 @@
       <div @click="showCode()" class="demo-block-control">
         <i
           :class="{
-            hovering_i: hover_animation,
+            hovering_i: hover_animation || !arrowAnimation,
             'shn-caret-down': code_height === 0,
             'shn-caret-up': code_height !== 0
           }"
           class="shni"
         ></i>
-        <span :class="{ hovering_span: hover_animation }">
+        <span :class="{ hovering_span: hover_animation || !arrowAnimation }">
           {{
           code_height === 0 ? '显示代码' : '隐藏代码'
           }}
@@ -44,6 +48,10 @@ export default {
     height: {
       type: Number,
       default: 100
+    },
+    arrowAnimation: {
+      type: Boolean,
+      default: true
     }
   },
   data() {

@@ -150,6 +150,7 @@ export default {
         'shn-plus'
       ],
       icon_list: [
+        'shn-xiaochengxu',
         'shn-muyingwanju',
         'shn-steam-fill',
         'shn-close_1',

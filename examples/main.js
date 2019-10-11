@@ -5,6 +5,7 @@ import store from './store'
 
 import '../public/css/cover.scss';
 import '../public/iconfont/iconfont.css';
+import '../public/css/animate.min.css'
 
 // 导入组件库
 import shnUI from './../packages/index'

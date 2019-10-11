@@ -1,6 +1,6 @@
 {
   "name": "shn-vue-ui",
-  "version": "1.2.4",
+  "version": "1.2.8",
   "description": "A Component Library for Vue.js.",
   "main": "lib/shn-vue-ui.umd.min.js",
   "private": false,
@@ -15,6 +15,7 @@
     "vue": "^2.6.6",
     "vue-highlightjs": "^1.3.3",
     "vue-router": "^3.0.1",
+    "vuewordcloud": "^18.7.11",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
