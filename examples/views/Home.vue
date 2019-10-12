@@ -148,7 +148,17 @@ export default {
               path: '#/component/vue-drag-resize'
             },
             { id: -101, name: '操作Cookies', path: '#/component/vue-cookies' },
-            { id: -102, name: '云词', path: '#/component/vue-word-cloud' }
+            { id: -102, name: '云词', path: '#/component/vue-word-cloud' },
+            {
+              id: -103,
+              name: '脉冲圆点',
+              path: '#/component/vue-status-indicator'
+            },
+            {
+              id: -104,
+              name: 'Loading素材',
+              path: '#/component/epic-spinners'
+            }
           ]
         }
       ],
@@ -230,8 +240,14 @@ export default {
       case '/component/vue-cookies':
         this.active = -101
         break
-        case '/component/vue-word-cloud':
+      case '/component/vue-word-cloud':
         this.active = -102
+        break
+      case '/component/vue-status-indicator':
+        this.active = -103
+        break
+      case '/component/epic-spinners':
+        this.active = -104
         break
     }
   },
