@@ -78,7 +78,7 @@
     <!-- 其他用法 -->
     <shn-el-demo-block
       :arrow-animation="false"
-      :height="732"
+      :height="816"
       :title="'其他用法'"
       id="vue-word-clound-other"
     >
@@ -87,7 +87,7 @@
           <vue-word-cloud
             :color="([, weight]) => other.colors[Math.ceil(Math.random() * 5 - 1)]"
             :font-size-ratio="5"
-            :words="other.words"
+            :words="other.code.words"
             enter-animation="bounceIn"
             font-family="SimSun"
             font-weight="800"
@@ -102,7 +102,7 @@
     </shn-el-demo-block>
     <shn-el-demo-block
       :arrow-animation="false"
-      :height="774"
+      :height="942"
       :title="''"
       id="vue-word-clound-other"
     >
@@ -111,8 +111,7 @@
           <vue-word-cloud
             :color="([, weight]) => other.colors[Math.ceil(Math.random() * 5 - 1)]"
             :font-size-ratio="5"
-            :rotation="10"
-            :words="other.words"
+            :words="other.code_2.words"
             enter-animation="bounceIn"
             font-family="SimSun"
             font-weight="800"
@@ -123,7 +122,7 @@
       </template>
       <template v-slot:code>
         <code class="html">{{fCode(other.code_2.html)}}</code>
-        <code class="javascript">{{fCode(other.code.javascript)}}</code>
+        <code class="javascript">{{fCode(other.code_2.javascript)}}</code>
       </template>
     </shn-el-demo-block>
     <!-- API -->
@@ -151,6 +150,39 @@ export default {
   },
   data() {
     return {
+      words: [
+        '游戏',
+        '应用',
+        '贴吧',
+        '腾讯',
+        '阿里巴巴',
+        '百度',
+        '美团',
+        '网易',
+        'shn-ui',
+        'QQ',
+        '微信',
+        '英雄联盟',
+        '支付宝',
+        '绝地求生',
+        '知乎',
+        '微博',
+        '淘宝',
+        '头条',
+        '京东',
+        '抖音',
+        '爱奇艺',
+        '哔哩哔哩',
+        '优酷',
+        '携程',
+        '去哪儿',
+        '飞常准',
+        '地图',
+        '饿了么',
+        '豆瓣',
+        '口碑',
+        '网易云音乐'
+      ],
       simple: {
         code: {
           html: `
@@ -163,7 +195,6 @@ export default {
         }
       },
       other: {
-        words: this.getWord(),
         colors: ['#ffd077', '#3bc4c7', '#3a9eea', '#ff4e69', '#461e47'],
         code: {
           html: `
@@ -183,24 +214,29 @@ export default {
             export default {
               data() {
                 return {
-                  words:this.getWord()
-                }
-              },
-              methods: {
-                getWord() {
-                  let word = [
+                  word:[
                     '游戏',
                     '应用',
                     ...
-                  ]
-                  for (let i = 0; i < word.length; i++) {
-                    word[i] = [word[i], Math.ceil(Math.random() * 30)]
+                  ],
+                  words:[]
+                }
+              },
+              mounted(){
+                this.words = this.getWord()
+              },
+              methods: {
+                getWord() {
+                  for (let i = 0; i < this.word.length; i++) {
+                    this.word[i] = [this.word[i], Math.ceil(Math.random() * 30)]
                   }
-                  return word
+
+                  return this.word
                 }
               }
             }
-          `
+          `,
+          words: []
         },
         code_2: {
           html: `
@@ -208,7 +244,6 @@ export default {
                 <vue-word-cloud
                     :color="([, weight]) => other.colors[Math.ceil(Math.random() * 5 - 1)]"
                     :font-size-ratio="5"
-                    :rotation="10"
                     :words="other.words"
                     enter-animation="bounceIn"
                     font-family="SimSun"
@@ -217,7 +252,39 @@ export default {
                     rotation-unit="deg"
                 />
               </div>
-          `
+          `,
+          javascript: `
+            export default {
+              data() {
+                return {
+                  word:[
+                    '游戏',
+                    '应用',
+                    ...
+                  ],
+                  words:[]
+                }
+              },
+              mounted(){
+                this.words = this.getWord()
+              },
+              methods: {
+                getWord() {
+                  let word = JSON.parse(JSON.stringify(this.words))
+                  for (let i = 0; i < word.length; i++) {
+                    word[i] = {
+                      text: word[i],
+                      weight: Math.ceil(Math.random() * 30),
+                      rotation: Math.ceil(Math.random() * 12) * 30
+                    }
+                  }
+
+                  return word
+                }
+              }
+            }
+          `,
+          words: []
         }
       },
       api: [
@@ -378,43 +445,27 @@ export default {
       ]
     }
   },
+  mounted() {
+    this.other.code.words = this.getWord()
+    this.other.code_2.words = this.getWordCode2()
+  },
   methods: {
     getWord() {
-      let word = [
-        '游戏',
-        '应用',
-        '贴吧',
-        '腾讯',
-        '阿里巴巴',
-        '百度',
-        '美团',
-        '网易',
-        'shn-ui',
-        'QQ',
-        '微信',
-        '英雄联盟',
-        '支付宝',
-        '绝地求生',
-        '知乎',
-        '微博',
-        '淘宝',
-        '头条',
-        '京东',
-        '抖音',
-        '爱奇艺',
-        '哔哩哔哩',
-        '优酷',
-        '携程',
-        '去哪儿',
-        '飞常准',
-        '地图',
-        '饿了么',
-        '豆瓣',
-        '口碑',
-        '网易云音乐'
-      ]
+      let word = JSON.parse(JSON.stringify(this.words))
       for (let i = 0; i < word.length; i++) {
         word[i] = [word[i], Math.ceil(Math.random() * 30)]
+      }
+
+      return word
+    },
+    getWordCode2() {
+      let word = JSON.parse(JSON.stringify(this.words))
+      for (let i = 0; i < word.length; i++) {
+        word[i] = {
+          text: word[i],
+          weight: Math.ceil(Math.random() * 30),
+          rotation: Math.ceil(Math.random() * 12) * 30
+        }
       }
 
       return word
