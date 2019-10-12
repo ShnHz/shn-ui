@@ -30,13 +30,15 @@
     </h3>
     <p class="demo-introduction">
       github代码仓库地址
-      <img
-        alt
-        class="github-img"
-        href="https://github.com/ShnHz/shn-ui"
-        src="https://img.shields.io/github/stars/ShnHz/shn-ui.svg?style=social&label=Star&maxAge=2592000"
-      />
-      <a href="https://github.com/ShnHz/shn-ui" target="_blank">https://github.com/ShnHz/shn-ui</a> 点个star支持一下吧~
+      <a href="https://github.com/ShnHz/shn-ui" target="_blank">
+        <img
+          alt
+          class="github-img"
+          href="https://github.com/ShnHz/shn-ui"
+          src="https://img.shields.io/github/stars/ShnHz/shn-ui.svg?style=social&label=Star&maxAge=2592000"
+        />
+      </a>
+      点个star支持一下吧~
     </p>
 
     <!-- NPM安装 -->
