@@ -1,16 +1,14 @@
 <template>
-  <transition name="shn-fade">
-    <div @click="backTop" class="shn-backtop" v-show="show">
-      <div class="shn-backtop-customize-content">
-        <slot></slot>
-      </div>
-      <div class="shn-backtop-content" v-if="!slotShow">
-        <div>
-          <i class="shni shn-vertical-align-top"></i>
-        </div>
+  <div :style="{opacity:show ? '1' : '0'}" @click="backTop" class="shn-backtop">
+    <div class="shn-backtop-customize-content">
+      <slot></slot>
+    </div>
+    <div class="shn-backtop-content" v-if="!slotShow">
+      <div>
+        <i class="shni shn-vertical-align-top"></i>
       </div>
     </div>
-  </transition>
+  </div>
 </template>
 <script>
 export default {
@@ -117,6 +115,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .shn-backtop {
+  transition: opacity 0.3s;
   .shn-backtop-content {
     cursor: pointer;
     z-index: 101;
