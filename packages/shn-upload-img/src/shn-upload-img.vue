@@ -15,7 +15,7 @@
             title="预览"
             v-if="view"
           ></i>
-          <i @click="list.splice(index, 1)" class="shni shn-delete" title="删除" v-if="!disabled"></i>
+          <i @click="list.splice(index, 1);$emit('change')" class="shni shn-delete" title="删除" v-if="!disabled"></i>
         </div>
       </div>
     </div>
