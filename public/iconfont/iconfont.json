@@ -13,6 +13,13 @@
       "unicode_decimal": 58880
     },
     {
+      "icon_id": "129210",
+      "name": "steam",
+      "font_class": "steam1",
+      "unicode": "e9d8",
+      "unicode_decimal": 59864
+    },
+    {
       "icon_id": "1899047",
       "name": "steam-square",
       "font_class": "steam-fill",
