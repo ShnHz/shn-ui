@@ -13,13 +13,6 @@
       "unicode_decimal": 58880
     },
     {
-      "icon_id": "129210",
-      "name": "steam",
-      "font_class": "steam1",
-      "unicode": "e9d8",
-      "unicode_decimal": 59864
-    },
-    {
       "icon_id": "1899047",
       "name": "steam-square",
       "font_class": "steam-fill",
@@ -4246,27 +4239,6 @@
       "font_class": "ungroup",
       "unicode": "e9d5",
       "unicode_decimal": 59861
-    },
-    {
-      "icon_id": "9567011",
-      "name": "computer-fill",
-      "font_class": "computer-fill",
-      "unicode": "e9d7",
-      "unicode_decimal": 59863
-    },
-    {
-      "icon_id": "11443206",
-      "name": "ps4",
-      "font_class": "ps",
-      "unicode": "e64b",
-      "unicode_decimal": 58955
-    },
-    {
-      "icon_id": "11759924",
-      "name": "游戏手柄",
-      "font_class": "youxishoubing",
-      "unicode": "e9d6",
-      "unicode_decimal": 59862
     }
   ]
 }

@@ -1,9 +1,13 @@
-// const NODE_ENV = 'development' // 开发环境 打包doc
-const NODE_ENV = 'lib'  // 组件库 上传npm
+module.exports = {
+  pages: {
+    index: {
+      entry: 'examples/main.js',
+      template: 'public/index.html',
+      filename: 'index.html'
+    }
+  },
 
-const components = require('./build/compontents.json');
-
-const baseConfig = {
+  // 扩展 webpack 配置，使 packages 加入编译
   chainWebpack: config => {
     config.module
       .rule('js')
@@ -17,6 +21,7 @@ const baseConfig = {
         return options
       })
   },
+
   css: {
     extract: false,
     loaderOptions: {
@@ -25,41 +30,12 @@ const baseConfig = {
         data: `@import "public/css/shn-vue-ui.scss";`
       }
     },
-  }
-}
-
-const devConfig = {
-  pages: {
-    index: {
-      entry: 'examples/main.js',
-      template: 'public/index.html',
-      filename: 'index.html',
-    }
   },
+
 
   publicPath: './',
   outputDir: 'docs',
-  ...baseConfig
+  runtimeCompiler: undefined,
+  productionSourceMap: undefined,
+  parallel: undefined
 }
-
-const buildConfig = {
-  pages: {
-    index: {
-      entry: 'packages/index.js',
-    }
-  },
-  configureWebpack: {
-    entry: {
-      ...components
-    },
-    output: {
-      filename: '[name]/index.js',
-      libraryTarget: 'commonjs2',
-    },
-  },
-  outputDir: 'lib',
-  productionSourceMap: false,
-  ...baseConfig
-}
-
-module.exports = NODE_ENV === 'development' ? devConfig : buildConfig;

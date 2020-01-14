@@ -150,7 +150,6 @@ export default {
         'shn-plus'
       ],
       icon_list: [
-        'shn-rank',
         'shn-steam1',
         'shn-ps',
         'shn-computer-fill',
