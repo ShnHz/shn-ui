@@ -4094,6 +4094,13 @@
       "unicode_decimal": 59838
     },
     {
+      "icon_id": "8990678",
+      "name": "rank",
+      "font_class": "rank",
+      "unicode": "e61f",
+      "unicode_decimal": 58911
+    },
+    {
       "icon_id": "9229175",
       "name": "Field-number",
       "font_class": "Field-number",
