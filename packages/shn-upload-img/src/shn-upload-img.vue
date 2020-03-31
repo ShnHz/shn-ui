@@ -63,7 +63,6 @@
   </div>
 </template>
 <script>
-import { type } from 'os'
 export default {
   name: 'shn-upload-img',
   props: {

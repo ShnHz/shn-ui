@@ -5,4 +5,6 @@ Loading.install = function (Vue) {
     Vue.component(Loading.name, Loading)
 }
 
+console.log(Loading)
+
 export default Loading

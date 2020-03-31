@@ -8,7 +8,7 @@ import '../public/iconfont/iconfont.css';
 import '../public/css/animate.min.css'
 
 // 导入组件库
-import shnUI from './../packages/index'
+import shnUI from '../packages/index'
 import VueHighlightJS from 'vue-highlightjs'
 import 'highlight.js/styles/atom-one-dark.css'
 

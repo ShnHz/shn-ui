@@ -1,5 +1,5 @@
-// const NODE_ENV = 'development' // 开发环境 打包doc
-const NODE_ENV = 'lib'  // 组件库 上传npm
+const NODE_ENV = 'development' // 开发环境 打包doc
+// const NODE_ENV = 'lib' // 组件库 上传npm
 
 const components = require('./build/compontents.json');
 
@@ -43,17 +43,10 @@ const devConfig = {
 }
 
 const buildConfig = {
-  pages: {
-    index: {
-      entry: 'packages/index.js',
-    }
-  },
   configureWebpack: {
-    entry: {
-      ...components
-    },
+    entry: components,
     output: {
-      filename: '[name]/index.js',
+      filename: '[name].js',
       libraryTarget: 'commonjs2',
     },
   },

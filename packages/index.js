@@ -101,6 +101,7 @@ export default {
     AnchorLink,
     Divider,
     MenuSimple,
+    UrlParam,
     PulldownRefresh,
     LoadingPage,
     ModelMask,

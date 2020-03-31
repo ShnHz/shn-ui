@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view />
+    <shn-loading-page :loading="true" />
   </div>
 </template>
 
