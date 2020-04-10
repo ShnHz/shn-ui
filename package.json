@@ -1,6 +1,7 @@
 {
   "name": "shn-vue-ui",
   "version": "1.3.13-gac",
+  "license": "ISC",
   "description": "A Component Library for Vue.js.",
   "main": "lib/shn-vue-ui.umd.min.js",
   "private": false,
