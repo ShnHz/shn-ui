@@ -55,7 +55,7 @@ export default {
     allDate: {
       type: Array,
       default: function() {
-        return ['1970-01-01', shnUiDate.getToday()]
+        return ['2012-01-01', shnUiDate.getToday()]
       }
     }
   },

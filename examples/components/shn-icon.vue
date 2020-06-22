@@ -150,6 +150,7 @@ export default {
         'shn-plus'
       ],
       icon_list: [
+        'shn-icon_taptap',
         'shn-rank',
         'shn-steam1',
         'shn-ps',

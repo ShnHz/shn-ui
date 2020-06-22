@@ -64,7 +64,7 @@
           />
         </div>
         <shn-button
-          @click="getCropData()"
+          @click="getCropBlob()"
           block
           ref="cropper"
           style="margin:10px 0"
@@ -76,6 +76,8 @@
         <code class="javascript">{{fCode(simple.code.javascript)}}</code>
       </template>
     </shn-el-demo-block>
+
+    <shn-upload-img />
 
     <!-- 截图框固定比例DEMO -->
     <shn-el-demo-block :height="126" :title="'截图框固定比例'" id="vue-draag-resize-fix">
@@ -389,6 +391,11 @@ export default {
     getCropData() {
       this.$refs.cropper.getCropData(data => {
         window.alert(data)
+      })
+    },
+    getCropBlob() {
+      this.$refs.cropper.getCropBlob(data => {
+        console.log(data)
       })
     }
   }

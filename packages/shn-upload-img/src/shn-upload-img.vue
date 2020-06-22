@@ -15,7 +15,12 @@
             title="预览"
             v-if="view"
           ></i>
-          <i @click="list.splice(index, 1);$emit('change')" class="shni shn-delete" title="删除" v-if="!disabled"></i>
+          <i
+            @click="list.splice(index, 1);$emit('change')"
+            class="shni shn-delete"
+            title="删除"
+            v-if="!disabled"
+          ></i>
         </div>
       </div>
     </div>
@@ -114,13 +119,13 @@ export default {
       type: Number,
       default: 0
     },
-    disabled:{
+    disabled: {
       type: Boolean,
       default: false
     }
   },
   watch: {
-    value: function(data){
+    value: function(data) {
       this.list = data
     },
     list: function() {
@@ -133,7 +138,9 @@ export default {
       cropperShow: false,
       cropperImg: '',
       previewImg: '',
-      previewImgShow: false
+      previewImgShow: false,
+
+      filename: ''
     }
   },
   computed: {
@@ -154,17 +161,19 @@ export default {
   methods: {
     changeImage(e) {
       let file = e.target.files[0]
+      this.filename = file.name
       let reader = new FileReader()
       let _this = this
       reader.onloadend = function() {
         // 图片的 base64 格式, 可以直接当成 img 的 src 属性值
-        let dataURL = reader.result
+        let dataURL = reader.resul
+
         if (_this.cropper) {
           _this.cropperImg = dataURL
           _this.cropperShow = true
         } else {
           _this.list.push(dataURL)
-          _this.$emit('change', dataURL, this.list)
+          _this.$emit('change', dataURL, this.list, this.filename)
         }
 
         e.target.value = ''
@@ -178,17 +187,17 @@ export default {
       if (this.cropType == 'base64') {
         this.$refs.cropper.getCropData(data => {
           _this.list.push(data)
-          _this.$emit('change', data, _this.list)
+          _this.$emit('change', data, _this.list, this.filename)
         })
       } else if (this.cropType == 'blob') {
         this.$refs.cropper.getCropBlob(data => {
           _this.list.push(data)
-          _this.$emit('change', data, _this.list)
+          _this.$emit('change', data, _this.list, this.filename)
         })
       } else {
         this.$refs.cropper.getCropData(data => {
           _this.list.push(data)
-          _this.$emit('change', data, _this.list)
+          _this.$emit('change', data, _this.list, this.filename)
         })
       }
       this.cropperShow = false
