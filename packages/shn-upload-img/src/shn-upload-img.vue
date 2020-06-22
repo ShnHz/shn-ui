@@ -16,7 +16,7 @@
             v-if="view"
           ></i>
           <i
-            @click="list.splice(index, 1);$emit('change')"
+            @click="list.splice(index, 1);$emit('change');$emit('del',index)"
             class="shni shn-delete"
             title="删除"
             v-if="!disabled"
@@ -140,7 +140,7 @@ export default {
       previewImg: '',
       previewImgShow: false,
 
-      filename: ''
+      fileName: ''
     }
   },
   computed: {
@@ -161,19 +161,18 @@ export default {
   methods: {
     changeImage(e) {
       let file = e.target.files[0]
-      this.filename = file.name
+      this.fileName = file.name
       let reader = new FileReader()
       let _this = this
       reader.onloadend = function() {
         // 图片的 base64 格式, 可以直接当成 img 的 src 属性值
-        let dataURL = reader.resul
-
+        let dataURL = reader.result
         if (_this.cropper) {
           _this.cropperImg = dataURL
           _this.cropperShow = true
         } else {
           _this.list.push(dataURL)
-          _this.$emit('change', dataURL, this.list, this.filename)
+          _this.$emit('change', dataURL, _this.list, _this.fileName)
         }
 
         e.target.value = ''
@@ -187,17 +186,17 @@ export default {
       if (this.cropType == 'base64') {
         this.$refs.cropper.getCropData(data => {
           _this.list.push(data)
-          _this.$emit('change', data, _this.list, this.filename)
+          _this.$emit('change', data, _this.list, _this.fileName)
         })
       } else if (this.cropType == 'blob') {
         this.$refs.cropper.getCropBlob(data => {
           _this.list.push(data)
-          _this.$emit('change', data, _this.list, this.filename)
+          _this.$emit('change', data, _this.list, _this.fileName)
         })
       } else {
         this.$refs.cropper.getCropData(data => {
           _this.list.push(data)
-          _this.$emit('change', data, _this.list, this.filename)
+          _this.$emit('change', data, _this.list, _this.fileName)
         })
       }
       this.cropperShow = false
